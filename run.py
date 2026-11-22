@@ -99,7 +99,13 @@ def main(api=None):
     cfg = load_json(os.path.join(ROOT, "config.json"), None)
     holdings = load_json(os.path.join(ROOT, "holdings.json"), {})
     names = load_json(os.path.join(ROOT, "items.json"), {})
-    api = api or Api(os.environ.get("BLIZZARD_CLIENT_ID"), os.environ.get("BLIZZARD_CLIENT_SECRET"), cfg["region"])
+    os.makedirs(STATE, exist_ok=True)
+    if api is None:
+        cid, secret = os.environ.get("BLIZZARD_CLIENT_ID"), os.environ.get("BLIZZARD_CLIENT_SECRET")
+        if not cid or not secret:
+            print("BLIZZARD_CLIENT_ID / BLIZZARD_CLIENT_SECRET are not set yet: skipping this run. See README.")
+            return
+        api = Api(cid, secret, cfg["region"])
 
     if "--discover" in sys.argv or (not cfg.get("houses_verified") and not os.path.exists(os.path.join(ROOT, "discovery.json"))):
         discover(api, cfg)
