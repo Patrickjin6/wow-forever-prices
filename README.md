@@ -52,6 +52,20 @@ against BootyBayBroker. Once it's confirmed, `houses_verified` is set to `true`.
 Sales per day are estimated from listings that disappear between snapshots, so
 cancelled listings count as sales too. Treat it as a rough guide.
 
+## Live prices from your own Auctionator scans
+
+`tools/auctionator.py` reads Auctionator's saved data
+(`World of Warcraft\_forever_\WTF\Account\<account>\SavedVariables\Auctionator.lua`).
+Do a full scan in game, type `/reload` so the game writes the file, then:
+
+```
+python tools/auctionator.py Auctionator.lua 15417 13465      # price now + daily history
+python tools/auctionator.py Auctionator.lua --posts          # what you posted recently
+```
+
+It gives the cheapest price for every item at the moment you scanned, plus Auctionator's
+daily low/high/units for the last 21 days. It has no dependencies.
+
 ## Notes
 
 - This repo is public, so anyone can see the prices and `holdings.json`.

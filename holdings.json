@@ -1,21 +1,86 @@
 {
-  "updated": "2026-11-22T18:46Z",
+  "updated": "2026-11-22T19:20Z",
   "cash_copper": 58496,
   "pending_copper": 61477,
   "listed_total_copper": 79982,
   "cash_note": "cash_copper = gold in bags (5g 84s 96c). pending_copper = sale gold on its way by mail (6g 14s 77c). listed_total_copper = asking price of everything on the AH (7g 99s 82c). Bags are empty: every position below is listed.",
   "positions": [
-    {"item_id": 15417, "name": "Devilsaur Leather", "qty": 8, "paid_each": 6500, "status": "listed", "note": "quantity and list price to confirm"},
-    {"item_id": 13465, "name": "Mountain Silversage", "qty": 20, "paid_each": 1200, "status": "listed", "note": "quantity and list price to confirm"}
+    {
+      "item_id": 15417,
+      "name": "Devilsaur Leather",
+      "qty": 8,
+      "paid_each": 6500,
+      "status": "listed",
+      "note": "posted 18:48 at 68s 20c (Auctionator posting history)",
+      "listed_each": 6820
+    },
+    {
+      "item_id": 13465,
+      "name": "Mountain Silversage",
+      "qty": 20,
+      "paid_each": 1200,
+      "status": "listed",
+      "note": "quantity and list price to confirm"
+    }
   ],
   "trades": [
-    {"date": "2026-11-20", "side": "buy", "item": "Devilsaur Leather", "qty": 8, "each": 6500},
-    {"date": "2026-11-20", "side": "buy", "item": "Mountain Silversage", "qty": 20, "each": 1200},
-    {"date": "2026-11-20", "side": "buy", "item": "Icecap", "qty": 12, "each": 1248},
-    {"date": "2026-11-20", "side": "buy", "item": "Elixir of the Mongoose", "qty": 4, "each": 6900},
-    {"date": "2026-11-20", "side": "buy", "item": "Thundering Charm", "qty": 1, "each": 1650},
-    {"date": "2026-11-20", "side": "buy", "item": "Thundering Charm", "qty": 11, "each": 1660},
-    {"date": "2026-11-22", "side": "sell", "item": "Elixir of the Mongoose", "qty": 4, "each": 7600},
-    {"date": "2026-11-22", "side": "sell", "item": "Thundering Charm", "qty": 8, "total_received": 30320, "note": "amount as reported; market was 12-13s that day, to confirm"}
+    {
+      "date": "2026-11-20",
+      "side": "buy",
+      "item": "Devilsaur Leather",
+      "qty": 8,
+      "each": 6500
+    },
+    {
+      "date": "2026-11-20",
+      "side": "buy",
+      "item": "Mountain Silversage",
+      "qty": 20,
+      "each": 1200
+    },
+    {
+      "date": "2026-11-20",
+      "side": "buy",
+      "item": "Icecap",
+      "qty": 12,
+      "each": 1248
+    },
+    {
+      "date": "2026-11-20",
+      "side": "buy",
+      "item": "Elixir of the Mongoose",
+      "qty": 4,
+      "each": 6900
+    },
+    {
+      "date": "2026-11-20",
+      "side": "buy",
+      "item": "Thundering Charm",
+      "qty": 1,
+      "each": 1650
+    },
+    {
+      "date": "2026-11-20",
+      "side": "buy",
+      "item": "Thundering Charm",
+      "qty": 11,
+      "each": 1660
+    },
+    {
+      "date": "2026-11-22",
+      "side": "sell",
+      "item": "Elixir of the Mongoose",
+      "qty": 4,
+      "each": 7600
+    },
+    {
+      "date": "2026-11-22",
+      "side": "sell",
+      "item": "Thundering Charm",
+      "qty": 8,
+      "each": 3790,
+      "total_gross": 30320,
+      "note": "confirmed by Auctionator: posted at 37s 90c; charm jumped to 36-38s after 17:00"
+    }
   ]
 }
