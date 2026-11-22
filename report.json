@@ -1,12 +1,12 @@
 {
- "snapshot_utc": "2026-11-22T18:25:10+00:00",
- "history_hours": 1,
+ "snapshot_utc": "2026-11-22T19:25:15+00:00",
+ "history_hours": 2,
  "budget": 58496,
  "houses": {
   "horde": 114,
   "blackwater": 117
  },
- "houses_verified": false,
+ "houses_verified": true,
  "buy_now": [],
  "risky": [],
  "watch": [],
@@ -18,10 +18,10 @@
    "qty": 8,
    "paid_each": 6500,
    "break_even": 6842.105263157895,
-   "now": 6825.0,
+   "now": 6000.0,
    "sold_per_day": null,
    "patient": 6825.0,
-   "history": "72h low 68s 25c | median 68s 25c | high 68s 25c | last 24h (every 3h): 68s 25c",
+   "history": "72h low 60s 0c | median 64s 12c | high 68s 25c | last 24h (every 3h): 60s 0c",
    "verdict": "Hold: under break-even for most of the last 72h (high 68s 25c)"
   },
   {
@@ -30,10 +30,10 @@
    "qty": 20,
    "paid_each": 1200,
    "break_even": 1263.157894736842,
-   "now": 1200.0,
+   "now": 1025.0,
    "sold_per_day": null,
    "patient": 1200.0,
-   "history": "72h low 12s 0c | median 12s 0c | high 12s 0c | last 24h (every 3h): 12s 0c",
+   "history": "72h low 10s 25c | median 11s 12c | high 12s 0c | last 24h (every 3h): 10s 25c",
    "verdict": "Hold: under break-even for most of the last 72h (high 12s 0c)"
   }
  ],
