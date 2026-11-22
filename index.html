@@ -22,10 +22,6 @@
   .lede { font-size: 18px; margin: 4px 0 6px; }
   .note { margin: 8px 0 0; padding: 8px 12px; border-left: 3px solid var(--warn); background: var(--panel); border-radius: 6px; font-size: 13px; }
   .err { border-left-color: var(--bad); }
-  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
-  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
-  .card .label { color: var(--muted); font-size: 13px; }
-  .card .value { font: 400 26px/1.2 Georgia, serif; font-variant-numeric: tabular-nums; margin-top: 4px; }
   .drop { border: 2px dashed var(--line); border-radius: 10px; padding: 14px 16px; background: var(--panel); cursor: pointer; }
   .drop.over { border-color: var(--accent); }
   .drop b { color: var(--accent); }
@@ -66,12 +62,6 @@
       <p class="sub">It's in <code>World of Warcraft\_forever_\WTF\Account\349358080#1\SavedVariables</code>. Do a full scan in Auctionator and type <code>/reload</code> first so the file is fresh. Scans older than 2 hours aren't used for prices. The file stays on your computer: it's read in this browser and only today's prices are remembered here.</p>
     </div>
     <input type="file" id="file" accept=".lua" hidden>
-  </section>
-
-  <section class="cards" id="gold">
-    <div class="card"><div class="label">Gold in your bags</div><div class="value" id="cash">—</div></div>
-    <div class="card"><div class="label">On its way by mail</div><div class="value" id="pending">—</div></div>
-    <div class="card"><div class="label">Listed on the AH (asking price)</div><div class="value" id="listed">—</div></div>
   </section>
 
   <section id="buy">
@@ -398,9 +388,6 @@
       $('scanline').append(Object.assign(document.createElement('b'), { textContent: 'Add your live prices:' }),
         document.createTextNode(' drop your Auctionator.lua here, or click to choose it.'));
     }
-    $('cash').textContent = coin(hold.cash_copper);
-    $('pending').textContent = coin(hold.pending_copper);
-    $('listed').textContent = coin(hold.listed_total_copper);
 
     fillRows($('buyrows'), a.plan.map((b) => [b.name, b.qty, coin(b.it.buy_max), coin(b.price), b.src, coin(b.it.sell_at), [coin(b.profit), 'good'],
       coin(b.it.low72), coin(b.it.med72), coin(b.it.high72), b.it.dips ? `${b.it.recovered}/${b.it.dips}` : '-', b.it.sold_per_day ? Math.round(b.it.sold_per_day) : '-']),

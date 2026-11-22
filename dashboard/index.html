@@ -40,12 +40,6 @@
     <p class="wf-note" id="scan-note" hidden>Your Auctionator scan wasn't used, so prices here are Blizzard's (about an hour old): <span data-draw="scannote" data-source="status" data-field="scan_note" data-row="0">—</span></p>
   </header>
 
-  <section class="wf-cards" id="gold">
-    <div class="wf-card" id="gold-bags"><div class="wf-card-label">Gold in your bags</div><div class="wf-card-value" data-draw="cash" data-source="status" data-field="cash_text" data-row="0">—</div></div>
-    <div class="wf-card" id="gold-mail"><div class="wf-card-label">On its way by mail</div><div class="wf-card-value" data-draw="pending" data-source="status" data-field="pending_text" data-row="0">—</div></div>
-    <div class="wf-card" id="gold-listed"><div class="wf-card-label">Listed on the AH (asking price)</div><div class="wf-card-value" data-draw="listed" data-source="status" data-field="listed_total_text" data-row="0">—</div></div>
-  </section>
-
   <section class="wf-section" id="buy-now">
     <h2>Buy now</h2>
     <p class="wf-sub">Items that passed the history rule and are priced under their buy limit. Sell prices and profit are after the 5% auction house cut.</p>
@@ -230,9 +224,6 @@
   dash.draw('scan', (el) => wf.fill(el, 'status', 'scan_utc', wf.uk));
   dash.draw('gen', (el) => wf.fill(el, 'status', 'generated_utc', wf.uk));
   dash.draw('scannote', (el) => wf.fill(el, 'status', 'scan_note'));
-  dash.draw('cash', (el) => wf.fill(el, 'status', 'cash_text'));
-  dash.draw('pending', (el) => wf.fill(el, 'status', 'pending_text'));
-  dash.draw('listed', (el) => wf.fill(el, 'status', 'listed_total_text'));
   dash.draw('spent', (el) => wf.fill(el, 'buy_totals', 'spent_text'));
   dash.draw('profit', (el) => wf.fill(el, 'buy_totals', 'profit_text'));
 
