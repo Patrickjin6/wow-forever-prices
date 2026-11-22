@@ -1,10 +1,12 @@
 {
-  "updated": "2026-11-22",
-  "cash_copper": 50000,
-  "cash_note": "Gold available for new buys, in copper (1g = 10000). 5g is an assumption until confirmed.",
+  "updated": "2026-11-22T18:46Z",
+  "cash_copper": 58496,
+  "pending_copper": 61477,
+  "listed_total_copper": 79982,
+  "cash_note": "cash_copper = gold in bags (5g 84s 96c). pending_copper = sale gold on its way by mail (6g 14s 77c). listed_total_copper = asking price of everything on the AH (7g 99s 82c). Bags are empty: every position below is listed.",
   "positions": [
-    {"item_id": 15417, "name": "Devilsaur Leather", "qty": 8, "paid_each": 6500},
-    {"item_id": 13465, "name": "Mountain Silversage", "qty": 20, "paid_each": 1200}
+    {"item_id": 15417, "name": "Devilsaur Leather", "qty": 8, "paid_each": 6500, "status": "listed", "note": "quantity and list price to confirm"},
+    {"item_id": 13465, "name": "Mountain Silversage", "qty": 20, "paid_each": 1200, "status": "listed", "note": "quantity and list price to confirm"}
   ],
   "trades": [
     {"date": "2026-11-20", "side": "buy", "item": "Devilsaur Leather", "qty": 8, "each": 6500},
