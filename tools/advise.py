@@ -133,7 +133,8 @@ def advise(repo, auc_path=None, max_age_h=2.0, now=None):
             verdict = (f"below break-even now; list at {coin(patient)} (the price it reached about a quarter of the last 72h) "
                        f"for ~{coin(pos['qty'] * (patient * (1 - cut) - pos['paid_each']))} profit")
         elif it.get("high72"):
-            verdict = f"hold: its 72h high ({coin(it['high72'])}) is under your break-even"
+            window = "72h" if (it.get("points") or 0) >= 72 else f"{it.get('points') or 0}h of Blizzard data so far"
+            verdict = f"hold: its high in the last {window} ({coin(it['high72'])}) is under your break-even"
         else:
             verdict = "no history yet"
         held.append({"id": iid, "name": pos.get("name") or name(iid), "qty": pos["qty"], "status": pos.get("status"),

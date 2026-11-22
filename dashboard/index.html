@@ -1,0 +1,336 @@
+<meta name="dash-one-writer">
+<style>
+  .wf { display: flex; flex-direction: column; gap: var(--cds-gap-xl); font-family: var(--font-anthropic-sans); color: var(--color-fg); }
+  .wf-title { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); margin: 0 0 var(--cds-gap-sm); }
+  .wf-lede { font-size: var(--cds-font-size-heading); margin: 0 0 var(--cds-gap-sm); line-height: 1.35; }
+  .wf-fresh, .wf-sub, .wf-empty, .wf-total { color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); margin: 0; }
+  .wf-total { color: var(--color-fg); font-size: var(--cds-font-size-body); margin-top: var(--cds-gap-sm); }
+  .wf-note { margin: var(--cds-gap-sm) 0 0; padding: var(--cds-pad-sm) var(--cds-pad-md); border-left: 3px solid var(--color-warn); background: var(--color-panel); border-radius: var(--cds-radius); font-size: var(--cds-font-size-caption); }
+  .wf-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--cds-gap-md); }
+  .wf-card { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); }
+  .wf-card-label { color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); }
+  .wf-card-value { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); font-variant-numeric: tabular-nums; margin-top: var(--cds-gap-xs); }
+  .wf-section h2 { font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); margin: 0 0 var(--cds-gap-xs); }
+  .wf-section h3 { font-size: var(--cds-font-size-body); font-weight: var(--cds-font-weight-medium); margin: var(--cds-gap-lg) 0 var(--cds-gap-xs); }
+  .wf-scroll { overflow-x: auto; margin-top: var(--cds-gap-sm); }
+  .wf-table { border-collapse: collapse; width: 100%; font-size: var(--cds-font-size-caption); font-variant-numeric: tabular-nums; }
+  .wf-table th { text-align: left; color: var(--color-fg-muted); font-weight: var(--cds-font-weight-medium); padding: var(--cds-pad-xs) var(--cds-pad-sm); border-bottom: 1px solid var(--color-border-line); white-space: nowrap; }
+  .wf-table td { padding: var(--cds-pad-xs) var(--cds-pad-sm); border-bottom: 1px solid var(--color-border-line); vertical-align: top; }
+  .wf-table td.wf-num { white-space: nowrap; }
+  .wf-table td.wf-action { min-width: 220px; }
+  .wf-good { color: var(--color-ok); }
+  .wf-bad { color: var(--color-bad); }
+  .wf-err { color: var(--color-bad); }
+  .wf-chart { position: relative; min-height: 180px; }
+  .wf-panel { margin-bottom: var(--cds-gap-md); }
+  .wf-panel-title { font-size: var(--cds-font-size-caption); font-weight: var(--cds-font-weight-medium); margin: 0 0 var(--cds-gap-xs); }
+  .wf-chart svg text { fill: var(--cds-text-secondary); font-size: var(--cds-font-size-caption); }
+  .wf-chart .domain, .wf-chart .tick line { stroke: var(--cds-chart-axis); }
+  .wf-tip { position: absolute; pointer-events: none; background: var(--cds-surface-popover); border: 1px solid var(--cds-border); box-shadow: var(--cds-shadow-popover); border-radius: var(--cds-radius); padding: var(--cds-pad-xs) var(--cds-pad-sm); font-size: var(--cds-font-size-caption); white-space: nowrap; z-index: 2; }
+  .wf-details summary { cursor: pointer; font-weight: var(--cds-font-weight-medium); }
+  .wf-details ul { padding-left: 1.2em; font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+</style>
+
+<div class="wf">
+  <header id="top">
+    <h1 class="wf-title">WoW Forever flips · US Horde</h1>
+    <p class="wf-lede" id="takeaway">Buys that pass the history rule right now: <span class="dash-skeleton" data-draw="buycount" data-source="status" data-field="buy_count" data-row="0">—</span>. Holdings under break-even: <span class="dash-skeleton" data-draw="below" data-source="status" data-field="holdings_below_break_even" data-row="0">—</span> of <span class="dash-skeleton" data-draw="holdcount" data-source="status" data-field="holdings_count" data-row="0">—</span>.</p>
+    <p class="wf-fresh" id="freshness">Blizzard history: snapshot <span data-draw="snap" data-source="status" data-field="blizzard_snapshot_utc" data-row="0">—</span> UK, <span data-draw="histhours" data-source="status" data-field="history_hours" data-row="0">—</span> hourly snapshots so far · Your Auctionator scan: <span data-draw="scan" data-source="status" data-field="scan_utc" data-row="0">—</span> UK · Page data built <span data-draw="gen" data-source="status" data-field="generated_utc" data-row="0">—</span> UK</p>
+    <p class="wf-note" id="thin-note" hidden>The Blizzard price history is still building. A buy needs at least two past dips that bounced back, so expect few or no buys for the first few days. Ask Claude to “check now” to refresh this page.</p>
+    <p class="wf-note" id="scan-note" hidden>Your Auctionator scan wasn't used, so prices here are Blizzard's (about an hour old): <span data-draw="scannote" data-source="status" data-field="scan_note" data-row="0">—</span></p>
+  </header>
+
+  <section class="wf-cards" id="gold">
+    <div class="wf-card" id="gold-bags"><div class="wf-card-label">Gold in your bags</div><div class="wf-card-value" data-draw="cash" data-source="status" data-field="cash_text" data-row="0">—</div></div>
+    <div class="wf-card" id="gold-mail"><div class="wf-card-label">On its way by mail</div><div class="wf-card-value" data-draw="pending" data-source="status" data-field="pending_text" data-row="0">—</div></div>
+    <div class="wf-card" id="gold-listed"><div class="wf-card-label">Listed on the AH (asking price)</div><div class="wf-card-value" data-draw="listed" data-source="status" data-field="listed_total_text" data-row="0">—</div></div>
+  </section>
+
+  <section class="wf-section" id="buy-now">
+    <h2>Buy now</h2>
+    <p class="wf-sub">Items that passed the history rule and are priced under their buy limit. Sell prices and profit are after the 5% auction house cut.</p>
+    <div class="wf-scroll" id="buy-wrap">
+      <table class="wf-table" id="buy-table" data-source="buys" data-row-key="item">
+        <thead><tr>
+          <th data-field="item">Item</th><th data-field="qty">Buy up to</th><th data-field="buy_max_text">At or under</th>
+          <th data-field="cheapest_text">Cheapest now</th><th data-field="price_source">Price from</th>
+          <th data-field="sell_at_text">Sell at</th><th data-field="profit_text">Profit</th>
+          <th data-field="low72_text">72h low</th><th data-field="med72_text">72h median</th><th data-field="high72_text">72h high</th>
+          <th data-field="bounced">Bounced back</th><th data-field="sold_per_day">Sold/day</th>
+        </tr></thead>
+        <tbody data-draw="buyrows"></tbody>
+      </table>
+    </div>
+    <p class="wf-empty" id="buy-empty" hidden>Nothing passes the history rule at today's prices.</p>
+    <p class="wf-total" id="buy-total" hidden>Total: <b data-draw="spent" data-source="buy_totals" data-field="spent_text" data-row="0">—</b> spent for about <b data-draw="profit" data-source="buy_totals" data-field="profit_text" data-row="0">—</b> profit. Check the total the game quotes before you confirm.</p>
+  </section>
+
+  <section class="wf-section" id="holdings">
+    <h2>Your holdings</h2>
+    <p class="wf-sub">Break-even is what you paid divided by 0.95, so a sale at that price covers the auction house cut.</p>
+    <div class="wf-scroll" id="hold-wrap">
+      <table class="wf-table" id="hold-table" data-source="holdings" data-row-key="item">
+        <thead><tr>
+          <th data-field="item">Item</th><th data-field="qty">Qty</th><th data-field="status">Where</th>
+          <th data-field="paid_text">Paid each</th><th data-field="break_even_text">Break-even</th>
+          <th data-field="now_text">Now</th><th data-field="vs_break_even_text">vs break-even</th>
+          <th data-field="action">What to do</th><th data-field="low72_text">Recent low</th><th data-field="high72_text">Recent high</th>
+        </tr></thead>
+        <tbody data-draw="holdrows"></tbody>
+      </table>
+    </div>
+    <p class="wf-empty" id="hold-empty" hidden>No holdings recorded. Tell Claude what you buy and sell to track them here.</p>
+    <h3 id="hold-chart-title">Daily price range from your scans, against your break-even</h3>
+    <p class="wf-sub">Each bar runs from the day's lowest to highest cheapest-listing price that Auctionator saw. The dashed line is your break-even.</p>
+    <div class="wf-chart" id="hold-chart" data-draw="holdchart" data-source="daily holdings"></div>
+  </section>
+
+  <section class="wf-section" id="blackwater">
+    <h2>Blackwater: buy on Horde, sell at a neutral auction house</h2>
+    <p class="wf-sub">Needs a trip to Booty Bay, Gadgetzan or Everlook. Blackwater takes a 15% cut, already counted in the profit.</p>
+    <div class="wf-scroll" id="bw-wrap">
+      <table class="wf-table" id="bw-table" data-source="blackwater" data-row-key="item">
+        <thead><tr>
+          <th data-field="item">Item</th><th data-field="qty">Buy up to</th><th data-field="buy_max_text">At or under</th>
+          <th data-field="cheapest_text">Cheapest on Horde</th><th data-field="sell_at_text">Sell on Blackwater at</th>
+          <th data-field="profit_text">Profit</th><th data-field="bw_sold_per_day">Blackwater sold/day</th>
+        </tr></thead>
+        <tbody data-draw="bwrows"></tbody>
+      </table>
+    </div>
+    <p class="wf-empty" id="bw-empty" hidden>No Blackwater gap passes the checks right now.</p>
+  </section>
+
+  <section class="wf-section" id="sell-high">
+    <h2>Sell if you hold</h2>
+    <p class="wf-sub">Well above their usual price right now.</p>
+    <div class="wf-scroll" id="high-wrap">
+      <table class="wf-table" id="high-table" data-source="sell_high" data-row-key="item">
+        <thead><tr><th data-field="item">Item</th><th data-field="now_text">Now</th><th data-field="usual_text">Usual</th><th data-field="above_usual_text">Above usual</th></tr></thead>
+        <tbody data-draw="highrows"></tbody>
+      </table>
+    </div>
+    <p class="wf-empty" id="high-empty" hidden>Nothing is well above its usual price right now.</p>
+  </section>
+
+  <section class="wf-section" id="watch">
+    <h2>Watch</h2>
+    <p class="wf-sub">Just above their buy limit. One cheap listing could make them a buy.</p>
+    <div class="wf-scroll" id="watch-wrap">
+      <table class="wf-table" id="watch-table" data-source="watch" data-row-key="item">
+        <thead><tr><th data-field="item">Item</th><th data-field="now_text">Now</th><th data-field="buy_max_text">Buy at or under</th><th data-field="gap_text">Above limit</th></tr></thead>
+        <tbody data-draw="watchrows"></tbody>
+      </table>
+    </div>
+    <p class="wf-empty" id="watch-empty" hidden>Nothing is close to its buy limit right now.</p>
+  </section>
+
+  <details class="wf-details" id="how">
+    <summary>How the picks work</summary>
+    <ul>
+      <li>Blizzard's auction house data for your Horde house is saved every hour on GitHub. That history sets each item's sell price, buy limit and sales per day. It's about an hour behind real time.</li>
+      <li>Your Auctionator scan supplies the price right now. If the scan is more than 2 hours old, the page uses Blizzard's price instead.</li>
+      <li>Sell price: the lower of the 24-hour and 72-hour median cheapest price, and under whatever would still be listed ahead of you.</li>
+      <li>Buy limit: sell price × 0.95 ÷ 1.10, so every buy clears about 10% profit after the cut.</li>
+      <li>History rule: a buy needs at least two dips to the buy limit in the last week, at least 2 out of 3 bouncing back to the sell price within 24 hours, a 7-day trend not down more than 10%, and a current dip no longer than the slowest past recovery.</li>
+      <li>Quantity: at most a quarter of a day's sales and 40% of your gold per item.</li>
+      <li>Sales per day are estimated from listings that disappear between hourly snapshots, so cancelled listings count too.</li>
+    </ul>
+  </details>
+</div>
+
+<script>
+  window.wf = window.wf || {};
+  wf.coin = function (v) {
+    if (v == null || !isFinite(v)) return '-';
+    v = Math.round(v);
+    const g = Math.floor(v / 10000), s = Math.floor((v % 10000) / 100), c = v % 100;
+    return (g ? g + 'g ' : '') + (g || s ? s + 's ' : '') + c + 'c';
+  };
+  wf.ukFmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+  wf.uk = function (iso) {
+    if (!iso) return '—';
+    const d = new Date(iso);
+    return isNaN(d) ? String(iso) : wf.ukFmt.format(d);
+  };
+  wf.row0 = function (id) {
+    const d = dash.data(id);
+    return d.status === 'ok' && Array.isArray(d.data) && d.data[0] ? d.data[0] : null;
+  };
+  wf.fill = function (el, id, field, fmt) {
+    const d = dash.data(id);
+    if (d.status === 'loading') { el.textContent = '—'; return; }
+    el.classList.remove('dash-skeleton');
+    const r = d.status === 'ok' && Array.isArray(d.data) ? d.data[0] : null;
+    el.textContent = r && r[field] != null && r[field] !== '' ? (fmt ? fmt(r[field]) : String(r[field])) : '—';
+  };
+  wf.rows = function (tbody, id, cols, decorate) {
+    const d = dash.data(id);
+    if (d.status === 'loading') { tbody.replaceChildren(); return; }
+    if (d.status !== 'ok') {
+      const tr = document.createElement('tr'), td = document.createElement('td');
+      td.colSpan = cols.length;
+      td.className = 'wf-err';
+      td.textContent = d.status === 'error' ? "Couldn't load this list." : '—';
+      tr.append(td);
+      tbody.replaceChildren(tr);
+      return;
+    }
+    tbody.replaceChildren(...d.data.map((r) => {
+      const tr = document.createElement('tr');
+      cols.forEach((c, i) => {
+        const td = document.createElement('td');
+        const v = r[c];
+        td.textContent = v == null || v === '' ? '-' : String(v);
+        if (i > 0 && c !== 'action') td.classList.add('wf-num');
+        if (c === 'action') td.classList.add('wf-action');
+        if (decorate) decorate(td, c, r);
+        tr.append(td);
+      });
+      return tr;
+    }));
+  };
+
+  dash.calc('buy_totals', {
+    inputs: ['buys'],
+    title: 'Buy now totals',
+    description: 'Gold spent and expected profit if every buy-now item is bought at its cheapest price and sold at its sell price.',
+    fn: (buys) => {
+      const fmt = (v) => {
+        v = Math.round(v);
+        const g = Math.floor(v / 10000), s = Math.floor((v % 10000) / 100), c = v % 100;
+        return (g ? g + 'g ' : '') + (g || s ? s + 's ' : '') + c + 'c';
+      };
+      const spent = buys.reduce((a, r) => a + (Number(r.cost) || 0), 0);
+      const profit = buys.reduce((a, r) => a + (Number(r.profit) || 0), 0);
+      return [{ spent, profit, spent_text: fmt(spent), profit_text: fmt(profit) }];
+    },
+  });
+
+  // Show or hide notes, empty states and tables (allowed outside drawings: only `hidden` changes)
+  dash.onData(() => {
+    const set = (id, hide) => document.querySelectorAll('#' + id).forEach((el) => { el.hidden = hide; });
+    const st = wf.row0('status');
+    set('thin-note', !(st && Number(st.history_hours) < 48));
+    set('scan-note', !(st && st.scan_used === false));
+    [['buys', 'buy'], ['holdings', 'hold'], ['blackwater', 'bw'], ['sell_high', 'high'], ['watch', 'watch']].forEach(([src, p]) => {
+      const d = dash.data(src);
+      const empty = d.status === 'ok' && Array.isArray(d.data) && d.data.length === 0;
+      set(p + '-wrap', empty);
+      set(p + '-empty', !empty);
+      if (p === 'buy') set('buy-total', !(d.status === 'ok' && d.data.length > 0));
+    });
+  });
+
+  dash.draw('buycount', (el) => wf.fill(el, 'status', 'buy_count'));
+  dash.draw('below', (el) => wf.fill(el, 'status', 'holdings_below_break_even'));
+  dash.draw('holdcount', (el) => wf.fill(el, 'status', 'holdings_count'));
+  dash.draw('histhours', (el) => wf.fill(el, 'status', 'history_hours'));
+  dash.draw('snap', (el) => wf.fill(el, 'status', 'blizzard_snapshot_utc', wf.uk));
+  dash.draw('scan', (el) => wf.fill(el, 'status', 'scan_utc', wf.uk));
+  dash.draw('gen', (el) => wf.fill(el, 'status', 'generated_utc', wf.uk));
+  dash.draw('scannote', (el) => wf.fill(el, 'status', 'scan_note'));
+  dash.draw('cash', (el) => wf.fill(el, 'status', 'cash_text'));
+  dash.draw('pending', (el) => wf.fill(el, 'status', 'pending_text'));
+  dash.draw('listed', (el) => wf.fill(el, 'status', 'listed_total_text'));
+  dash.draw('spent', (el) => wf.fill(el, 'buy_totals', 'spent_text'));
+  dash.draw('profit', (el) => wf.fill(el, 'buy_totals', 'profit_text'));
+
+  dash.draw('buyrows', (tb) => wf.rows(tb, 'buys', ['item', 'qty', 'buy_max_text', 'cheapest_text', 'price_source', 'sell_at_text', 'profit_text', 'low72_text', 'med72_text', 'high72_text', 'bounced', 'sold_per_day'],
+    (td, c) => { if (c === 'profit_text') td.classList.add('wf-good'); }));
+  dash.draw('holdrows', (tb) => wf.rows(tb, 'holdings', ['item', 'qty', 'status', 'paid_text', 'break_even_text', 'now_text', 'vs_break_even_text', 'action', 'low72_text', 'high72_text'],
+    (td, c, r) => { if (c === 'vs_break_even_text' && r.vs_break_even != null) td.classList.add(r.vs_break_even >= 0 ? 'wf-good' : 'wf-bad'); }));
+  dash.draw('bwrows', (tb) => wf.rows(tb, 'blackwater', ['item', 'qty', 'buy_max_text', 'cheapest_text', 'sell_at_text', 'profit_text', 'bw_sold_per_day'],
+    (td, c) => { if (c === 'profit_text') td.classList.add('wf-good'); }));
+  dash.draw('highrows', (tb) => wf.rows(tb, 'sell_high', ['item', 'now_text', 'usual_text', 'above_usual_text']));
+  dash.draw('watchrows', (tb) => wf.rows(tb, 'watch', ['item', 'now_text', 'buy_max_text', 'gap_text']));
+
+  // Holdings chart: daily low-high bars from Auctionator, break-even line, price now
+  dash.draw('holdchart', (el) => {
+    const daily = dash.data('daily'), hold = dash.data('holdings');
+    el.replaceChildren();
+    if (daily.status === 'loading' || hold.status === 'loading') { el.textContent = '—'; return; }
+    if (daily.status !== 'ok' || hold.status !== 'ok') {
+      const p = document.createElement('p');
+      p.className = 'wf-err';
+      p.textContent = daily.status === 'error' || hold.status === 'error' ? "Couldn't load the price history." : '—';
+      el.append(p);
+      return;
+    }
+    const tip = document.createElement('div');
+    tip.className = 'wf-tip';
+    tip.hidden = true;
+    el.append(tip);
+    const parse = d3.utcParse('%Y-%m-%d'), fmtDay = d3.utcFormat('%d %b');
+    const W = Math.max(260, el.clientWidth || 600), H = 170;
+    let drawn = 0;
+    hold.data.forEach((h) => {
+      const rows = daily.data.filter((r) => Number(r.item_id) === Number(h.item_id) && r.low != null && r.high != null)
+        .sort((a, b) => (a.date < b.date ? -1 : 1));
+      if (!rows.length) return;
+      drawn++;
+      const panel = document.createElement('div');
+      panel.className = 'wf-panel';
+      const title = document.createElement('p');
+      title.className = 'wf-panel-title';
+      title.textContent = h.item + ' (x' + h.qty + ')';
+      panel.append(title);
+      el.append(panel);
+      const vals = rows.flatMap((r) => [Number(r.low), Number(r.high)]).concat([Number(h.break_even), Number(h.now)]).filter((v) => isFinite(v) && v > 0);
+      const lo = d3.min(vals), hi = d3.max(vals), pad = (hi - lo || hi * 0.1) * 0.12;
+      const svg = d3.select(panel).append('svg')
+        .attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`)
+        .attr('role', 'img')
+        .attr('aria-label', `${h.item}: daily price range over ${rows.length} scan days, break-even ${h.break_even_text}, now ${h.now_text}`);
+      const y = d3.scaleLinear().domain([Math.max(0, lo - pad), hi + pad]).range([H - 24, 10]).nice(4);
+      // measure the widest tick label for the left margin
+      const probe = svg.append('g');
+      const widths = y.ticks(4).map((t) => { const tx = probe.append('text').text(wf.coin(t)); const w = tx.node().getComputedTextLength() || 50; tx.remove(); return w; });
+      probe.remove();
+      const ml = d3.max(widths) + 10, mr = 130;
+      const x = d3.scaleBand().domain(rows.map((r) => r.date)).range([ml, W - mr]).padding(0.4);
+      svg.append('g').attr('transform', `translate(${ml},0)`)
+        .call(d3.axisLeft(y).ticks(4).tickFormat(wf.coin).tickSize(-(W - ml - mr)))
+        .call((g) => g.select('.domain').remove())
+        .call((g) => g.selectAll('.tick line').style('stroke', 'var(--cds-chart-grid)'));
+      const xAxis = svg.append('g').attr('transform', `translate(0,${H - 24})`)
+        .call(d3.axisBottom(x).tickFormat((d) => fmtDay(parse(d))).tickSizeOuter(0));
+      if (x.bandwidth() < 34) xAxis.selectAll('.tick text').filter((d, i) => i % 2 === 1).remove();
+      svg.append('g').selectAll('rect').data(rows).join('rect')
+        .attr('x', (r) => x(r.date)).attr('width', x.bandwidth())
+        .attr('y', (r) => y(Number(r.high)))
+        .attr('height', (r) => Math.max(3, y(Number(r.low)) - y(Number(r.high))))
+        .attr('rx', 2)
+        .style('fill', dash.colors[0])
+        .on('pointerenter pointermove', (ev, r) => {
+          tip.hidden = false;
+          tip.textContent = `${fmtDay(parse(r.date))}: ${r.low_text}${r.high !== r.low ? ' – ' + r.high_text : ''}${r.units != null ? ' · ' + r.units + ' listed' : ''}`;
+          const box = el.getBoundingClientRect();
+          const tx = Math.min(ev.clientX - box.left + 10, el.clientWidth - tip.offsetWidth - 4);
+          tip.style.left = Math.max(0, tx) + 'px';
+          tip.style.top = (ev.clientY - box.top - 34) + 'px';
+        })
+        .on('pointerleave', () => { tip.hidden = true; });
+      const be = Number(h.break_even);
+      if (isFinite(be)) {
+        svg.append('line').attr('x1', ml).attr('x2', W - mr).attr('y1', y(be)).attr('y2', y(be))
+          .style('stroke', 'var(--cds-chart-reference)').style('stroke-dasharray', '5 4').style('stroke-width', 1.5);
+        svg.append('text').attr('x', W - mr + 6).attr('y', y(be) + 4).text('break-even ' + h.break_even_text);
+      }
+      const now = Number(h.now);
+      if (isFinite(now) && now > 0) {
+        const below = isFinite(be) && now < be;
+        svg.append('circle').attr('cx', W - mr).attr('cy', y(now)).attr('r', 4.5)
+          .style('fill', below ? 'var(--color-bad)' : 'var(--color-ok)');
+        const ny = Math.abs(y(now) - y(be)) < 14 ? y(now) + (y(now) > y(be) ? 14 : -10) : y(now) + 4;
+        svg.append('text').attr('x', W - mr + 6).attr('y', ny).text('now ' + h.now_text);
+      }
+    });
+    if (!drawn) {
+      const p = document.createElement('p');
+      p.className = 'wf-sub';
+      p.textContent = 'No scan history for your holdings yet. Do a full scan in Auctionator, type /reload, and ask Claude to check now.';
+      el.append(p);
+    }
+  });
+</script>
