@@ -1,9 +1,9 @@
 {
-  "updated": "2026-11-22T19:20Z",
-  "cash_copper": 58496,
-  "pending_copper": 61477,
+  "updated": "2026-11-22T19:52Z",
+  "cash_copper": 120000,
+  "pending_copper": 0,
   "listed_total_copper": 79982,
-  "cash_note": "cash_copper = gold in bags (5g 84s 96c). pending_copper = sale gold on its way by mail (6g 14s 77c). listed_total_copper = asking price of everything on the AH (7g 99s 82c). Bags are empty: every position below is listed.",
+  "cash_note": "cash_copper = gold in bags (12g, reported 22 Nov 19:51; the 6g 14s 77c in the mail has arrived). listed_total_copper = asking price of everything on the AH.",
   "positions": [
     {
       "item_id": 15417,
