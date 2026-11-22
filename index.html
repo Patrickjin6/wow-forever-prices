@@ -67,7 +67,7 @@
   <section id="buy">
     <h2>Buy now</h2>
     <p class="sub">Passed the history rule and priced under the buy limit. Sell prices and profit are after the 5% auction house cut.</p>
-    <div class="scroll"><table><thead><tr><th>Item</th><th>Buy up to</th><th>At or under</th><th>Cheapest now</th><th>Price from</th><th>Sell at</th><th>Profit</th><th>72h low</th><th>72h median</th><th>72h high</th><th>Bounced back</th><th>Sold/day</th></tr></thead><tbody id="buyrows"></tbody></table></div>
+    <div class="scroll"><table><thead><tr><th>Item</th><th>Buy up to</th><th>At or under</th><th>Cheapest now</th><th>Price from</th><th>Sell at</th><th>Profit</th><th>72h low</th><th>72h median</th><th>72h high</th><th>Bounced back</th><th>Sold/day</th><th>History from</th></tr></thead><tbody id="buyrows"></tbody></table></div>
     <p class="total" id="buytotal"></p>
   </section>
 
@@ -234,10 +234,20 @@
   function advise() {
     const th = state.th, hold = state.hold || {}, rc = (state.cfg && state.cfg.report) || {};
     const cut = th.cut ?? 0.05, bcut = th.blackwater_cut ?? 0.15;
-    const items = th.items || {}, bwl = th.blackwater || {};
+    const items = {}, bwl = Object.assign({}, th.blackwater || {});
+    for (const [k, v] of Object.entries(th.items || {})) items[k] = Object.assign({}, v, { history: 'Blizzard' });
+    const bbb = state.bbb;
+    const bbbFresh = bbb && bbb.scan_utc && (Date.now() - Date.parse(bbb.scan_utc)) / 3.6e6 <= 24;
+    let bbbUsed = 0;
+    if (bbbFresh) {
+      for (const [k, v] of Object.entries(bbb.items || {})) {
+        if (!items[k] || (items[k].points || 0) < 48) { items[k] = Object.assign({}, v, { history: 'BootyBayBroker' }); bbbUsed++; }
+      }
+      for (const [k, v] of Object.entries(bbb.blackwater || {})) if (!bwl[k]) bwl[k] = Object.assign({}, v, { history: 'BootyBayBroker' });
+    }
     const live = state.live && state.live.scan && (Date.now() - Date.parse(state.live.scan)) / 3.6e6 <= MAX_SCAN_AGE_H ? state.live.prices : {};
     const name = (id) => (items[id] && items[id].name) || (bwl[id] && bwl[id].name) || state.names[id] || 'item ' + id;
-    const price = (id) => (live[id] != null ? [live[id], 'your scan'] : items[id] && items[id].cheapest != null ? [items[id].cheapest, 'Blizzard'] : [null, null]);
+    const price = (id) => (live[id] != null ? [live[id], 'your scan'] : items[id] && items[id].cheapest != null ? [items[id].cheapest, items[id].history] : [null, null]);
     const budget = Number(hold.cash_copper) || 50000;
     const cap = budget * (rc.max_share ?? 0.4), dayShare = rc.day_share ?? 0.25, minSold = rc.min_sold_per_day ?? 10;
 
@@ -245,7 +255,7 @@
     for (const [id, it] of Object.entries(items)) {
       const [p, src] = price(id);
       if (!it.ok || p == null || !it.buy_max || p > it.buy_max) continue;
-      const qty = Math.floor(Math.min(Math.max(1, it.sold_per_day * dayShare), Math.floor(cap / p)));
+      const qty = Math.floor(Math.min(Math.max(1, it.sold_per_day * dayShare), Math.floor(cap / p), it.avail_under || Infinity));
       const profit = qty * (it.sell_at * (1 - cut) - p);
       if (qty > 0 && profit > 0) buys.push({ id, name: name(id), qty, price: p, src, it, cost: qty * p, profit });
     }
@@ -257,7 +267,7 @@
     for (const [id, b] of Object.entries(bwl)) {
       const [p, src] = price(id);
       if (p == null || p > b.buy_max) continue;
-      const qty = Math.floor(Math.min(Math.max(1, b.bw_sold_per_day * 0.1), Math.floor(cap / p)));
+      const qty = Math.floor(Math.min(Math.max(1, b.bw_sold_per_day * 0.1), Math.floor(cap / p), b.max_qty || Infinity));
       const profit = qty * (b.sell_at * (1 - bcut) - p);
       if (qty > 0 && profit > 0) bw.push({ id, name: name(id), qty, price: p, src, b, profit });
     }
@@ -283,7 +293,8 @@
     }
     high.sort((a, b) => b.p / b.it.target - a.p / a.it.target);
     watch.sort((a, b) => a.p / a.it.buy_max - b.p / b.it.buy_max);
-    return { plan, left, budget, bw: bw.slice(0, 5), held, high: high.slice(0, 8), watch: watch.slice(0, 8), liveUsed: Object.keys(live).length > 0 };
+    return { plan, left, budget, bw: bw.slice(0, 5), held, high: high.slice(0, 8), watch: watch.slice(0, 8), liveUsed: Object.keys(live).length > 0,
+      bbbUsed, bbbScan: bbbFresh ? new Date(bbb.scan_utc) : null };
   }
 
   // ---------------------------------------------------------------- rendering
@@ -372,8 +383,12 @@
     const scanFresh = scan && (Date.now() - scan.getTime()) / 3.6e6 <= MAX_SCAN_AGE_H;
     const below = a.held.filter((h) => h.now && h.now < h.be).length;
     $('lede').textContent = `Buys that pass the history rule right now: ${a.plan.length}. Holdings under break-even: ${below} of ${a.held.length}.`;
-    $('fresh').textContent = `Blizzard snapshot ${uk(snap)} UK (${ago(snap)}), ${th.history_hours} hourly snapshots of history · Your scan: ${scan ? uk(scan) + ' UK (' + ago(scan) + ')' + (scanFresh ? '' : ', too old to use') : 'not loaded'}`;
+    $('fresh').textContent = `Blizzard snapshot ${uk(snap)} UK (${ago(snap)}), ${th.history_hours} hourly snapshots of history · Your scan: ${scan ? uk(scan) + ' UK (' + ago(scan) + ')' + (scanFresh ? '' : ', too old to use') : 'not loaded'}` +
+      (a.bbbUsed ? ` · BootyBayBroker history for ${a.bbbUsed} items (its scan ${uk(a.bbbScan)} UK, ${ago(a.bbbScan)})` : '');
     $('thin').hidden = !(th.history_hours < 48);
+    $('thin').textContent = a.bbbUsed
+      ? 'The Blizzard price history is still building, so BootyBayBroker\'s week of history fills in for the items it covers. Those picks are refreshed when Claude runs a check.'
+      : 'The Blizzard price history is still building. A buy needs at least two past dips that bounced back, so expect few or no buys for the first few days.';
     $('scanline').replaceChildren();
     if (scan) {
       const s = document.createElement('span');
@@ -390,8 +405,8 @@
     }
 
     fillRows($('buyrows'), a.plan.map((b) => [b.name, b.qty, coin(b.it.buy_max), coin(b.price), b.src, coin(b.it.sell_at), [coin(b.profit), 'good'],
-      coin(b.it.low72), coin(b.it.med72), coin(b.it.high72), b.it.dips ? `${b.it.recovered}/${b.it.dips}` : '-', b.it.sold_per_day ? Math.round(b.it.sold_per_day) : '-']),
-      12, 'Nothing passes the history rule at these prices.');
+      coin(b.it.low72), coin(b.it.med72), coin(b.it.high72), b.it.dips ? `${b.it.recovered}/${b.it.dips}` : '-', b.it.sold_per_day ? Math.round(b.it.sold_per_day) : '-', b.it.history]),
+      13, 'Nothing passes the history rule at these prices.');
     $('buytotal').textContent = a.plan.length ? `Total: ${coin(a.budget - a.left)} spent for about ${coin(a.plan.reduce((s, b) => s + b.profit, 0))} profit (budget ${coin(a.budget)}). Check the total the game quotes before you confirm.` : '';
     fillRows($('holdrows'), a.held.map((h) => [h.name, h.qty, h.status, coin(h.paid), coin(h.be), h.now ? `${coin(h.now)} (${h.src})` : '-',
       [h.now ? pct(h.now / h.be - 1) : '-', h.now ? (h.now >= h.be ? 'good' : 'bad') : ''], [h.verdict, 'action'], coin(h.it.low72), coin(h.it.high72)]),
@@ -411,10 +426,13 @@
   }
   async function load() {
     try {
-      const [th, hold, cfg, names, hist] = await Promise.all([
+      const [th, hold, cfg, names, hist, bbb, saved] = await Promise.all([
         getJSON('thresholds.json'), getJSON('holdings.json'), getJSON('config.json'),
-        getJSON('items.json').catch(() => ({})), getJSON('history.json').catch(() => null)]);
-      Object.assign(state, { th, hold, cfg, names, hist });
+        getJSON('items.json').catch(() => ({})), getJSON('history.json').catch(() => null),
+        getJSON('bbb.json').catch(() => null), getJSON('scan.json').catch(() => null)]);
+      Object.assign(state, { th, hold, cfg, names, hist, bbb });
+      // use the saved scan from GitHub if it's newer than the one this browser remembers
+      if (saved && saved.scan && (!state.live || !state.live.scan || Date.parse(saved.scan) > Date.parse(state.live.scan))) state.live = saved;
       render();
     } catch (e) {
       $('lede').textContent = "Couldn't load the price data.";

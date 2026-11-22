@@ -82,6 +82,7 @@ async function flipScan(cfg) {
       const mb = h.map(x => x.min_buyout);
       const last72 = mb.slice(-24), last24 = mb.slice(-8), prev24 = mb.slice(-16, -8);
       it.med72 = med(last72); it.med24 = med(last24); it.p20_72 = pct(last72, 0.2);
+      it.low72 = last72.length ? Math.min(...last72) : NaN; it.high72 = last72.length ? Math.max(...last72) : NaN; it.p75_72 = pct(last72, 0.75);
       it.trend24 = med(last24) / med(prev24) - 1;
       it.trend7 = mb.length >= 16 ? med(last24) / med(mb.slice(0, 8)) - 1 : NaN;
       it.target = Math.min(it.med72, it.med24);                        // conservative sell price
@@ -161,6 +162,13 @@ async function flipScan(cfg) {
   const vf = vendorFlips.filter(v => v.itemId < 200000 && v.vendorSellPrice - v.minBuyout >= 50);
 
   window.__flip = { cfg, items, plan, risky, watch, sellNow, vf, deals, at: new Date().toISOString() };
+  // Compact export for tools/bbb_import.py -> bbb.json (read it in chunks: window.__flipExport.slice(i, i + 2000))
+  const rnd = v => Number.isFinite(v) ? Math.round(v) : null;
+  window.__flipExport = JSON.stringify({ scan_utc: items.map(x => x.scanAt).filter(Boolean).sort().at(-1) || null,
+    items: items.filter(it => ok(it) || it.buyQty > 0).map(it => ({ id: it.id, name: it.name, threshold: rnd(it.threshold),
+      resale: rnd(it.resale), target: rnd(it.target), soldPerDay: it.soldPerDay || 0, cheapest: rnd(it.cheapest), availUnder: it.availUnder,
+      low72: rnd(it.low72), med72: rnd(it.med72), high72: rnd(it.high72), p75_72: rnd(it.p75_72), dips: it.dips,
+      recovered: it.recovered, flags: it.flags, buckets: it.buckets, ok: ok(it) })) });
   const line = it => `${it.name} | buy up to ${coin(it.threshold)} (now ${coin(it.cheapest)}) | sell at ${coin(it.resale)} | ${Math.round(it.soldPerDay || 0)}/day, ~${Math.round(it.hoursToSell)}h to sell, bounced back ${it.recovered}/${it.dips} dips (slowest ${it.recoveryHours}h, current dip ${it.currentDipHours}h)${it.flags.length ? ' [' + it.flags.join(',') + ']' : ''}`;
   const scan = items.map(x => x.scanAt).filter(Boolean).sort().at(-1);
   return [

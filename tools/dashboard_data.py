@@ -50,7 +50,7 @@ def build(repo, auc_path, out, max_age=2.0, now=None):
     now = now or datetime.now(timezone.utc)
     a = advise.advise(repo, auc_path, max_age, now)
     hold = advise.load_json(os.path.join(repo, "holdings.json"), {})
-    src = lambda s: "your scan" if s == "live" else ("Blizzard" if s else "-")
+    src = lambda s: {"live": "your scan", "bbb": "BootyBayBroker", "blizzard": "Blizzard"}.get(s, "-")
     os.makedirs(out, exist_ok=True)
 
     status = [priced({
@@ -64,9 +64,12 @@ def build(repo, auc_path, out, max_age=2.0, now=None):
         "buy_count": len(a["plan"]),
         "holdings_below_break_even": sum(1 for h in a["holdings"] if h["now"] and h["now"] < h["break_even"]),
         "holdings_count": len(a["holdings"]),
+        "bbb_scan_utc": a["bbb_scan"].isoformat(timespec="minutes") if a.get("bbb_scan") else None,
+        "bbb_items": a.get("bbb_used", 0),
     }, cash=hold.get("cash_copper"), pending=hold.get("pending_copper"), listed_total=hold.get("listed_total_copper"))]
 
-    buys = [hist_cols(priced({"item": b["name"], "item_id": int(b["id"]), "qty": b["qty"], "price_source": src(b["source"])},
+    buys = [hist_cols(priced({"item": b["name"], "item_id": int(b["id"]), "qty": b["qty"], "price_source": src(b["source"]),
+                              "history_from": b["history"].get("history", "Blizzard")},
                              buy_max=b["buy_max"], cheapest=b["price"], sell_at=b["sell_at"], cost=b["cost"],
                              profit=b["profit"]), b["history"]) for b in a["plan"]]
 

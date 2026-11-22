@@ -335,6 +335,7 @@ def write_thresholds(out_dir, cfg, now, history_hours, items, hseries, holdings,
         out[str(iid)] = {
             "target": rnd(it.get("target")), "buy_max": rnd(it.get("threshold")), "sell_at": rnd(it.get("resale")),
             "sold_per_day": round(sold, 1), "listed": it.get("listed"), "cheapest": rnd(it.get("cheapest")),
+            "avail_under": it.get("avail_under"),
             "dips": it.get("dips"), "recovered": it.get("recovered"),
             "recovery_hours": rnd(it.get("recovery_hours")), "flags": it.get("flags", []),
             "ok": not any(f in RISK_FLAGS for f in it.get("flags", [])) and sold >= rc["min_sold_per_day"],

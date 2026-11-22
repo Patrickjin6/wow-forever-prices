@@ -65,6 +65,21 @@ def live_prices(path, max_age_h, now):
     return out, scan, None
 
 
+BBB_MAX_AGE_H = 24  # ignore BootyBayBroker results older than this
+
+
+def saved_scan(repo, max_age_h, now):
+    """Prices from scan.json (written by tools/scan_export.py), when no Auctionator file is given."""
+    d = load_json(os.path.join(repo, "scan.json"), None)
+    if not d or not d.get("scan"):
+        return {}, None, "no Auctionator scan saved"
+    scan = datetime.fromisoformat(d["scan"])
+    age = (now - scan).total_seconds() / 3600
+    if age > max_age_h:
+        return {}, scan, f"saved scan is {age:.1f}h old (limit {max_age_h}h): do a full scan and /reload"
+    return {str(k): v for k, v in d.get("prices", {}).items()}, scan, None
+
+
 def advise(repo, auc_path=None, max_age_h=2.0, now=None):
     now = now or datetime.now(timezone.utc)
     th = load_json(os.path.join(repo, "thresholds.json"), {})
@@ -73,8 +88,24 @@ def advise(repo, auc_path=None, max_age_h=2.0, now=None):
     cfg = load_json(os.path.join(repo, "config.json"), {})
     rc = cfg.get("report", {})
     cut, bcut = th.get("cut", 0.05), th.get("blackwater_cut", 0.15)
-    items, bwl = th.get("items", {}), th.get("blackwater", {})
-    live, scan, why = live_prices(auc_path, max_age_h, now)
+    items = {k: dict(v, history="Blizzard") for k, v in th.get("items", {}).items()}
+    bwl = dict(th.get("blackwater", {}))
+    # BootyBayBroker fills in where the Blizzard history is still short (it has about a week of its own)
+    bbb = load_json(os.path.join(repo, "bbb.json"), {})
+    bbb_scan = datetime.fromisoformat(bbb["scan_utc"]) if bbb.get("scan_utc") else None
+    bbb_used = 0
+    if bbb_scan and (now - bbb_scan).total_seconds() / 3600 <= BBB_MAX_AGE_H:
+        for k, v in bbb.get("items", {}).items():
+            mine = items.get(k)
+            if mine is None or (mine.get("points") or 0) < 48:
+                items[k] = dict(v, history="BootyBayBroker")
+                bbb_used += 1
+        for k, v in bbb.get("blackwater", {}).items():
+            bwl.setdefault(k, dict(v, history="BootyBayBroker"))
+    if auc_path:
+        live, scan, why = live_prices(auc_path, max_age_h, now)
+    else:
+        live, scan, why = saved_scan(repo, max_age_h, now)
     snap = datetime.fromisoformat(th["snapshot_utc"]) if th.get("snapshot_utc") else None
 
     def name(iid):
@@ -83,8 +114,11 @@ def advise(repo, auc_path=None, max_age_h=2.0, now=None):
     def price(iid):
         if iid in live:
             return live[iid], "live"
-        c = (items.get(iid) or {}).get("cheapest")
-        return c, "blizzard" if c is not None else None
+        it = items.get(iid) or {}
+        c = it.get("cheapest")
+        if c is None:
+            return None, None
+        return c, "bbb" if it.get("history") == "BootyBayBroker" else "blizzard"
 
     budget = int(hold.get("cash_copper") or 50000)
     cap = budget * rc.get("max_share", 0.4)
@@ -95,7 +129,7 @@ def advise(repo, auc_path=None, max_age_h=2.0, now=None):
         p, src = price(iid)
         if not it.get("ok") or p is None or not it.get("buy_max") or p > it["buy_max"]:
             continue
-        qty = int(min(max(1, it["sold_per_day"] * day_share), cap // p))
+        qty = int(min(max(1, it["sold_per_day"] * day_share), cap // p, it.get("avail_under") or 10 ** 9))
         profit = qty * (it["sell_at"] * (1 - cut) - p)
         if qty and profit > 0:
             buys.append({"id": iid, "name": name(iid), "qty": qty, "price": p, "source": src,
@@ -113,7 +147,7 @@ def advise(repo, auc_path=None, max_age_h=2.0, now=None):
         p, src = price(iid)
         if p is None or p > b["buy_max"]:
             continue
-        qty = int(min(max(1, b["bw_sold_per_day"] * 0.10), cap // p))
+        qty = int(min(max(1, b["bw_sold_per_day"] * 0.10), cap // p, b.get("max_qty") or 10 ** 9))
         profit = qty * (b["sell_at"] * (1 - bcut) - p)
         if qty and profit > 0:
             bw.append({"id": iid, "name": name(iid), "qty": qty, "price": p, "source": src, "cost": qty * p,
@@ -156,6 +190,7 @@ def advise(repo, auc_path=None, max_age_h=2.0, now=None):
     watch.sort(key=lambda w: w["price"] / w["buy_max"])
 
     return {"now": now, "snapshot": snap, "history_hours": th.get("history_hours", 0), "scan": scan, "scan_note": why,
+            "bbb_scan": bbb_scan, "bbb_used": bbb_used,
             "live_items": len(live), "budget": budget, "plan": plan, "left": left, "blackwater": bw[:5],
             "holdings": held, "high": high[:8], "watch": watch[:8]}
 
@@ -172,13 +207,15 @@ def hist(it):
 
 
 def render(a):
-    tag = lambda src: " (live)" if src == "live" else " (Blizzard, ~1h old)"
+    tag = lambda src: {"live": " (live)", "bbb": " (BootyBayBroker)"}.get(src, " (Blizzard, ~1h old)")
     o = ["# What to do now", ""]
     o.append(f"- Blizzard history: snapshot {uk(a['snapshot']) if a['snapshot'] else '-'} UK, {a['history_hours']} hourly snapshots")
     if a["scan"] and not a["scan_note"]:
         o.append(f"- Your Auctionator scan: {uk(a['scan'])} UK, {a['live_items']} items priced live")
     else:
         o.append(f"- Your Auctionator scan: not used ({a['scan_note']})")
+    if a.get("bbb_used"):
+        o.append(f"- BootyBayBroker history fills in for {a['bbb_used']} items (its scan: {uk(a['bbb_scan'])} UK)")
     if a["history_hours"] < 48:
         o.append("- History is still building: buys need two past dips that recovered, so expect few or none yet.")
     o += ["", "## Buy now", ""]
@@ -187,7 +224,7 @@ def render(a):
               f"   1. Buy: up to {b['qty']} at {coin(b['buy_max'])} or less (cheapest {coin(b['price'])}{tag(b['source'])})",
               f"   2. Sell at: {coin(b['sell_at'])}",
               f"   3. Profit: ~{coin(b['profit'])}",
-              f"   4. History: {hist(b['history'])}"]
+              f"   4. History ({b['history'].get('history', 'Blizzard')}): {hist(b['history'])}"]
     if a["plan"]:
         o += ["", f"Total: {coin(a['budget'] - a['left'])} spent, ~{coin(sum(b['profit'] for b in a['plan']))} profit "
                   f"(budget {coin(a['budget'])}). Check the total the game quotes before you confirm."]

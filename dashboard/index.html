@@ -50,7 +50,7 @@
           <th data-field="cheapest_text">Cheapest now</th><th data-field="price_source">Price from</th>
           <th data-field="sell_at_text">Sell at</th><th data-field="profit_text">Profit</th>
           <th data-field="low72_text">72h low</th><th data-field="med72_text">72h median</th><th data-field="high72_text">72h high</th>
-          <th data-field="bounced">Bounced back</th><th data-field="sold_per_day">Sold/day</th>
+          <th data-field="bounced">Bounced back</th><th data-field="sold_per_day">Sold/day</th><th data-field="history_from">History from</th>
         </tr></thead>
         <tbody data-draw="buyrows"></tbody>
       </table>
@@ -227,7 +227,7 @@
   dash.draw('spent', (el) => wf.fill(el, 'buy_totals', 'spent_text'));
   dash.draw('profit', (el) => wf.fill(el, 'buy_totals', 'profit_text'));
 
-  dash.draw('buyrows', (tb) => wf.rows(tb, 'buys', ['item', 'qty', 'buy_max_text', 'cheapest_text', 'price_source', 'sell_at_text', 'profit_text', 'low72_text', 'med72_text', 'high72_text', 'bounced', 'sold_per_day'],
+  dash.draw('buyrows', (tb) => wf.rows(tb, 'buys', ['item', 'qty', 'buy_max_text', 'cheapest_text', 'price_source', 'sell_at_text', 'profit_text', 'low72_text', 'med72_text', 'high72_text', 'bounced', 'sold_per_day', 'history_from'],
     (td, c) => { if (c === 'profit_text') td.classList.add('wf-good'); }));
   dash.draw('holdrows', (tb) => wf.rows(tb, 'holdings', ['item', 'qty', 'status', 'paid_text', 'break_even_text', 'now_text', 'vs_break_even_text', 'action', 'low72_text', 'high72_text'],
     (td, c, r) => { if (c === 'vs_break_even_text' && r.vs_break_even != null) td.classList.add(r.vs_break_even >= 0 ? 'wf-good' : 'wf-bad'); }));
