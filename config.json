@@ -5,8 +5,8 @@
     "horde": 114,
     "blackwater": 117
   },
-  "houses_verified": false,
-  "houses_note": "Blizzard names every house just 'Horde Auction House', so the US PvE (Normal) house id is a best guess until checked against BootyBayBroker. discovery.json lists every Horde and Blackwater house with prices for the reference items.",
+  "houses_verified": true,
+  "houses_note": "Verified 2026-11-22 against Patrick's Auctionator scan and BootyBayBroker: house 114 matched Thundering Charm 37s 90c and Briny Seafood Stew 15s 8c; Blackwater 117 matched the stew at ~28s 80c. From discovery.json: 113/116 look like PvP, 114/117 PvE (Normal), 115/118 empty, 120/121 and 124/125 the RP rulesets.",
   "reference_items": {
     "15417": "Devilsaur Leather",
     "13465": "Mountain Silversage",
@@ -19,7 +19,7 @@
   "report": {
     "history_days": 7,
     "min_sold_per_day": 10,
-    "min_margin": 0.10,
+    "min_margin": 0.1,
     "cut": 0.05,
     "blackwater_cut": 0.15,
     "max_share": 0.4,
