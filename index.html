@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WoW Forever flips · US Horde</title>
+<style>
+  :root {
+    --bg: #faf9f5; --panel: #ffffff; --fg: #1f1e1b; --muted: #6b6a64; --line: #e4e1d8;
+    --ok: #2f7d4f; --bad: #b4412f; --warn: #b07a12; --accent: #c96442; --grid: #ece9e0; --ref: #8a877f;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #1d1c1a; --panel: #262522; --fg: #ecebe6; --muted: #a3a19a; --line: #3a3934;
+            --ok: #6cc08b; --bad: #e07a66; --warn: #e0b04f; --accent: #e08a68; --grid: #33322e; --ref: #8f8c84; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 1100px; margin: 0 auto; padding: 24px 16px 48px; display: flex; flex-direction: column; gap: 28px; }
+  h1 { font: 400 28px/1.2 Georgia, "Times New Roman", serif; margin: 0 0 6px; }
+  h2 { font-size: 18px; margin: 0 0 4px; font-weight: 600; }
+  .muted, .sub { color: var(--muted); font-size: 13px; margin: 0; }
+  .lede { font-size: 18px; margin: 4px 0 6px; }
+  .note { margin: 8px 0 0; padding: 8px 12px; border-left: 3px solid var(--warn); background: var(--panel); border-radius: 6px; font-size: 13px; }
+  .err { border-left-color: var(--bad); }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
+  .card .label { color: var(--muted); font-size: 13px; }
+  .card .value { font: 400 26px/1.2 Georgia, serif; font-variant-numeric: tabular-nums; margin-top: 4px; }
+  .drop { border: 2px dashed var(--line); border-radius: 10px; padding: 14px 16px; background: var(--panel); cursor: pointer; }
+  .drop.over { border-color: var(--accent); }
+  .drop b { color: var(--accent); }
+  .drop code { font-size: 12px; word-break: break-all; }
+  button.link { background: none; border: none; color: var(--accent); cursor: pointer; padding: 0; font: inherit; text-decoration: underline; }
+  .scroll { overflow-x: auto; margin-top: 8px; }
+  table { border-collapse: collapse; width: 100%; font-size: 13px; font-variant-numeric: tabular-nums; }
+  th { text-align: left; color: var(--muted); font-weight: 600; padding: 6px 8px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  td { padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  td.num { white-space: nowrap; }
+  td.action { min-width: 240px; }
+  .good { color: var(--ok); } .bad { color: var(--bad); }
+  .total { margin-top: 8px; }
+  .charts { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; margin-top: 12px; }
+  .chart { position: relative; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
+  .chart h3 { font-size: 14px; margin: 0 0 4px; }
+  .chart svg { display: block; width: 100%; height: auto; }
+  .chart svg text { fill: var(--muted); font-size: 11px; }
+  .tip { position: absolute; pointer-events: none; background: var(--panel); border: 1px solid var(--line); box-shadow: 0 4px 14px rgba(0,0,0,.15); border-radius: 6px; padding: 4px 8px; font-size: 12px; white-space: nowrap; }
+  details summary { cursor: pointer; font-weight: 600; }
+  details ul { color: var(--muted); font-size: 13px; padding-left: 1.2em; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>WoW Forever flips · US Horde</h1>
+    <p class="lede" id="lede">Loading…</p>
+    <p class="muted" id="fresh"></p>
+    <p class="note" id="thin" hidden>The Blizzard price history is still building. A buy needs at least two past dips that bounced back, so expect few or no buys for the first few days.</p>
+    <p class="note err" id="loaderr" hidden></p>
+  </header>
+
+  <section>
+    <div class="drop" id="drop" tabindex="0" role="button" aria-label="Load your Auctionator scan">
+      <div id="scanline"><b>Add your live prices:</b> drop your <code>Auctionator.lua</code> here, or click to choose it.</div>
+      <p class="sub">It's in <code>World of Warcraft\_forever_\WTF\Account\349358080#1\SavedVariables</code>. Do a full scan in Auctionator and type <code>/reload</code> first so the file is fresh. Scans older than 2 hours aren't used for prices. The file stays on your computer: it's read in this browser and only today's prices are remembered here.</p>
+    </div>
+    <input type="file" id="file" accept=".lua" hidden>
+  </section>
+
+  <section class="cards" id="gold">
+    <div class="card"><div class="label">Gold in your bags</div><div class="value" id="cash">—</div></div>
+    <div class="card"><div class="label">On its way by mail</div><div class="value" id="pending">—</div></div>
+    <div class="card"><div class="label">Listed on the AH (asking price)</div><div class="value" id="listed">—</div></div>
+  </section>
+
+  <section id="buy">
+    <h2>Buy now</h2>
+    <p class="sub">Passed the history rule and priced under the buy limit. Sell prices and profit are after the 5% auction house cut.</p>
+    <div class="scroll"><table><thead><tr><th>Item</th><th>Buy up to</th><th>At or under</th><th>Cheapest now</th><th>Price from</th><th>Sell at</th><th>Profit</th><th>72h low</th><th>72h median</th><th>72h high</th><th>Bounced back</th><th>Sold/day</th></tr></thead><tbody id="buyrows"></tbody></table></div>
+    <p class="total" id="buytotal"></p>
+  </section>
+
+  <section id="hold">
+    <h2>Your holdings</h2>
+    <p class="sub">Break-even is what you paid divided by 0.95, so a sale at that price covers the auction house cut.</p>
+    <div class="scroll"><table><thead><tr><th>Item</th><th>Qty</th><th>Where</th><th>Paid each</th><th>Break-even</th><th>Now</th><th>vs break-even</th><th>What to do</th><th>Recent low</th><th>Recent high</th></tr></thead><tbody id="holdrows"></tbody></table></div>
+    <div class="charts" id="charts"></div>
+  </section>
+
+  <section id="bw">
+    <h2>Blackwater: buy on Horde, sell at a neutral auction house</h2>
+    <p class="sub">Needs a trip to Booty Bay, Gadgetzan or Everlook. Blackwater takes a 15% cut, already counted in the profit.</p>
+    <div class="scroll"><table><thead><tr><th>Item</th><th>Buy up to</th><th>At or under</th><th>Cheapest on Horde</th><th>Sell on Blackwater at</th><th>Profit</th><th>Blackwater sold/day</th></tr></thead><tbody id="bwrows"></tbody></table></div>
+  </section>
+
+  <section id="high">
+    <h2>Sell if you hold</h2>
+    <p class="sub">At least 15% above their usual price right now.</p>
+    <div class="scroll"><table><thead><tr><th>Item</th><th>Now</th><th>Usual</th><th>Above usual</th></tr></thead><tbody id="highrows"></tbody></table></div>
+  </section>
+
+  <section id="watch">
+    <h2>Watch</h2>
+    <p class="sub">Passed the history rule and just above the buy limit. One cheap listing could make them a buy.</p>
+    <div class="scroll"><table><thead><tr><th>Item</th><th>Now</th><th>Buy at or under</th><th>Above limit</th></tr></thead><tbody id="watchrows"></tbody></table></div>
+  </section>
+
+  <details>
+    <summary>How the picks work</summary>
+    <ul>
+      <li>Every hour a GitHub job saves Blizzard's auction house data for your Horde house and Blackwater. That history sets each item's sell price, buy limit and sales per day. Blizzard's data is about an hour behind real time.</li>
+      <li>Your Auctionator scan, if you drop it in and it's under 2 hours old, supplies the price right now. Otherwise Blizzard's price is used.</li>
+      <li>Sell price: the lower of the 24-hour and 72-hour median cheapest price, and under whatever would still be listed ahead of you.</li>
+      <li>Buy limit: sell price × 0.95 ÷ 1.10, so every buy clears about 10% profit after the cut.</li>
+      <li>History rule: a buy needs at least two dips to the buy limit in the last week, at least 2 out of 3 bouncing back to the sell price within 24 hours, a 7-day trend not down more than 10%, and a current dip no longer than the slowest past recovery.</li>
+      <li>Quantity: at most a quarter of a day's sales and 40% of your gold per item (Blackwater: at most a tenth of a day's Blackwater sales).</li>
+      <li>Sales per day are estimated from listings that disappear between hourly snapshots, so cancelled listings count too.</li>
+      <li>Holdings and gold come from <code>holdings.json</code> in the repo, which Claude updates when you report buys and sales.</li>
+    </ul>
+  </details>
+  <p class="muted">Data: Blizzard API, collected hourly in <a href="https://github.com/Patrickjin6/wow-forever-prices">github.com/Patrickjin6/wow-forever-prices</a>. Reload the page for the latest.</p>
+</main>
+
+<script>
+(() => {
+  const RAW = 'https://raw.githubusercontent.com/Patrickjin6/wow-forever-prices/main/';
+  const MAX_SCAN_AGE_H = 2;
+  const DAY0 = Date.UTC(2020, 0, 1);
+  const $ = (id) => document.getElementById(id);
+  const coin = (v) => {
+    if (v == null || !isFinite(v)) return '-';
+    v = Math.round(v);
+    const neg = v < 0; v = Math.abs(v);
+    const g = Math.floor(v / 10000), s = Math.floor((v % 10000) / 100), c = v % 100;
+    return (neg ? '-' : '') + (g ? g + 'g ' : '') + (g || s ? s + 's ' : '') + c + 'c';
+  };
+  const ukFmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+  const uk = (d) => (d ? ukFmt.format(d) : '—');
+  const ago = (d) => {
+    if (!d) return '';
+    const m = Math.round((Date.now() - d.getTime()) / 60000);
+    return m < 60 ? `${m} min ago` : m < 48 * 60 ? `${(m / 60).toFixed(m < 600 ? 1 : 0)} h ago` : `${Math.round(m / 1440)} days ago`;
+  };
+  const pct = (v) => (v == null ? '-' : (v >= 0 ? '+' : '') + Math.round(v * 100) + '%');
+
+  // ---------------------------------------------------------------- Auctionator.lua reader
+  function luaString(b, i) {
+    const out = new Uint8Array(b.length - i);
+    const simple = { 110: 10, 114: 13, 116: 9, 97: 7, 98: 8, 102: 12, 118: 11, 92: 92, 34: 34, 39: 39 };
+    let n = 0; i++;
+    for (;;) {
+      const c = b[i];
+      if (c === undefined) throw new Error('Unexpected end of file');
+      if (c === 34) return [out.subarray(0, n), i + 1];
+      if (c === 92) {
+        const d = b[i + 1];
+        if (d >= 48 && d <= 57) {
+          let j = i + 1, v = 0, k = 0;
+          while (k < 3 && b[j] >= 48 && b[j] <= 57) { v = v * 10 + (b[j] - 48); j++; k++; }
+          out[n++] = v; i = j; continue;
+        }
+        if (d === 10 || d === 13) { out[n++] = 10; i += 2; if (d === 13 && b[i] === 10) i++; continue; }
+        out[n++] = simple[d] !== undefined ? simple[d] : d; i += 2; continue;
+      }
+      out[n++] = c; i++;
+    }
+  }
+  const utf8 = new TextDecoder('utf-8');
+  function cbor(b, p) {
+    const ib = b[p++], mt = ib >> 5, ai = ib & 31;
+    let n;
+    if (ai < 24) n = ai;
+    else if (ai === 24) n = b[p++];
+    else if (ai === 25) { n = b[p] * 256 + b[p + 1]; p += 2; }
+    else if (ai === 26) { n = ((b[p] * 256 + b[p + 1]) * 256 + b[p + 2]) * 256 + b[p + 3]; p += 4; }
+    else if (ai === 27) { n = 0; for (let k = 0; k < 8; k++) n = n * 256 + b[p + k]; p += 8; }
+    else n = -1;
+    if (mt === 0) return [n, p];
+    if (mt === 1) return [-1 - n, p];
+    if (mt === 2 || mt === 3) {
+      const s = utf8.decode(b.subarray(p, p + n));
+      return [/^-?\d+$/.test(s) ? Number(s) : s, p + n];
+    }
+    if (mt === 4) {
+      const a = [];
+      while (n === -1 ? b[p] !== 0xff : a.length < n) { const r = cbor(b, p); a.push(r[0]); p = r[1]; }
+      return [a, n === -1 ? p + 1 : p];
+    }
+    if (mt === 5) {
+      const o = {}; let k = 0;
+      while (n === -1 ? b[p] !== 0xff : k < n) { const r1 = cbor(b, p); const r2 = cbor(b, r1[1]); o[String(r1[0])] = r2[0]; p = r2[1]; k++; }
+      return [o, n === -1 ? p + 1 : p];
+    }
+    if (mt === 6) return cbor(b, p);
+    if (mt === 7) {
+      if (ai === 20) return [false, p];
+      if (ai === 21) return [true, p];
+      if (ai === 22 || ai === 23) return [null, p];
+      const dv = new DataView(b.buffer, b.byteOffset, b.byteLength);
+      if (ai === 26) return [dv.getFloat32(p - 4), p];
+      if (ai === 27) return [dv.getFloat64(p - 8), p];
+    }
+    throw new Error('Unsupported data in the file (byte ' + ib + ')');
+  }
+  function parseAuctionator(buf) {
+    const b = new Uint8Array(buf);
+    const text = new TextDecoder('latin1').decode(b);
+    const start = text.indexOf('AUCTIONATOR_PRICE_DATABASE = {');
+    if (start < 0) throw new Error("This doesn't look like Auctionator.lua (no price database in it).");
+    const re = /\["PvE Horde"\] = "/g; re.lastIndex = start;
+    let m = re.exec(text);
+    if (!m) { const any = /\["([^"]+)"\] = "/g; any.lastIndex = start; m = any.exec(text); }
+    if (!m) throw new Error('No realm data found in the file.');
+    const raw = luaString(b, m.index + m[0].length - 1)[0];
+    const db = cbor(raw, 0)[0];
+    const ts = /TimeOfLastBrowseScan"\] = (\d+)/.exec(text);
+    return { scan: ts ? new Date(Number(ts[1]) * 1000) : null, db };
+  }
+  function scanPrices(parsed, wantIds, dailyIds) {
+    const scanDay = parsed.scan ? Math.floor((parsed.scan.getTime() - DAY0) / 86400000) : Infinity;
+    const prices = {}, daily = {};
+    for (const [k, v] of Object.entries(parsed.db)) {
+      if (!v || typeof v !== 'object') continue;
+      const iid = k.startsWith('gr:') ? k.split(':')[1] : k.split(':')[0];
+      if (!/^\d+$/.test(iid)) continue;
+      const days = v.h && typeof v.h === 'object' && !Array.isArray(v.h) ? Object.keys(v.h).map(Number) : [];
+      if (wantIds.has(iid) && typeof v.m === 'number' && days.length && Math.max(...days) >= scanDay) {
+        prices[iid] = Math.min(prices[iid] ?? Infinity, v.m);
+      }
+      if (dailyIds.has(iid) && k === iid) {
+        const l = v.l && !Array.isArray(v.l) ? v.l : {};
+        daily[iid] = days.sort((a, b2) => a - b2).slice(-10).map((d) => ({ day: d, low: l[d] ?? v.h[d], high: v.h[d], units: v.a ? v.a[d] : null }));
+      }
+    }
+    return { scan: parsed.scan ? parsed.scan.toISOString() : null, prices, daily };
+  }
+
+  // ---------------------------------------------------------------- data + advice (same rules as tools/advise.py)
+  const state = { th: null, hold: null, cfg: null, hist: null, names: {}, live: null };
+  function loadSavedScan() { try { return JSON.parse(localStorage.getItem('wf-scan') || 'null'); } catch (e) { return null; } }
+  function saveScan(s) { try { localStorage.setItem('wf-scan', JSON.stringify(s)); } catch (e) { /* storage off: keep in memory */ } }
+
+  function advise() {
+    const th = state.th, hold = state.hold || {}, rc = (state.cfg && state.cfg.report) || {};
+    const cut = th.cut ?? 0.05, bcut = th.blackwater_cut ?? 0.15;
+    const items = th.items || {}, bwl = th.blackwater || {};
+    const live = state.live && state.live.scan && (Date.now() - Date.parse(state.live.scan)) / 3.6e6 <= MAX_SCAN_AGE_H ? state.live.prices : {};
+    const name = (id) => (items[id] && items[id].name) || (bwl[id] && bwl[id].name) || state.names[id] || 'item ' + id;
+    const price = (id) => (live[id] != null ? [live[id], 'your scan'] : items[id] && items[id].cheapest != null ? [items[id].cheapest, 'Blizzard'] : [null, null]);
+    const budget = Number(hold.cash_copper) || 50000;
+    const cap = budget * (rc.max_share ?? 0.4), dayShare = rc.day_share ?? 0.25, minSold = rc.min_sold_per_day ?? 10;
+
+    const buys = [];
+    for (const [id, it] of Object.entries(items)) {
+      const [p, src] = price(id);
+      if (!it.ok || p == null || !it.buy_max || p > it.buy_max) continue;
+      const qty = Math.floor(Math.min(Math.max(1, it.sold_per_day * dayShare), Math.floor(cap / p)));
+      const profit = qty * (it.sell_at * (1 - cut) - p);
+      if (qty > 0 && profit > 0) buys.push({ id, name: name(id), qty, price: p, src, it, cost: qty * p, profit });
+    }
+    buys.sort((a, b) => b.profit - a.profit);
+    const plan = []; let left = budget;
+    for (const b of buys) if (b.cost <= left) { plan.push(b); left -= b.cost; }
+
+    const bw = [];
+    for (const [id, b] of Object.entries(bwl)) {
+      const [p, src] = price(id);
+      if (p == null || p > b.buy_max) continue;
+      const qty = Math.floor(Math.min(Math.max(1, b.bw_sold_per_day * 0.1), Math.floor(cap / p)));
+      const profit = qty * (b.sell_at * (1 - bcut) - p);
+      if (qty > 0 && profit > 0) bw.push({ id, name: name(id), qty, price: p, src, b, profit });
+    }
+    bw.sort((a, b2) => b2.profit - a.profit);
+
+    const held = (hold.positions || []).map((pos) => {
+      const id = String(pos.item_id), it = items[id] || {};
+      const [p, src] = price(id);
+      const be = pos.paid_each / (1 - cut);
+      let verdict;
+      if (p && p - 1 >= be) verdict = `Sell now: undercut at ${coin(p - 1)} for ~${coin(pos.qty * ((p - 1) * (1 - cut) - pos.paid_each))} profit`;
+      else if (it.p75_72 && it.p75_72 >= be) verdict = `Under break-even now; list at ${coin(it.p75_72)} (reached about a quarter of the last 72h) for ~${coin(pos.qty * (it.p75_72 * (1 - cut) - pos.paid_each))} profit`;
+      else if (it.high72) verdict = `Hold: its high in the last ${(it.points || 0) >= 72 ? '72h' : (it.points || 0) + 'h of Blizzard data so far'} (${coin(it.high72)}) is under your break-even`;
+      else verdict = 'No history yet';
+      return { id, name: pos.name || name(id), qty: pos.qty, status: pos.status || 'in bags', paid: pos.paid_each, be, now: p, src, verdict, it };
+    });
+
+    const high = [], watch = [];
+    for (const [id, it] of Object.entries(items)) {
+      const [p, src] = price(id);
+      if (p && it.target && it.sold_per_day >= minSold && (it.points || 0) >= 24 && p >= it.target * 1.15) high.push({ id, name: name(id), p, src, it });
+      if (it.ok && p && it.buy_max && p > it.buy_max && p <= it.buy_max * 1.15) watch.push({ id, name: name(id), p, src, it });
+    }
+    high.sort((a, b) => b.p / b.it.target - a.p / a.it.target);
+    watch.sort((a, b) => a.p / a.it.buy_max - b.p / b.it.buy_max);
+    return { plan, left, budget, bw: bw.slice(0, 5), held, high: high.slice(0, 8), watch: watch.slice(0, 8), liveUsed: Object.keys(live).length > 0 };
+  }
+
+  // ---------------------------------------------------------------- rendering
+  function fillRows(tbody, rows, cols, emptyText) {
+    tbody.replaceChildren();
+    if (!rows.length) {
+      const tr = document.createElement('tr'), td = document.createElement('td');
+      td.colSpan = cols; td.className = 'muted'; td.textContent = emptyText;
+      tr.append(td); tbody.append(tr); return;
+    }
+    for (const cells of rows) {
+      const tr = document.createElement('tr');
+      cells.forEach((c, i) => {
+        const td = document.createElement('td');
+        const [text, cls] = Array.isArray(c) ? c : [c, ''];
+        td.textContent = text == null || text === '' ? '-' : String(text);
+        td.className = (i > 0 && cls !== 'action' ? 'num ' : '') + (cls || '');
+        tr.append(td);
+      });
+      tbody.append(tr);
+    }
+  }
+
+  function chart(container, h) {
+    const hist = state.hist;
+    const series = hist && hist.items ? hist.items[h.id] : null;
+    const box = document.createElement('div'); box.className = 'chart';
+    const title = document.createElement('h3'); title.textContent = `${h.name} (x${h.qty})`; box.append(title);
+    const sub = document.createElement('p'); sub.className = 'sub';
+    box.append(sub);
+    container.append(box);
+    const pts = (series || []).map((v, i) => [i, v]).filter((d) => d[1] != null);
+    const daily = state.live && state.live.daily ? state.live.daily[h.id] : null;
+    const dailyText = daily && daily.length ? 'Your scans: ' + daily.slice(-5).map((d) => {
+      const dt = new Date(DAY0 + d.day * 86400000).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', timeZone: 'UTC' });
+      return `${dt} ${d.low !== d.high ? coin(d.low) + '–' + coin(d.high) : coin(d.high)}`;
+    }).join(' · ') : '';
+    sub.textContent = (pts.length ? `Blizzard cheapest price, last ${pts.length} hourly snapshots. ` : 'No Blizzard history yet. ') + dailyText;
+    if (!pts.length) return;
+    const W = Math.max(280, box.clientWidth - 24 || 420), H = 150, ml = 58, mr = 118, mt = 8, mb = 20;
+    const vals = pts.map((d) => d[1]).concat([h.be, h.now].filter((v) => v));
+    let lo = Math.min(...vals), hi = Math.max(...vals); const pad = (hi - lo || hi * 0.1) * 0.15; lo = Math.max(0, lo - pad); hi += pad;
+    const x = (i) => ml + (i / 71) * (W - ml - mr), y = (v) => mt + (1 - (v - lo) / (hi - lo)) * (H - mt - mb);
+    const NS = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(NS, 'svg');
+    svg.setAttribute('viewBox', `0 0 ${W} ${H}`); svg.setAttribute('role', 'img');
+    svg.setAttribute('aria-label', `${h.name}: hourly cheapest price over the last 72 hours with break-even ${coin(h.be)}`);
+    const el = (tag, attrs, text) => { const e = document.createElementNS(NS, tag); for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v); if (text != null) e.textContent = text; svg.append(e); return e; };
+    for (let k = 0; k <= 3; k++) {
+      const v = lo + ((hi - lo) * k) / 3;
+      el('line', { x1: ml, x2: W - mr, y1: y(v), y2: y(v), stroke: 'var(--grid)' });
+      el('text', { x: ml - 6, y: y(v) + 4, 'text-anchor': 'end' }, coin(v));
+    }
+    el('text', { x: ml, y: H - 4 }, '72h ago');
+    el('text', { x: W - mr, y: H - 4, 'text-anchor': 'end' }, 'now');
+    let d = '', prev = null;
+    for (const [i, v] of pts) { d += (prev !== null && i === prev + 1 ? 'L' : 'M') + x(i).toFixed(1) + ',' + y(v).toFixed(1); prev = i; }
+    el('path', { d, fill: 'none', stroke: 'var(--accent)', 'stroke-width': 2, 'stroke-linejoin': 'round' });
+    if (pts.length < 3) for (const [i, v] of pts) el('circle', { cx: x(i), cy: y(v), r: 3, fill: 'var(--accent)' });
+    el('line', { x1: ml, x2: W - mr, y1: y(h.be), y2: y(h.be), stroke: 'var(--ref)', 'stroke-dasharray': '5 4', 'stroke-width': 1.5 });
+    el('text', { x: W - mr + 6, y: y(h.be) + 4 }, 'break-even ' + coin(h.be));
+    if (h.now) {
+      el('circle', { cx: W - mr, cy: y(h.now), r: 4.5, fill: h.now < h.be ? 'var(--bad)' : 'var(--ok)' });
+      const ny = Math.abs(y(h.now) - y(h.be)) < 14 ? y(h.now) + (y(h.now) > y(h.be) ? 14 : -10) : y(h.now) + 4;
+      el('text', { x: W - mr + 6, y: ny }, 'now ' + coin(h.now));
+    }
+    const tip = document.createElement('div'); tip.className = 'tip'; tip.hidden = true;
+    svg.addEventListener('pointermove', (ev) => {
+      const r = svg.getBoundingClientRect(); const sx = ((ev.clientX - r.left) / r.width) * W;
+      const i = Math.round(((sx - ml) / (W - ml - mr)) * 71);
+      const pt = pts.reduce((best, q) => (Math.abs(q[0] - i) < Math.abs(best[0] - i) ? q : best), pts[0]);
+      const t = new Date(Date.parse(hist.start_utc) + pt[0] * 3.6e6);
+      tip.textContent = `${uk(t)}: ${coin(pt[1])}`; tip.hidden = false;
+      tip.style.left = Math.min(ev.clientX - box.getBoundingClientRect().left + 10, box.clientWidth - 160) + 'px';
+      tip.style.top = (ev.clientY - box.getBoundingClientRect().top - 30) + 'px';
+    });
+    svg.addEventListener('pointerleave', () => { tip.hidden = true; });
+    box.append(svg, tip);
+  }
+
+  function render() {
+    if (!state.th) return;
+    const a = advise(), th = state.th, hold = state.hold || {};
+    const snap = th.snapshot_utc ? new Date(th.snapshot_utc) : null;
+    const scan = state.live && state.live.scan ? new Date(state.live.scan) : null;
+    const scanFresh = scan && (Date.now() - scan.getTime()) / 3.6e6 <= MAX_SCAN_AGE_H;
+    const below = a.held.filter((h) => h.now && h.now < h.be).length;
+    $('lede').textContent = `Buys that pass the history rule right now: ${a.plan.length}. Holdings under break-even: ${below} of ${a.held.length}.`;
+    $('fresh').textContent = `Blizzard snapshot ${uk(snap)} UK (${ago(snap)}), ${th.history_hours} hourly snapshots of history · Your scan: ${scan ? uk(scan) + ' UK (' + ago(scan) + ')' + (scanFresh ? '' : ', too old to use') : 'not loaded'}`;
+    $('thin').hidden = !(th.history_hours < 48);
+    $('scanline').replaceChildren();
+    if (scan) {
+      const s = document.createElement('span');
+      s.innerHTML = '';
+      s.append(Object.assign(document.createElement('b'), { textContent: scanFresh ? 'Using your scan' : 'Your scan is too old to use' }),
+        document.createTextNode(` from ${uk(scan)} UK (${ago(scan)}). Drop a newer Auctionator.lua to update, or `));
+      const clr = Object.assign(document.createElement('button'), { className: 'link', textContent: 'forget it' });
+      clr.addEventListener('click', (ev) => { ev.stopPropagation(); state.live = null; try { localStorage.removeItem('wf-scan'); } catch (e) {} render(); });
+      s.append(clr, document.createTextNode('.'));
+      $('scanline').append(s);
+    } else {
+      $('scanline').append(Object.assign(document.createElement('b'), { textContent: 'Add your live prices:' }),
+        document.createTextNode(' drop your Auctionator.lua here, or click to choose it.'));
+    }
+    $('cash').textContent = coin(hold.cash_copper);
+    $('pending').textContent = coin(hold.pending_copper);
+    $('listed').textContent = coin(hold.listed_total_copper);
+
+    fillRows($('buyrows'), a.plan.map((b) => [b.name, b.qty, coin(b.it.buy_max), coin(b.price), b.src, coin(b.it.sell_at), [coin(b.profit), 'good'],
+      coin(b.it.low72), coin(b.it.med72), coin(b.it.high72), b.it.dips ? `${b.it.recovered}/${b.it.dips}` : '-', b.it.sold_per_day ? Math.round(b.it.sold_per_day) : '-']),
+      12, 'Nothing passes the history rule at these prices.');
+    $('buytotal').textContent = a.plan.length ? `Total: ${coin(a.budget - a.left)} spent for about ${coin(a.plan.reduce((s, b) => s + b.profit, 0))} profit (budget ${coin(a.budget)}). Check the total the game quotes before you confirm.` : '';
+    fillRows($('holdrows'), a.held.map((h) => [h.name, h.qty, h.status, coin(h.paid), coin(h.be), h.now ? `${coin(h.now)} (${h.src})` : '-',
+      [h.now ? pct(h.now / h.be - 1) : '-', h.now ? (h.now >= h.be ? 'good' : 'bad') : ''], [h.verdict, 'action'], coin(h.it.low72), coin(h.it.high72)]),
+      10, 'No holdings recorded yet.');
+    $('charts').replaceChildren();
+    a.held.forEach((h) => chart($('charts'), h));
+    fillRows($('bwrows'), a.bw.map((b) => [b.name, b.qty, coin(b.b.buy_max), `${coin(b.price)} (${b.src})`, coin(b.b.sell_at), [coin(b.profit), 'good'], Math.round(b.b.bw_sold_per_day)]),
+      7, 'No Blackwater gap passes the checks right now.');
+    fillRows($('highrows'), a.high.map((h) => [h.name, `${coin(h.p)} (${h.src})`, coin(h.it.target), pct(h.p / h.it.target - 1)]), 4, 'Nothing is well above its usual price right now.');
+    fillRows($('watchrows'), a.watch.map((w) => [w.name, `${coin(w.p)} (${w.src})`, coin(w.it.buy_max), pct(w.p / w.it.buy_max - 1)]), 4, 'Nothing is close to its buy limit right now.');
+  }
+
+  async function getJSON(name) {
+    const r = await fetch(RAW + name + '?t=' + Date.now(), { cache: 'no-store' });
+    if (!r.ok) throw new Error(`${name}: HTTP ${r.status}`);
+    return r.json();
+  }
+  async function load() {
+    try {
+      const [th, hold, cfg, names, hist] = await Promise.all([
+        getJSON('thresholds.json'), getJSON('holdings.json'), getJSON('config.json'),
+        getJSON('items.json').catch(() => ({})), getJSON('history.json').catch(() => null)]);
+      Object.assign(state, { th, hold, cfg, names, hist });
+      render();
+    } catch (e) {
+      $('lede').textContent = "Couldn't load the price data.";
+      $('loaderr').hidden = false;
+      $('loaderr').textContent = 'Loading from GitHub failed: ' + e.message + '. Check your connection and reload.';
+    }
+  }
+
+  async function useFile(file) {
+    $('scanline').textContent = 'Reading your scan…';
+    try {
+      const parsed = parseAuctionator(await file.arrayBuffer());
+      const th = state.th || { items: {}, blackwater: {} };
+      const heldIds = new Set(((state.hold && state.hold.positions) || []).map((p) => String(p.item_id)));
+      const want = new Set([...Object.keys(th.items || {}), ...Object.keys(th.blackwater || {}), ...heldIds]);
+      state.live = scanPrices(parsed, want, heldIds);
+      saveScan(state.live);
+    } catch (e) {
+      $('scanline').textContent = "Couldn't read that file: " + e.message;
+      return;
+    }
+    render();
+  }
+  const drop = $('drop'), input = $('file');
+  drop.addEventListener('click', () => input.click());
+  drop.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); input.click(); } });
+  input.addEventListener('change', () => { if (input.files[0]) useFile(input.files[0]); input.value = ''; });
+  drop.addEventListener('dragover', (e) => { e.preventDefault(); drop.classList.add('over'); });
+  drop.addEventListener('dragleave', () => drop.classList.remove('over'));
+  drop.addEventListener('drop', (e) => { e.preventDefault(); drop.classList.remove('over'); if (e.dataTransfer.files[0]) useFile(e.dataTransfer.files[0]); });
+  let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(render, 200); });
+
+  state.live = loadSavedScan();
+  window.wfTest = { parseAuctionator, scanPrices, advise, state, render, load, useFile };
+  load();
+})();
+</script>
+</body>
+</html>

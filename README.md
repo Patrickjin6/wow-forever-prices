@@ -4,7 +4,9 @@ An hourly GitHub Actions job that downloads the US WoW: Forever Horde and Blackw
 auction houses from Blizzard's API, keeps a compact price history, and writes a flip
 report: what to buy, what to sell, and how your holdings are doing.
 
-**Read the latest report: [report.md](report.md)** (updated every hour at about :17 UTC).
+**Open the dashboard: https://patrickjin6.github.io/wow-forever-prices/** (updates itself from the hourly data; drop your Auctionator.lua on it for live prices).
+
+The latest text report is [report.md](report.md) (updated every hour at about :17 UTC).
 
 ## One-time setup (about 5 minutes)
 

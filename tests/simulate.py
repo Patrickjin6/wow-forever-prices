@@ -150,12 +150,17 @@ def main():
     d = th["items"].get("1001", {})
     checks["thresholds.json has Dipper with buy limit"] = d.get("ok") and d.get("buy_max", 0) > 0 and d.get("name") == "Dipper Root"
     checks["thresholds.json has Blackwater stew"] = "2001" in th["blackwater"]
+    hist = json.load(open(os.path.join(TMP, "history.json")))
+    checks["history.json has 72 hours for held Devilsaur"] = len(hist["items"].get("15417", [])) == 72
     files = sum(len(fs) for _, _, fs in os.walk(os.path.join(TMP, "data")))
     checks["one file per house-hour"] = files == HOURS * 2
     for k, v in checks.items():
         print(("PASS " if v else "FAIL ") + k)
     print("data size:", sum(os.path.getsize(os.path.join(d, f)) for d, _, fs in os.walk(os.path.join(TMP, "data")) for f in fs), "bytes")
-    shutil.rmtree(TMP)
+    if os.environ.get("WOWSIM_KEEP"):
+        print("kept", TMP)
+    else:
+        shutil.rmtree(TMP)
     sys.exit(0 if all(checks.values()) else 1)
 
 

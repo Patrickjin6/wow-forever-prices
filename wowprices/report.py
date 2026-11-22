@@ -356,6 +356,19 @@ def write_thresholds(out_dir, cfg, now, history_hours, items, hseries, holdings,
                    "blackwater_cut": rc["blackwater_cut"], "min_margin": rc["min_margin"],
                    "items": out, "blackwater": bw}, f, separators=(",", ":"))
 
+    # history.json: last 72 hourly cheapest prices for the items a page might chart
+    keep = {str(i) for i in held} | set(bw)
+    keep |= {k for k, v in sorted(out.items(), key=lambda kv: -(kv[1]["sold_per_day"] or 0)) if v["ok"]}
+    hours = [(now - timedelta(hours=h)).replace(minute=0, second=0, microsecond=0) for h in range(71, -1, -1)]
+    series = {}
+    for k in keep:
+        by_hour = {ts.replace(minute=0, second=0, microsecond=0): r["min"] for ts, r in hseries.get(int(k), [])}
+        vals = [None if by_hour.get(h) is None else round(by_hour[h]) for h in hours]
+        if any(v is not None for v in vals):
+            series[k] = vals
+    with open(os.path.join(out_dir, "history.json"), "w") as f:
+        json.dump({"start_utc": hours[0].isoformat(), "step_hours": 1, "items": series}, f, separators=(",", ":"))
+
 
 def render(cfg, now, history_hours, budget, plan, left, risky, watch, high, held, bw):
     o = [f"# WoW Forever flip report (US Horde)",
