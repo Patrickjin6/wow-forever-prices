@@ -1,0 +1,19 @@
+{
+  "updated": "2026-11-22",
+  "cash_copper": 50000,
+  "cash_note": "Gold available for new buys, in copper (1g = 10000). 5g is an assumption until confirmed.",
+  "positions": [
+    {"item_id": 15417, "name": "Devilsaur Leather", "qty": 8, "paid_each": 6500},
+    {"item_id": 13465, "name": "Mountain Silversage", "qty": 20, "paid_each": 1200}
+  ],
+  "trades": [
+    {"date": "2026-11-20", "side": "buy", "item": "Devilsaur Leather", "qty": 8, "each": 6500},
+    {"date": "2026-11-20", "side": "buy", "item": "Mountain Silversage", "qty": 20, "each": 1200},
+    {"date": "2026-11-20", "side": "buy", "item": "Icecap", "qty": 12, "each": 1248},
+    {"date": "2026-11-20", "side": "buy", "item": "Elixir of the Mongoose", "qty": 4, "each": 6900},
+    {"date": "2026-11-20", "side": "buy", "item": "Thundering Charm", "qty": 1, "each": 1650},
+    {"date": "2026-11-20", "side": "buy", "item": "Thundering Charm", "qty": 11, "each": 1660},
+    {"date": "2026-11-22", "side": "sell", "item": "Elixir of the Mongoose", "qty": 4, "each": 7600},
+    {"date": "2026-11-22", "side": "sell", "item": "Thundering Charm", "qty": 8, "total_received": 30320, "note": "amount as reported; market was 12-13s that day, to confirm"}
+  ]
+}

@@ -1,0 +1,67 @@
+name: collect
+
+on:
+  schedule:
+    - cron: "17 * * * *"   # every hour at :17 UTC
+  workflow_dispatch:
+    inputs:
+      discover:
+        description: "List every Horde/Blackwater house with reference prices"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: collect
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Restore last snapshot (for sales estimates)
+        uses: actions/cache/restore@v4
+        with:
+          path: state
+          key: state-${{ github.run_id }}
+          restore-keys: state-
+
+      - name: Discover houses
+        if: ${{ inputs.discover }}
+        env:
+          BLIZZARD_CLIENT_ID: ${{ secrets.BLIZZARD_CLIENT_ID }}
+          BLIZZARD_CLIENT_SECRET: ${{ secrets.BLIZZARD_CLIENT_SECRET }}
+        run: python run.py --discover
+
+      - name: Collect and report
+        if: ${{ !inputs.discover }}
+        env:
+          BLIZZARD_CLIENT_ID: ${{ secrets.BLIZZARD_CLIENT_ID }}
+          BLIZZARD_CLIENT_SECRET: ${{ secrets.BLIZZARD_CLIENT_SECRET }}
+        run: python run.py
+
+      - name: Save snapshot state
+        if: ${{ !inputs.discover }}
+        uses: actions/cache/save@v4
+        with:
+          path: state
+          key: state-${{ github.run_id }}
+
+      - name: Commit new data
+        run: |
+          git config user.name "wow-prices-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then echo "Nothing new"; exit 0; fi
+          git commit -m "Snapshot $(date -u +%Y-%m-%dT%H:%MZ)"
+          for i in 1 2 3; do git pull --rebase && git push && exit 0; sleep 5; done
+          exit 1

@@ -1,0 +1,29 @@
+{
+  "region": "us",
+  "ruleset": 2,
+  "houses": {
+    "horde": 114,
+    "blackwater": 117
+  },
+  "houses_verified": false,
+  "houses_note": "Blizzard names every house just 'Horde Auction House', so the US PvE (Normal) house id is a best guess until checked against BootyBayBroker. discovery.json lists every Horde and Blackwater house with prices for the reference items.",
+  "reference_items": {
+    "15417": "Devilsaur Leather",
+    "13465": "Mountain Silversage",
+    "13467": "Icecap",
+    "4480": "Thundering Charm",
+    "274971": "Briny Seafood Stew",
+    "2771": "Tin Ore",
+    "13452": "Elixir of the Mongoose"
+  },
+  "report": {
+    "history_days": 7,
+    "min_sold_per_day": 10,
+    "min_margin": 0.10,
+    "cut": 0.05,
+    "blackwater_cut": 0.15,
+    "max_share": 0.4,
+    "day_share": 0.25,
+    "max_names_per_run": 150
+  }
+}
