@@ -16,6 +16,7 @@ class ApiError(Exception):
 
 class Api:
     def __init__(self, client_id, client_secret, region="us", locale="en_US"):
+        client_id, client_secret = (client_id or "").strip(), (client_secret or "").strip()
         if not client_id or not client_secret:
             raise ApiError("BLIZZARD_CLIENT_ID and BLIZZARD_CLIENT_SECRET must be set")
         self.client_id = client_id
@@ -36,8 +37,17 @@ class Api:
             headers={"Authorization": f"Basic {auth}",
                      "Content-Type": "application/x-www-form-urlencoded"},
         )
-        with urllib.request.urlopen(req, timeout=30) as r:
-            body = json.loads(r.read())
+        try:
+            with urllib.request.urlopen(req, timeout=30) as r:
+                body = json.loads(r.read())
+        except urllib.error.HTTPError as e:
+            if e.code in (400, 401):
+                raise ApiError(
+                    f"Blizzard rejected the client credentials (HTTP {e.code}). Check that the secret "
+                    f"BLIZZARD_CLIENT_ID holds the Client ID ({len(self.client_id)} characters here) and "
+                    f"BLIZZARD_CLIENT_SECRET holds the Client Secret ({len(self.client_secret)} characters here), "
+                    "and that the client was saved on develop.battle.net.") from None
+            raise
         self._token = body["access_token"]
         self._token_expiry = time.time() + int(body.get("expires_in", 3600))
         return self._token
