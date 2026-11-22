@@ -1,0 +1,324 @@
+{
+ "checked_utc": "2026-11-22T19:22:59.649223+00:00",
+ "ruleset": 2,
+ "houses": [
+  {
+   "id": 113,
+   "name": "Horde Auction House",
+   "key": {
+    "href": "https://us.api.blizzard.com/data/wow/ruleset/2/auctions/113?namespace=dynamic-forever-us"
+   },
+   "auctions": 219797,
+   "snapshot_utc": "2026-11-22T18:25:10+00:00",
+   "reference": {
+    "Devilsaur Leather": {
+     "min": 8989,
+     "units": 483
+    },
+    "Mountain Silversage": {
+     "min": 1000,
+     "units": 5264
+    },
+    "Icecap": {
+     "min": 1203,
+     "units": 3649
+    },
+    "Thundering Charm": {
+     "min": 2000,
+     "units": 384
+    },
+    "Briny Seafood Stew": {
+     "min": 1620,
+     "units": 1390
+    },
+    "Tin Ore": {
+     "min": 178,
+     "units": 2693
+    },
+    "Elixir of the Mongoose": {
+     "min": 9998,
+     "units": 181
+    }
+   }
+  },
+  {
+   "id": 114,
+   "name": "Horde Auction House",
+   "key": {
+    "href": "https://us.api.blizzard.com/data/wow/ruleset/2/auctions/114?namespace=dynamic-forever-us"
+   },
+   "auctions": 235193,
+   "snapshot_utc": "2026-11-22T18:25:10+00:00",
+   "reference": {
+    "Devilsaur Leather": {
+     "min": 6825,
+     "units": 531
+    },
+    "Mountain Silversage": {
+     "min": 1200,
+     "units": 2752
+    },
+    "Icecap": {
+     "min": 1382,
+     "units": 1189
+    },
+    "Thundering Charm": {
+     "min": 3790,
+     "units": 51
+    },
+    "Briny Seafood Stew": {
+     "min": 1508,
+     "units": 872
+    },
+    "Tin Ore": {
+     "min": 158,
+     "units": 2081
+    },
+    "Elixir of the Mongoose": {
+     "min": 7461,
+     "units": 486
+    }
+   }
+  },
+  {
+   "id": 115,
+   "name": "Horde Auction House",
+   "key": {
+    "href": "https://us.api.blizzard.com/data/wow/ruleset/2/auctions/115?namespace=dynamic-forever-us"
+   },
+   "auctions": 0,
+   "snapshot_utc": "2026-11-22T18:24:54+00:00",
+   "reference": {
+    "Devilsaur Leather": null,
+    "Mountain Silversage": null,
+    "Icecap": null,
+    "Thundering Charm": null,
+    "Briny Seafood Stew": null,
+    "Tin Ore": null,
+    "Elixir of the Mongoose": null
+   }
+  },
+  {
+   "id": 116,
+   "name": "Blackwater Auction House",
+   "key": {
+    "href": "https://us.api.blizzard.com/data/wow/ruleset/2/auctions/116?namespace=dynamic-forever-us"
+   },
+   "auctions": 30860,
+   "snapshot_utc": "2026-11-22T18:24:56+00:00",
+   "reference": {
+    "Devilsaur Leather": {
+     "min": 16599,
+     "units": 185
+    },
+    "Mountain Silversage": {
+     "min": 1870,
+     "units": 132
+    },
+    "Icecap": {
+     "min": 1969,
+     "units": 162
+    },
+    "Thundering Charm": {
+     "min": 2250,
+     "units": 8
+    },
+    "Briny Seafood Stew": {
+     "min": 1600,
+     "units": 90
+    },
+    "Tin Ore": {
+     "min": 173,
+     "units": 535
+    },
+    "Elixir of the Mongoose": {
+     "min": 14500,
+     "units": 27
+    }
+   }
+  },
+  {
+   "id": 117,
+   "name": "Blackwater Auction House",
+   "key": {
+    "href": "https://us.api.blizzard.com/data/wow/ruleset/2/auctions/117?namespace=dynamic-forever-us"
+   },
+   "auctions": 32910,
+   "snapshot_utc": "2026-11-22T18:24:56+00:00",
+   "reference": {
+    "Devilsaur Leather": {
+     "min": 9200,
+     "units": 69
+    },
+    "Mountain Silversage": {
+     "min": 4236,
+     "units": 373
+    },
+    "Icecap": {
+     "min": 2739,
+     "units": 189
+    },
+    "Thundering Charm": {
+     "min": 3530,
+     "units": 38
+    },
+    "Briny Seafood Stew": {
+     "min": 2878,
+     "units": 222
+    },
+    "Tin Ore": {
+     "min": 144,
+     "units": 889
+    },
+    "Elixir of the Mongoose": {
+     "min": 16969,
+     "units": 15
+    }
+   }
+  },
+  {
+   "id": 118,
+   "name": "Blackwater Auction House",
+   "key": {
+    "href": "https://us.api.blizzard.com/data/wow/ruleset/2/auctions/118?namespace=dynamic-forever-us"
+   },
+   "auctions": 0,
+   "snapshot_utc": "2026-11-22T18:24:54+00:00",
+   "reference": {
+    "Devilsaur Leather": null,
+    "Mountain Silversage": null,
+    "Icecap": null,
+    "Thundering Charm": null,
+    "Briny Seafood Stew": null,
+    "Tin Ore": null,
+    "Elixir of the Mongoose": null
+   }
+  },
+  {
+   "id": 120,
+   "name": "Horde Auction House",
+   "key": {
+    "href": "https://us.api.blizzard.com/data/wow/ruleset/2/auctions/120?namespace=dynamic-forever-us"
+   },
+   "auctions": 44297,
+   "snapshot_utc": "2026-11-22T18:24:57+00:00",
+   "reference": {
+    "Devilsaur Leather": {
+     "min": 6797,
+     "units": 406
+    },
+    "Mountain Silversage": {
+     "min": 2356,
+     "units": 483
+    },
+    "Icecap": {
+     "min": 1673,
+     "units": 187
+    },
+    "Thundering Charm": {
+     "min": 5080,
+     "units": 64
+    },
+    "Briny Seafood Stew": {
+     "min": 2444,
+     "units": 50
+    },
+    "Tin Ore": {
+     "min": 200,
+     "units": 1008
+    },
+    "Elixir of the Mongoose": {
+     "min": 15099,
+     "units": 87
+    }
+   }
+  },
+  {
+   "id": 121,
+   "name": "Blackwater Auction House",
+   "key": {
+    "href": "https://us.api.blizzard.com/data/wow/ruleset/2/auctions/121?namespace=dynamic-forever-us"
+   },
+   "auctions": 2707,
+   "snapshot_utc": "2026-11-22T18:24:54+00:00",
+   "reference": {
+    "Devilsaur Leather": null,
+    "Mountain Silversage": null,
+    "Icecap": null,
+    "Thundering Charm": null,
+    "Briny Seafood Stew": null,
+    "Tin Ore": {
+     "min": 231,
+     "units": 99
+    },
+    "Elixir of the Mongoose": null
+   }
+  },
+  {
+   "id": 124,
+   "name": "Horde Auction House",
+   "key": {
+    "href": "https://us.api.blizzard.com/data/wow/ruleset/2/auctions/124?namespace=dynamic-forever-us"
+   },
+   "auctions": 57532,
+   "snapshot_utc": "2026-11-22T18:24:58+00:00",
+   "reference": {
+    "Devilsaur Leather": {
+     "min": 4998,
+     "units": 486
+    },
+    "Mountain Silversage": {
+     "min": 2182,
+     "units": 561
+    },
+    "Icecap": {
+     "min": 1344,
+     "units": 520
+    },
+    "Thundering Charm": {
+     "min": 1900,
+     "units": 219
+    },
+    "Briny Seafood Stew": {
+     "min": 5000,
+     "units": 100
+    },
+    "Tin Ore": {
+     "min": 150,
+     "units": 1012
+    },
+    "Elixir of the Mongoose": {
+     "min": 15000,
+     "units": 278
+    }
+   }
+  },
+  {
+   "id": 125,
+   "name": "Blackwater Auction House",
+   "key": {
+    "href": "https://us.api.blizzard.com/data/wow/ruleset/2/auctions/125?namespace=dynamic-forever-us"
+   },
+   "auctions": 3393,
+   "snapshot_utc": "2026-11-22T18:24:54+00:00",
+   "reference": {
+    "Devilsaur Leather": null,
+    "Mountain Silversage": null,
+    "Icecap": null,
+    "Thundering Charm": {
+     "min": 3500,
+     "units": 1
+    },
+    "Briny Seafood Stew": null,
+    "Tin Ore": {
+     "min": 199,
+     "units": 248
+    },
+    "Elixir of the Mongoose": {
+     "min": 50000,
+     "units": 1
+    }
+   }
+  }
+ ]
+}

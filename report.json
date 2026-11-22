@@ -1,0 +1,41 @@
+{
+ "snapshot_utc": "2026-11-22T18:25:10+00:00",
+ "history_hours": 1,
+ "budget": 58496,
+ "houses": {
+  "horde": 114,
+  "blackwater": 117
+ },
+ "houses_verified": false,
+ "buy_now": [],
+ "risky": [],
+ "watch": [],
+ "high_now": [],
+ "holdings": [
+  {
+   "item_id": 15417,
+   "name": "Devilsaur Leather",
+   "qty": 8,
+   "paid_each": 6500,
+   "break_even": 6842.105263157895,
+   "now": 6825.0,
+   "sold_per_day": null,
+   "patient": 6825.0,
+   "history": "72h low 68s 25c | median 68s 25c | high 68s 25c | last 24h (every 3h): 68s 25c",
+   "verdict": "Hold: under break-even for most of the last 72h (high 68s 25c)"
+  },
+  {
+   "item_id": 13465,
+   "name": "Mountain Silversage",
+   "qty": 20,
+   "paid_each": 1200,
+   "break_even": 1263.157894736842,
+   "now": 1200.0,
+   "sold_per_day": null,
+   "patient": 1200.0,
+   "history": "72h low 12s 0c | median 12s 0c | high 12s 0c | last 24h (every 3h): 12s 0c",
+   "verdict": "Hold: under break-even for most of the last 72h (high 12s 0c)"
+  }
+ ],
+ "blackwater": []
+}
