@@ -17,8 +17,9 @@ REPO = os.path.dirname(HERE)
 TMP = tempfile.mkdtemp(prefix="wowsim-")
 os.environ["WOWPRICES_ROOT"] = TMP
 sys.path.insert(0, REPO)
-for f in ("config.json",):
-    shutil.copy(os.path.join(REPO, f), TMP)
+_cfg = json.load(open(os.path.join(REPO, "config.json")))
+_cfg["houses_verified"] = False  # so the first run also exercises discovery
+json.dump(_cfg, open(os.path.join(TMP, "config.json"), "w"))
 with open(os.path.join(TMP, "holdings.json"), "w") as f:
     json.dump({"cash_copper": 50000, "positions": [
         {"item_id": 15417, "name": "Devilsaur Leather", "qty": 8, "paid_each": 6500},
@@ -145,6 +146,10 @@ def main():
         "Blackwater stew found": any(b["name"] == "Briny Seafood Stew" for b in rep["blackwater"]),
         "history hours ~170": 165 <= rep["history_hours"] <= 171,
     }
+    th = json.load(open(os.path.join(TMP, "thresholds.json")))
+    d = th["items"].get("1001", {})
+    checks["thresholds.json has Dipper with buy limit"] = d.get("ok") and d.get("buy_max", 0) > 0 and d.get("name") == "Dipper Root"
+    checks["thresholds.json has Blackwater stew"] = "2001" in th["blackwater"]
     files = sum(len(fs) for _, _, fs in os.walk(os.path.join(TMP, "data")))
     checks["one file per house-hour"] = files == HOURS * 2
     for k, v in checks.items():

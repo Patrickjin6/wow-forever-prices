@@ -299,11 +299,14 @@ def build(cfg, data_dir, now, ladders_by_house, holdings, name_of, out_dir="."):
                            "bw_listed": sum(x[1] for x in L),
                            "history": history_line([(ts, r["min"]) for ts, r in bseries[iid] if r["min"] is not None], now)})
         bw.sort(key=lambda x: -x["profit"])
-        bw = bw[:5]
+    bw_all = list(bw)
+    bw = bw[:5]
 
     # Names for everything shown
     for it in plan + risky + watch + high + bw:
         it["name"] = name_of(it["id"])
+
+    write_thresholds(out_dir, cfg, now, history_hours, items, hseries, holdings, bw_all, name_of)
 
     md = render(cfg, now, history_hours, budget, plan, left, risky, watch, high, held, bw)
     with open(os.path.join(out_dir, "report.md"), "w") as f:
@@ -316,6 +319,42 @@ def build(cfg, data_dir, now, ladders_by_house, holdings, name_of, out_dir="."):
                    "high_now": slim(high), "holdings": slim(held), "blackwater": slim(bw)},
                   f, indent=1, default=str)
     return md
+
+
+def write_thresholds(out_dir, cfg, now, history_hours, items, hseries, holdings, bw_all, name_of):
+    """Per-item limits so a live scan (Auctionator) can be checked against history without re-running."""
+    rc = cfg["report"]
+    held = {int(p["item_id"]) for p in holdings.get("positions", [])}
+    out = {}
+    for iid, it in items.items():
+        sold = it.get("sold_per_day") or 0
+        if iid not in held and (sold < rc["min_sold_per_day"] or it.get("resale") is None):
+            continue
+        l72 = [r["min"] for ts, r in hseries.get(iid, []) if r["min"] is not None and ts > now - timedelta(hours=72)]
+        rnd = lambda v: None if v is None or (isinstance(v, float) and not math.isfinite(v)) else round(v)
+        out[str(iid)] = {
+            "target": rnd(it.get("target")), "buy_max": rnd(it.get("threshold")), "sell_at": rnd(it.get("resale")),
+            "sold_per_day": round(sold, 1), "listed": it.get("listed"), "cheapest": rnd(it.get("cheapest")),
+            "dips": it.get("dips"), "recovered": it.get("recovered"),
+            "recovery_hours": rnd(it.get("recovery_hours")), "flags": it.get("flags", []),
+            "ok": not any(f in RISK_FLAGS for f in it.get("flags", [])) and sold >= rc["min_sold_per_day"],
+            "low72": rnd(min(l72)) if l72 else None, "med72": rnd(med(l72)) if l72 else None,
+            "high72": rnd(max(l72)) if l72 else None, "p75_72": rnd(pct(l72, 0.75)) if l72 else None,
+            "points": it.get("points"),
+        }
+    bw = {str(b["id"]): {"buy_max": round(b["threshold"]), "sell_at": round(b["resale"]),
+                         "bw_sold_per_day": round(b["bw_sold_per_day"], 1), "bw_listed": b["bw_listed"]}
+          for b in bw_all}
+    # names for anything that could be recommended (cached names are free; new lookups are capped per run)
+    for k, v in sorted(out.items(), key=lambda kv: -(kv[1]["sold_per_day"] or 0)):
+        if v["ok"] or int(k) in held:
+            v["name"] = name_of(int(k))
+    for k in bw:
+        bw[k]["name"] = name_of(int(k))
+    with open(os.path.join(out_dir, "thresholds.json"), "w") as f:
+        json.dump({"snapshot_utc": now.isoformat(), "history_hours": history_hours, "cut": rc["cut"],
+                   "blackwater_cut": rc["blackwater_cut"], "min_margin": rc["min_margin"],
+                   "items": out, "blackwater": bw}, f, separators=(",", ":"))
 
 
 def render(cfg, now, history_hours, budget, plan, left, risky, watch, high, held, bw):
