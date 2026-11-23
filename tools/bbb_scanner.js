@@ -162,13 +162,17 @@ async function flipScan(cfg) {
   const vf = vendorFlips.filter(v => v.itemId < 200000 && v.vendorSellPrice - v.minBuyout >= 50);
 
   window.__flip = { cfg, items, plan, risky, watch, sellNow, vf, deals, at: new Date().toISOString() };
-  // Compact export for tools/bbb_import.py -> bbb.json (read it in chunks: window.__flipExport.slice(i, i + 2000))
+  // Compact export for tools/bbb_import.py -> bbb.json (also kept in window.__flipExport)
   const rnd = v => Number.isFinite(v) ? Math.round(v) : null;
   window.__flipExport = JSON.stringify({ scan_utc: items.map(x => x.scanAt).filter(Boolean).sort().at(-1) || null,
     items: items.filter(it => ok(it) || it.buyQty > 0).map(it => ({ id: it.id, name: it.name, threshold: rnd(it.threshold),
       resale: rnd(it.resale), target: rnd(it.target), soldPerDay: it.soldPerDay || 0, cheapest: rnd(it.cheapest), availUnder: it.availUnder,
       low72: rnd(it.low72), med72: rnd(it.med72), high72: rnd(it.high72), p75_72: rnd(it.p75_72), dips: it.dips,
       recovered: it.recovered, flags: it.flags, buckets: it.buckets, ok: ok(it) })) });
+  // Save the export to Downloads as bbb_export.json; `python tools/bbb_import.py` picks up the newest one.
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([window.__flipExport], { type: 'application/json' }));
+  a.download = 'bbb_export.json'; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 10000);
   const line = it => `${it.name} | buy up to ${coin(it.threshold)} (now ${coin(it.cheapest)}) | sell at ${coin(it.resale)} | ${Math.round(it.soldPerDay || 0)}/day, ~${Math.round(it.hoursToSell)}h to sell, bounced back ${it.recovered}/${it.dips} dips (slowest ${it.recoveryHours}h, current dip ${it.currentDipHours}h)${it.flags.length ? ' [' + it.flags.join(',') + ']' : ''}`;
   const scan = items.map(x => x.scanAt).filter(Boolean).sort().at(-1);
   return [
