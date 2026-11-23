@@ -51,8 +51,8 @@ against BootyBayBroker. Once it's confirmed, `houses_verified` is set to `true`.
   its 15% cut, only where Blackwater's price held steady for 72h and it sells many more a
   day than you'd bring.
 
-Sales per day are estimated from listings that disappear between snapshots, so
-cancelled listings count as sales too. Treat it as a rough guide.
+Sales per day are estimated from listings that disappear between snapshots. Listings that come back cheaper (relists) and pricier materials that vanish while a cheaper one is still up (cancels) are left out, and each item gets a speed label (fast, normal, slow) and a relist share. Cancels of the cheapest listing still
+count as sales. Treat it as a rough guide.
 
 ## Live prices from your own Auctionator scans
 

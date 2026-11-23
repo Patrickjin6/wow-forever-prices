@@ -203,6 +203,10 @@ def hist(it):
         s += f" · bounced back {it['recovered']}/{it['dips']} dips"
     if it.get("sold_per_day"):
         s += f" · ~{round(it['sold_per_day'])} sold/day"
+    if it.get("speed"):
+        s += f" · {it['speed']}"
+    if it.get("relist") is not None:
+        s += f" · {round(it['relist'] * 100)}% relisted"
     return s
 
 

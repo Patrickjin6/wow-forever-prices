@@ -23,7 +23,7 @@ try:
 except Exception:  # pragma: no cover
     UK = None
 
-RISK_FLAGS = ("falling-24h", "thin-history", "glut", "no-recovery")
+RISK_FLAGS = ("falling-24h", "thin-history", "glut", "no-recovery", "sticky", "slow-to-sell")
 
 
 def coin(v):
@@ -97,6 +97,30 @@ def sold_per_day(points, now, cov):
     return sum(s) * 24 / cov
 
 
+def relist_share(points, now, hours=72):
+    """Share of vanished units that came back cheaper (cancel + undercut) rather than sold."""
+    cut = now - timedelta(hours=hours)
+    s = sum(r["sold_est"] or 0 for ts, r in points if ts > cut)
+    rel = sum(r.get("relisted") or 0 for ts, r in points if ts > cut)
+    return rel / (s + rel) if s + rel else None
+
+
+def speed_text(it):
+    s = f" · {it['speed']}" if it.get("speed") else ""
+    if it.get("relist") is not None:
+        s += f" · {round(it['relist'] * 100)}% relisted"
+    if it.get("hours_to_sell") is not None:
+        s += f" · yours sell in ~{round(it['hours_to_sell'])}h"
+    return s
+
+
+def speed_label(supply_days):
+    """How fast the units listed now would clear at the current sales rate."""
+    if supply_days is None:
+        return None
+    return "fast" if supply_days < 0.5 else "normal" if supply_days <= 2 else "slow"
+
+
 # ---------------------------------------------------------------- per item
 
 def plan_buy(ladder, thr, max_units, cap):
@@ -154,6 +178,8 @@ def analyse(iid, points, ladder, now, cov, cfg, budget):
     it["history"] = history_line(pts, now)
     sold = it["sold_per_day"] or 0
     it["supply_days"] = it["listed"] / sold if sold else None
+    it["speed"] = speed_label(it["supply_days"])
+    it["relist"] = relist_share(points, now)
     if it["target"] is None or not L:
         it.update(threshold=None, resale=None, buy_qty=0, buy_cost=0, profit=0, flags=["thin-history"])
         return it
@@ -204,6 +230,8 @@ def analyse(iid, points, ladder, now, cov, cfg, budget):
         ("glut", it["supply_days"] is not None and it["supply_days"] > 2),
         ("no-recovery", not it["will_recover"]),
         ("slow", sold < rc["min_sold_per_day"]),
+        ("sticky", it["relist"] is not None and it["relist"] > 0.5),
+        ("slow-to-sell", it.get("hours_to_sell") is not None and it["hours_to_sell"] > 24),
     ) if on]
     return it
 
@@ -341,7 +369,9 @@ def write_thresholds(out_dir, cfg, now, history_hours, items, hseries, holdings,
             "ok": not any(f in RISK_FLAGS for f in it.get("flags", [])) and sold >= rc["min_sold_per_day"],
             "low72": rnd(min(l72)) if l72 else None, "med72": rnd(med(l72)) if l72 else None,
             "high72": rnd(max(l72)) if l72 else None, "p75_72": rnd(pct(l72, 0.75)) if l72 else None,
-            "points": it.get("points"),
+            "points": it.get("points"), "speed": it.get("speed"),
+            "relist": None if it.get("relist") is None else round(it["relist"], 2),
+            "hours_to_sell": rnd(it.get("hours_to_sell")),
         }
     bw = {str(b["id"]): {"buy_max": round(b["threshold"]), "sell_at": round(b["resale"]),
                          "bw_sold_per_day": round(b["bw_sold_per_day"], 1), "bw_listed": b["bw_listed"]}
@@ -388,7 +418,7 @@ def render(cfg, now, history_hours, budget, plan, left, risky, watch, high, held
                   f"   1. Buy: up to {it['buy_qty']} at {coin(it['threshold'])} or less (cheapest now {coin(it['cheapest'])})",
                   f"   2. Sell at: {coin(it['resale'])}",
                   f"   3. Profit: ~{coin(it['profit'])}",
-                  f"   - History: {it['history']} · bounced back {it['recovered']}/{it['dips']} dips · ~{round(it['sold_per_day'] or 0)} sold/day"]
+                  f"   - History: {it['history']} · bounced back {it['recovered']}/{it['dips']} dips · ~{round(it['sold_per_day'] or 0)} sold/day{speed_text(it)}"]
         o += ["", f"Total: {coin(budget - left)} spent, ~{coin(sum(i['profit'] for i in plan))} profit.", ""]
     else:
         o += ["Nothing passes the history rule right now.", ""]

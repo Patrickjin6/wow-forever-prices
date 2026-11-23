@@ -5,9 +5,11 @@ Each hourly file (data/<house>/YYYY/MM/DD/HH.csv.gz) has one row per item:
   p15            quantity-weighted average of the cheapest 15% of units (copper)
   units          units listed with a buyout
   listings       number of auctions with a buyout
-  sold_est       units that disappeared since the previous snapshot without
-                 expiring (a rough sales estimate: cancels also count)
+  sold_est       units that disappeared since the previous snapshot and look bought:
+                 not about to expire, not relisted cheaper, and (for pooled
+                 materials, bought cheapest first) no cheaper listing left behind
   new_units      units in auctions that were not there last snapshot
+  relisted       units that disappeared and came back cheaper (cancel + undercut)
 """
 import csv
 import gzip
@@ -20,13 +22,13 @@ from email.utils import parsedate_to_datetime
 # SHORT auctions mostly expire; MEDIUM (30 min - 2 h) is a coin flip.
 SOLD_WEIGHT = {"SHORT": 0.0, "MEDIUM": 0.5, "LONG": 1.0, "VERY_LONG": 1.0}
 
-FIELDS = ["item_id", "min", "p15", "units", "listings", "sold_est", "new_units"]
+FIELDS = ["item_id", "min", "p15", "units", "listings", "sold_est", "new_units", "relisted"]
 
 
 def parse_listings(auctions_json, commodities_json):
-    """Return [(auction_id, item_id, quantity, unit_price_or_None, time_left)]."""
+    """Return [(auction_id, item_id, quantity, unit_price_or_None, time_left, is_commodity)]."""
     out = []
-    for src in (auctions_json, commodities_json):
+    for src, pooled in ((auctions_json, False), (commodities_json, True)):
         for a in (src or {}).get("auctions") or []:
             item = a.get("item") or {}
             iid = item.get("id")
@@ -39,14 +41,14 @@ def parse_listings(auctions_json, commodities_json):
                 unit = float(a["buyout"]) / qty
             else:
                 unit = None  # bid-only
-            out.append((a["id"], int(iid), qty, unit, a.get("time_left")))
+            out.append((a["id"], int(iid), qty, unit, a.get("time_left"), pooled))
     return out
 
 
 def ladders(listings):
     """item_id -> [(unit_price, qty)] sorted cheapest first (buyout listings only)."""
     lad = {}
-    for _, iid, qty, unit, _ in listings:
+    for _, iid, qty, unit, *_ in listings:
         if unit is None:
             continue
         lad.setdefault(iid, []).append((unit, qty))
@@ -56,7 +58,8 @@ def ladders(listings):
 
 
 def summarize(listings, prev_state):
-    """Return (rows, new_state). prev_state: {auction_id(str): [item_id, qty, time_left]}."""
+    """Return (rows, new_state). prev_state: {auction_id(str): [item_id, qty, time_left, unit, pooled]}
+    (older states have only the first three; then the price checks are skipped)."""
     rows = {}
     lad = ladders(listings)
     for iid, L in lad.items():
@@ -70,30 +73,49 @@ def summarize(listings, prev_state):
             if got >= take:
                 break
         rows[iid] = {"item_id": iid, "min": round(L[0][0]), "p15": round(cost / got),
-                     "units": units, "listings": len(L), "sold_est": None, "new_units": None}
+                     "units": units, "listings": len(L), "sold_est": None, "new_units": None, "relisted": None}
 
-    cur = {str(aid): (iid, qty, tl) for aid, iid, qty, _, tl in listings}
-    new_state = {aid: [iid, qty, tl] for aid, (iid, qty, tl) in cur.items()}
+    cur = {str(a[0]): a[1:] for a in listings}  # aid -> (iid, qty, unit, tl, pooled)
+    new_state = {aid: [iid, qty, tl, unit, pooled] for aid, (iid, qty, unit, tl, pooled) in cur.items()}
     if prev_state:
-        sold, new = {}, {}
-        for aid, (iid, pq, ptl) in prev_state.items():
+        sold, new, relisted = {}, {}, {}
+        fresh = {}  # iid -> [(qty, unit)] of auctions that weren't there last time
+        for aid, (iid, qty, unit, _, _) in cur.items():
+            if aid not in prev_state:
+                new[iid] = new.get(iid, 0) + qty
+                fresh.setdefault(iid, []).append((qty, unit))
+        # cheapest previous listing per item that is still up: pooled materials sell cheapest
+        # first, so anything pricier than it that vanished was cancelled, not bought
+        survivor = {}
+        for aid, p in prev_state.items():
+            if aid in cur and len(p) > 3 and p[3] is not None:
+                survivor[p[0]] = min(survivor.get(p[0], p[3]), p[3])
+        for aid, p in prev_state.items():
+            iid, pq, ptl = p[0], p[1], p[2]
+            punit, pooled = (p[3], p[4]) if len(p) > 4 else (None, False)
             c = cur.get(aid)
             if c:
                 if pq > c[1]:
-                    sold[iid] = sold.get(iid, 0) + (pq - c[1])
-            else:
-                sold[iid] = sold.get(iid, 0) + pq * SOLD_WEIGHT.get(ptl, 1.0)
-        for aid, (iid, qty, _) in cur.items():
-            if aid not in prev_state:
-                new[iid] = new.get(iid, 0) + qty
+                    sold[iid] = sold.get(iid, 0) + (pq - c[1])  # part of the stack bought
+                continue
+            if punit is not None:
+                match = next((f for f in fresh.get(iid, []) if f[0] == pq and f[1] is not None and f[1] < punit), None)
+                if match:  # same quantity back cheaper: cancelled and undercut
+                    fresh[iid].remove(match)
+                    relisted[iid] = relisted.get(iid, 0) + pq
+                    continue
+                if pooled and iid in survivor and survivor[iid] < punit:
+                    continue  # a cheaper listing is still up, so this one was cancelled
+            sold[iid] = sold.get(iid, 0) + pq * SOLD_WEIGHT.get(ptl, 1.0)
         for iid, r in rows.items():
             r["sold_est"] = round(sold.get(iid, 0), 1)
             r["new_units"] = new.get(iid, 0)
+            r["relisted"] = relisted.get(iid, 0)
         # items that sold out completely still need a row so their sales count
-        for iid, s in sold.items():
-            if iid not in rows and s > 0:
+        for iid in set(sold) | set(relisted):
+            if iid not in rows and (sold.get(iid, 0) > 0 or relisted.get(iid, 0) > 0):
                 rows[iid] = {"item_id": iid, "min": "", "p15": "", "units": 0, "listings": 0,
-                             "sold_est": round(s, 1), "new_units": 0}
+                             "sold_est": round(sold.get(iid, 0), 1), "new_units": 0, "relisted": relisted.get(iid, 0)}
     return rows, new_state
 
 
@@ -119,7 +141,7 @@ def write_rows(path, rows):
     w.writeheader()
     for iid in sorted(rows):
         r = dict(rows[iid])
-        for k in ("sold_est", "new_units"):
+        for k in ("sold_est", "new_units", "relisted"):
             if r[k] is None:
                 r[k] = ""
         w.writerow(r)
@@ -138,6 +160,6 @@ def read_rows(path):
             out[int(r["item_id"])] = {
                 "min": num("min"), "p15": num("p15"), "units": num("units", int) or 0,
                 "listings": num("listings", int) or 0, "sold_est": num("sold_est"),
-                "new_units": num("new_units"),
+                "new_units": num("new_units"), "relisted": num("relisted"),
             }
         return out
