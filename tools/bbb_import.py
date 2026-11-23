@@ -10,8 +10,10 @@ Input (JSON): {"scan_utc": "...", "items": [...], "blackwater": [...]} where ite
    dips, recovered, flags, buckets, ok}
 and blackwater entries are {id, name, buy_max, sell_at, bw_sold_per_day, bw_listed, max_qty?}.
 
-  python tools/bbb_import.py export.json            # writes bbb.json in the repo root
+  python tools/bbb_import.py                        # newest ~/Downloads/bbb_export*.json -> bbb.json
+  python tools/bbb_import.py export.json            # a specific file
 """
+import glob
 import json
 import os
 import sys
@@ -44,7 +46,15 @@ def convert(src):
 
 
 def main():
-    src = json.load(open(sys.argv[1]))
+    if len(sys.argv) > 1:
+        src_path = sys.argv[1]
+    else:  # the scanner downloads bbb_export.json; Chrome names repeats bbb_export (1).json etc.
+        found = glob.glob(os.path.join(os.path.expanduser("~"), "Downloads", "bbb_export*.json"))
+        if not found:
+            sys.exit("no bbb_export*.json in Downloads; pass a path")
+        src_path = max(found, key=os.path.getmtime)
+        print("reading", src_path)
+    src = json.load(open(src_path))
     out = convert(src)
     path = os.path.join(ROOT, "bbb.json")
     json.dump(out, open(path, "w"), separators=(",", ":"))
