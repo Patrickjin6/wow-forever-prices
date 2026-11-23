@@ -33,11 +33,11 @@ Nothing passes the history rule right now.
 
 ## Risky (profitable on paper, don't buy)
 
-- Large Bore Blunderbuss: now 10s 0c · flags thin-history, no-recovery
 - Lord Sakrasis' Scepter: now 95s 94c · flags falling-24h, thin-history, no-recovery
-- Four of Portals: now 1g 45s 0c · flags falling-24h, thin-history, no-recovery
 - Jet Black Feather: now 1s 49c · flags falling-24h, thin-history, no-recovery
+- Four of Portals: now 1g 45s 0c · flags falling-24h, thin-history, no-recovery
 - Schematic: Mechanical Dragonling: now 72s 0c · flags thin-history, no-recovery
 - Brilliant Chromatic Scale: now 90s 97c · flags falling-24h, thin-history, no-recovery
+- Schematic: Spellpower Goggles Xtreme: now 25s 0c · flags thin-history, no-recovery
 
 _Sales per day are estimated from listings that disappear between hourly snapshots, so cancels count as sales. Confirm prices in game._
