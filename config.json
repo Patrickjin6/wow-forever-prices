@@ -22,6 +22,7 @@
     "min_margin": 0.1,
     "cut": 0.05,
     "blackwater_cut": 0.15,
+    "blackwater": false,
     "max_share": 0.4,
     "day_share": 0.25,
     "max_names_per_run": 150

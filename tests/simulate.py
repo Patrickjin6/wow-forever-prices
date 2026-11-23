@@ -19,6 +19,7 @@ os.environ["WOWPRICES_ROOT"] = TMP
 sys.path.insert(0, REPO)
 _cfg = json.load(open(os.path.join(REPO, "config.json")))
 _cfg["houses_verified"] = False  # so the first run also exercises discovery
+_cfg["report"]["blackwater"] = True  # exercise the Blackwater path even when it is off live
 json.dump(_cfg, open(os.path.join(TMP, "config.json"), "w"))
 with open(os.path.join(TMP, "holdings.json"), "w") as f:
     json.dump({"cash_copper": 50000, "positions": [

@@ -272,7 +272,7 @@ def build(cfg, data_dir, now, ladders_by_house, holdings, name_of, out_dir="."):
 
     # Blackwater (neutral AH, 15% cut): buy on Horde, sell there.
     bw = []
-    if "blackwater" in ladders_by_house:
+    if rc.get("blackwater", True) and "blackwater" in ladders_by_house:
         bseries, bfiles, bcov = hist["blackwater"]
         blad = ladders_by_house["blackwater"]
         bcut = rc["blackwater_cut"]
