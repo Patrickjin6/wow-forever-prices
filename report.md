@@ -1,6 +1,6 @@
 # WoW Forever flip report (US Horde)
 
-Snapshot: **Tue 24 Nov 11:25 UK** · history: 19 hourly snapshots · budget 12g 0s 0c
+Snapshot: **Tue 24 Nov 12:25 UK** · history: 20 hourly snapshots · budget 12g 0s 0c
 Houses: Horde 114, Blackwater 117
 
 > History is still building. Buys need at least two past dips that recovered,
@@ -14,10 +14,10 @@ Nothing passes the history rule right now.
 
 - **Devilsaur Leather** x8 · paid 65s 0c · break-even 68s 42c · now 68s 99c
   - Above break-even now: undercut at 68s 98c for ~4s 25c profit
-  - History: 72h low 55s 98c | median 69s 35c | high 79s 85c | last 24h (every 3h): 75s 0c, 75s 50c, 70s 62c, 69s 35c, 68s 99c
-- **Mountain Silversage** x20 · paid 12s 0c · break-even 12s 63c · now 10s 84c
+  - History: 72h low 55s 98c | median 69s 18c | high 79s 85c | last 24h (every 3h): 79s 80c, 75s 0c, 65s 0c, 70s 61c, 68s 29c, 68s 99c
+- **Mountain Silversage** x20 · paid 12s 0c · break-even 12s 63c · now 11s 48c
   - Hold: under break-even for most of the last 72h (high 12s 0c)
-  - History: 72h low 10s 25c | median 11s 35c | high 12s 0c | last 24h (every 3h): 11s 0c, 11s 35c, 11s 49c, 11s 53c, 10s 84c
+  - History: 72h low 10s 25c | median 11s 41c | high 12s 0c | last 24h (every 3h): 11s 55c, 11s 0c, 11s 47c, 10s 84c, 11s 50c, 11s 48c
 
 ## Watch (close to buy price)
 
@@ -33,11 +33,11 @@ Nothing passes the history rule right now.
 
 ## Risky (profitable on paper, don't buy)
 
-- Pattern: Earthen Silk Hood: now 1g 0s 0c · flags thin-history, no-recovery
+- Rich Purple Silk Shirt: now 1g 0s 0c · flags thin-history, no-recovery
+- Pattern: Earthen Silk Hood: now 95s 0c · flags thin-history, no-recovery
+- Craftsman's Writ: Craftsman's Monocle: now 22s 15c · flags thin-history, glut, no-recovery, sticky
 - Recipe: Crocolisk Steak: now 45s 0c · flags falling-24h, thin-history, no-recovery
-- Craftsman's Writ: Craftsman's Monocle: now 21s 0c · flags thin-history, glut, no-recovery, sticky
-- Recipe: Succulent Pork Ribs: now 64s 99c · flags falling-24h, thin-history, no-recovery
-- Recipe: Beer Basted Boar Ribs: now 1g 0s 0c · flags thin-history, glut, no-recovery
+- item 286993: now 1g 45s 0c · flags thin-history
 - Craftsman's Writ: Orange Martial Shirt: now 25s 17c · flags thin-history, glut, no-recovery
 
 _Sales per day are estimated from listings that disappear between hourly snapshots, so cancels count as sales. Confirm prices in game._
