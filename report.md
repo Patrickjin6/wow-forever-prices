@@ -1,6 +1,6 @@
 # WoW Forever flip report (US Horde)
 
-Snapshot: **Tue 24 Nov 06:25 UK** · history: 14 hourly snapshots · budget 12g 0s 0c
+Snapshot: **Tue 24 Nov 07:25 UK** · history: 15 hourly snapshots · budget 12g 0s 0c
 Houses: Horde 114, Blackwater 117
 
 > History is still building. Buys need at least two past dips that recovered,
@@ -12,12 +12,12 @@ Nothing passes the history rule right now.
 
 ## Your holdings
 
-- **Devilsaur Leather** x8 · paid 65s 0c · break-even 68s 42c · now 70s 61c
-  - Above break-even now: undercut at 70s 60c for ~16s 56c profit
-  - History: 72h low 55s 98c | median 70s 62c | high 79s 85c | last 24h (every 3h): 79s 80c, 75s 0c, 65s 0c, 70s 61c
-- **Mountain Silversage** x20 · paid 12s 0c · break-even 12s 63c · now 10s 84c
+- **Devilsaur Leather** x8 · paid 65s 0c · break-even 68s 42c · now 67s 67c
+  - Below break-even now; list at 75s 0c (reached about 40% of the last 72h) for ~50s 0c profit
+  - History: 72h low 55s 98c | median 70s 61c | high 79s 85c | last 24h (every 3h): 79s 85c, 78s 98c, 70s 0c, 67s 67c
+- **Mountain Silversage** x20 · paid 12s 0c · break-even 12s 63c · now 10s 66c
   - Hold: under break-even for most of the last 72h (high 12s 0c)
-  - History: 72h low 10s 25c | median 11s 41c | high 12s 0c | last 24h (every 3h): 11s 55c, 11s 0c, 11s 47c, 10s 84c
+  - History: 72h low 10s 25c | median 11s 35c | high 12s 0c | last 24h (every 3h): 11s 0c, 11s 50c, 11s 20c, 10s 66c
 
 ## Watch (close to buy price)
 
@@ -33,11 +33,11 @@ Nothing passes the history rule right now.
 
 ## Risky (profitable on paper, don't buy)
 
-- Plans: Radiant Leggings: now 1g 15s 54c · flags thin-history, glut, no-recovery, sticky
-- Plans: Serenity: now 80s 0c · flags falling-24h, thin-history, no-recovery
+- Plans: Radiant Leggings: now 1g 15s 0c · flags thin-history, glut, no-recovery, sticky
+- Greater Shadow Protection Potion: now 54s 0c · flags thin-history, no-recovery
+- Templar Girdle: now 1g 0s 0c · flags thin-history, no-recovery
+- Earthen Rod: now 3g 28s 0c · flags falling-24h, thin-history, no-recovery
 - Dreamless Sleep Potion: now 2s 50c · flags falling-24h, thin-history, no-recovery
-- Stormcloth Shoulders: now 1g 40s 99c · flags thin-history, no-recovery
-- Dirty Leather Boots: now 15s 99c · flags thin-history
-- Bloodforged Shoulder Pads: now 99s 0c · flags thin-history
+- Small Egg: now 1s 10c · flags thin-history, glut, no-recovery
 
 _Sales per day are estimated from listings that disappear between hourly snapshots, so cancels count as sales. Confirm prices in game._
