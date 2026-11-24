@@ -45,8 +45,8 @@ Nothing passes the history rule right now.
 - Greater Shadow Protection Potion: now 60s 0c · flags thin-history
 - Recipe: Crocolisk Steak: now 35s 0c · flags falling-24h, thin-history, no-recovery
 - Rich Purple Silk Shirt: now 99s 99c · flags thin-history, no-recovery
-- Recipe: Succulent Pork Ribs: now 35s 0c · flags falling-24h, thin-history, no-recovery
-- Craftsman's Writ: Orange Martial Shirt: now 24s 90c · flags thin-history, no-recovery
+- Craftsman's Writ: Orange Martial Shirt: now 24s 90c · flags thin-history, glut, no-recovery
 - Libram of Focus: now 1g 99s 99c · flags thin-history, no-recovery
+- Scroll: RARE SERVICHI RADAR: now 9s 0c · flags thin-history, no-recovery, sticky
 
 _Sales per day are estimated from listings that disappear between hourly snapshots, so cancels count as sales. Confirm prices in game._
