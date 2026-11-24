@@ -33,11 +33,11 @@ Nothing passes the history rule right now.
 
 ## Risky (profitable on paper, don't buy)
 
-- Craftsman's Writ: Mechanical Dragonling: now 15s 80c · flags thin-history, glut, no-recovery
-- Recipe: Succulent Pork Ribs: now 35s 0c · flags falling-24h, thin-history, no-recovery
 - Feet of the Lynx: now 1g 39s 90c · flags thin-history, no-recovery
 - Rich Purple Silk Shirt: now 1g 0s 0c · flags thin-history, no-recovery
+- Recipe: Succulent Pork Ribs: now 35s 0c · flags falling-24h, thin-history, no-recovery
 - Scroll: RARE SERVICHI RADAR: now 14s 0c · flags thin-history, no-recovery, sticky
-- Craftsman's Writ: Orange Martial Shirt: now 24s 99c · flags thin-history, glut, no-recovery
+- Craftsman's Writ: Mechanical Dragonling: now 15s 80c · flags thin-history, glut, no-recovery
+- Schematic: SAF-T Casing: now 42s 99c · flags falling-24h, thin-history, no-recovery, sticky
 
 _Sales per day are estimated from listings that disappear between hourly snapshots, so cancels count as sales. Confirm prices in game._
