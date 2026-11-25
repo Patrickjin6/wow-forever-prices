@@ -49,6 +49,7 @@
 "5833": "Indurium Ore",
 "6316": "Loch Frenzy Delight",
 "6457": "Rusted Engineering Parts",
+"6660": "Julie's Dagger",
 "6786": "Simple Dress",
 "6887": "Spotted Yellowtail",
 "6889": "Small Egg",
@@ -146,6 +147,7 @@
 "250075": "Prehistoric Pulled Raptor",
 "250328": "Elixir of Cunning",
 "250363": "Recipe: Potion of Predatory Senses",
+"250375": "Recipe: Minor Mageblood Elixir",
 "250539": "Hard Gold Pauldrons",
 "250545": "Shining Mithril Gauntlet",
 "250590": "Blessed Plate Bracers",
@@ -205,8 +207,10 @@
 "281016": "Scroll: FORGOT HOOF THUD",
 "281018": "Scroll: RARE SERVICHI RADAR",
 "284869": "Unsanctified Grenade",
+"286152": "Plated Armorfish",
 "286980": "item 286980",
 "286993": "item 286993",
 "287009": "item 287009",
-"287016": "item 287016"
+"287016": "item 287016",
+"287070": "item 287070"
 }
