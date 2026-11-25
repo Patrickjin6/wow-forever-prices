@@ -26,15 +26,15 @@ Nothing passes the history rule right now.
 ## High now (sell if you hold)
 
 - Belamoore's Research Journal: 14s 98c vs usual ~1c
-- Fine Loose Hair: 12g 1s 18c vs usual ~1s 18c
 - Nutritious Slime Sludge: 4s 98c vs usual ~1c
 - Translated Tale of I'lalai: 9s 0c vs usual ~4c
 - Tarnished Silver Necklace: 10g 90s 0c vs usual ~20s 0c
-- Large Wooden Shield: 5g 10s 0c vs usual ~10s 0c
 - Craftsman's Writ: Soul Pouch: 1g 78s 50c vs usual ~4s 57c
 - Goretusk Snout: 35s 0c vs usual ~1s 0c
 - The Big One: 7g 99s 99c vs usual ~23s 99c
 - Craftsman's Writ: Lifelike Mechanical Toad: 60s 0c vs usual ~2s 76c
+- Accurate Slugs: 1s 0c vs usual ~5c
+- Flying Tiger Goggles: 84s 0c vs usual ~4s 24c
 
 ## Blackwater (buy on Horde, sell at a neutral AH, 15% cut)
 
@@ -47,6 +47,6 @@ Nothing passes the history rule right now.
 - Invisibility Potion: now 34s 0c · flags thin-history, no-recovery
 - Shining Mithril Gauntlet: now 1g 11s 11c · flags falling-24h, thin-history, no-recovery, sticky
 - Formula: Enchant Gloves - Advanced Herbalism: now 96s 0c · flags falling-24h, thin-history, no-recovery, sticky
-- Craftsman's Writ: Orange Martial Shirt: now 12s 1c · flags falling-24h, thin-history, glut, no-recovery
+- Craftsman's Writ: Herbalist's Gloves: now 15s 98c · flags falling-24h, thin-history, glut, no-recovery
 
 _Sales per day are estimated from listings that disappear between hourly snapshots, so cancels count as sales. Confirm prices in game._
