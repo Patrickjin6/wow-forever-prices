@@ -5,53 +5,43 @@ Houses: Horde 114, Blackwater 117
 
 ## Buy now
 
-1. Mugthol's Helm
-   1. Buy: up to 1 at 6g 4s 53c or less (cheapest now 4g 0s 96c)
-   2. Sell at: 6g 99s 99c
-   3. Profit: ~2g 64s 3c
-   - History: 72h low 4g 0s 96c | median 6g 99s 99c | high 13g 99s 98c | last 24h (every 3h): 13g 99s 98c, 13g 50s 98c, 9g 50s 97c, 9g 50s 96c, 9g 50s 96c, 8g 50s 96c, 4g 0s 96c · bounced back 3/3 dips · ~10 sold/day · normal · 50% relisted · yours sell in ~7h
-2. Tough Scorpid Gloves
-   1. Buy: up to 3 at 1g 71s 0c or less (cheapest now 1g 20s 0c)
-   2. Sell at: 1g 98s 0c
-   3. Profit: ~2g 4s 30c
-   - History: 72h low 1g 20s 0c | median 2g 5s 0c | high 2g 55s 98c | last 24h (every 3h): 2g 5s 0c, 2g 5s 0c, 2g 0s 0c, 1g 98s 0c, 1g 97s 0c, 1g 50s 0c, 1g 20s 0c, 1g 20s 0c · bounced back 2/2 dips · ~65 sold/day · fast · 49% relisted · yours sell in ~5h
-3. Ranger Bow
+1. Ranger Bow
    1. Buy: up to 2 at 2g 59s 9c or less (cheapest now 2g 0s 88c)
    2. Sell at: 3g 0s 0c
    3. Profit: ~1g 68s 24c
-   - History: 72h low 2g 0s 0c | median 3g 0s 0c | high 6g 6s 90c | last 24h (every 3h): 3g 0s 0c, 3g 0s 0c, 2g 43s 0c, 2g 79s 0c, 2g 99s 99c, 3g 0s 0c, 6g 0s 0c, 2g 0s 88c · bounced back 5/5 dips · ~34 sold/day · fast · 44% relisted · yours sell in ~1h
-4. Gnoll Hide Sack
+   - History: 72h low 2g 0s 0c | median 3g 0s 0c | high 6g 6s 90c | last 24h (every 3h): 3g 0s 0c, 3g 0s 0c, 2g 43s 0c, 2g 79s 0c, 2g 99s 99c, 3g 0s 0c, 6g 0s 0c, 2g 0s 88c · bounced back 5/5 dips · ~34 sold/day · fast · 43% relisted · yours sell in ~1h
+2. Jade Breastplate
+   1. Buy: up to 2 at 2g 15s 90c or less (cheapest now 1g 20s 0c)
+   2. Sell at: 2g 50s 0c
+   3. Profit: ~1g 55s 0c
+   - History: 72h low 1g 20s 0c | median 2g 50s 0c | high 4g 5s 0c | last 24h (every 3h): 2g 95s 0c, 2g 95s 0c, 2g 95s 0c, 2g 30s 0c, 2g 50s 0c, 2g 95s 0c, 1g 20s 0c, 1g 20s 0c · bounced back 3/3 dips · ~12 sold/day · normal · 46% relisted · yours sell in ~6h
+3. Thunderwood
+   1. Buy: up to 1 at 3g 88s 63c or less (cheapest now 3g 20s 0c)
+   2. Sell at: 4g 50s 0c
+   3. Profit: ~1g 7s 50c
+   - History: 72h low 3g 20s 0c | median 5g 35s 0c | high 9g 0s 0c | last 24h (every 3h): 4g 74s 0c, 4g 25s 0c, 5g 35s 0c, 4g 4s 0c, 6g 95s 0c, 4g 25s 0c, 4g 0s 0c, 3g 20s 0c · bounced back 2/2 dips · ~26 sold/day · fast · 36% relisted · yours sell in ~1h
+4. Scroll of Greater Cryoblast
+   1. Buy: up to 21 at 8s 61c or less (cheapest now 5s 99c)
+   2. Sell at: 9s 98c
+   3. Profit: ~73s 31c
+   - History: 72h low 3s 0c | median 9s 98c | high 18s 99c | last 24h (every 3h): 18s 99c, 16s 97c, 10s 0c, 10s 0c, 12s 89c, 12s 80c, 12s 80c, 5s 99c · bounced back 5/5 dips · ~271 sold/day · normal · 28% relisted · yours sell in ~2h
+5. Gnoll Hide Sack
    1. Buy: up to 2 at 10s 36c or less (cheapest now 5s 0c)
    2. Sell at: 12s 0c
    3. Profit: ~12s 80c
-   - History: 72h low 5s 0c | median 12s 0c | high 15s 0c | last 24h (every 3h): 12s 88c, 12s 0c, 13s 0c, 8s 0c, 12s 0c, 12s 0c, 12s 0c, 5s 0c · bounced back 6/6 dips · ~34 sold/day · fast · 18% relisted · yours sell in ~3h
-5. Swim Speed Potion
+   - History: 72h low 5s 0c | median 12s 0c | high 15s 0c | last 24h (every 3h): 12s 88c, 12s 0c, 13s 0c, 8s 0c, 12s 0c, 12s 0c, 12s 0c, 5s 0c · bounced back 6/6 dips · ~34 sold/day · fast · 17% relisted · yours sell in ~3h
+6. Swim Speed Potion
    1. Buy: up to 44 at 61c or less (cheapest now 50c)
    2. Sell at: 71c
    3. Profit: ~7s 68c
-   - History: 72h low 44c | median 79c | high 10s 60c | last 24h (every 3h): 6s 0c, 1s 20c, 92c, 74c, 55c, 70c, 71c, 50c · bounced back 5/5 dips · ~1104 sold/day · normal · 39% relisted · yours sell in ~1h
-6. Worn Leather Vest
-   1. Buy: up to 4 at 83c or less (cheapest now 49c)
-   2. Sell at: 97c
-   3. Profit: ~1s 70c
-   - History: 72h low 49c | median 98c | high 1s 0c | last 24h (every 3h): 1s 0c, 1s 0c, 80c, 75c, 97c, 97c, 50c, 49c · bounced back 4/4 dips · ~18 sold/day · fast · 12% relisted · yours sell in ~8h
-7. Red Linen Shirt
-   1. Buy: up to 1 at 1s 50c or less (cheapest now 1s 0c)
-   2. Sell at: 1s 74c
-   3. Profit: ~65c
-   - History: 72h low 50c | median 1s 87c | high 3s 0c | last 24h (every 3h): 1s 90c, 1s 90c, 1s 74c, 80c, 80c, 1s 74c, 1s 74c, 1s 0c · bounced back 4/5 dips · ~28 sold/day · normal · 40% relisted · yours sell in ~9h
-8. Calico Bracers
-   1. Buy: up to 1 at 71c or less (cheapest now 66c)
-   2. Sell at: 83c
-   3. Profit: ~13c
-   - History: 72h low 49c | median 95c | high 1s 50c | last 24h (every 3h): 1s 0c, 1s 0c, 66c, 49c, 64c, 1s 0c, 66c · bounced back 2/2 dips · ~22 sold/day · fast · 40% relisted · yours sell in ~1h
-9. Tough Jerky
+   - History: 72h low 44c | median 79c | high 10s 60c | last 24h (every 3h): 6s 0c, 1s 20c, 92c, 74c, 55c, 70c, 71c, 50c · bounced back 5/5 dips · ~1095 sold/day · normal · 39% relisted · yours sell in ~1h
+7. Tough Jerky
    1. Buy: up to 12 at 1c or less (cheapest now 1c)
    2. Sell at: 2c
    3. Profit: ~11c
-   - History: 72h low 1c | median 2c | high 10c | last 24h (every 3h): 9c, 4c, 3c, 3c, 1c, 3c, 2c, 1c · bounced back 5/5 dips · ~488 sold/day · normal · 19% relisted · yours sell in ~1h
+   - History: 72h low 1c | median 2c | high 10c | last 24h (every 3h): 9c, 4c, 3c, 3c, 1c, 3c, 2c, 1c · bounced back 5/5 dips · ~480 sold/day · normal · 19% relisted · yours sell in ~1h
 
-Total: 11g 98s 49c spent, ~6g 59s 63c profit.
+Total: 11g 99s 67c spent, ~5g 24s 64c profit.
 
 ## Your holdings
 
@@ -94,9 +84,9 @@ Total: 11g 98s 49c spent, ~6g 59s 63c profit.
 
 - item 286745: now 99s 55c · flags falling-24h
 - Formula: Enchant Cloak - Greater Resistance: now 2g 20s 0c · flags falling-24h, no-recovery
-- Craftsman's Writ: Iridescent Hammer: now 10s 0c · flags falling-24h, glut, no-recovery, sticky
 - Tattered Cloth Boots: now 19s 0c · flags falling-24h
+- Craftsman's Writ: Iridescent Hammer: now 10s 0c · flags falling-24h, glut, no-recovery, sticky
+- Tough Scorpid Gloves: now 1g 20s 0c · flags sticky
 - Craftsman's Writ: Draught of Water Breathing: now 44s 0c · flags sticky
-- Anarchist's Workbench: now 4g 7s 74c · flags falling-24h, no-recovery, sticky
 
 _Sales per day are estimated from listings that disappear between hourly snapshots, so cancels count as sales. Confirm prices in game._
