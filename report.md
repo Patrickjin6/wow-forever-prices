@@ -9,27 +9,27 @@ Houses: Horde 114, Blackwater 117
    1. Buy: up to 25 at 26s 29c or less (cheapest now 17s 0c)
    2. Sell at: 30s 45c
    3. Profit: ~2g 45s 41c
-   - History: 72h low 10s 0c | median 30s 48c | high 1g 48s 0c | last 24h (every 3h): 77s 99c, 24s 90c, 31s 0c, 27s 97c, 31s 0c, 27s 87c, 20s 0c, 17s 0c · bounced back 7/8 dips · ~608 sold/day · normal · 32% relisted · yours sell in ~10h
+   - History: 72h low 10s 0c | median 30s 48c | high 1g 48s 0c | last 24h (every 3h): 77s 99c, 24s 90c, 31s 0c, 27s 97c, 31s 0c, 27s 87c, 20s 0c, 17s 0c · bounced back 7/8 dips · ~472 sold/day · normal · 32% relisted · yours sell in ~13h
 2. Jade Epaulets
    1. Buy: up to 3 at 1g 71s 0c or less (cheapest now 1g 19s 0c)
    2. Sell at: 1g 98s 0c
    3. Profit: ~2g 7s 30c
-   - History: 72h low 1g 12s 0c | median 1g 98s 0c | high 2g 19s 0c | last 24h (every 3h): 1g 40s 0c, 1g 45s 0c, 1g 40s 0c, 2g 0s 0c, 2g 0s 0c, 1g 99s 0c, 1g 98s 0c, 1g 19s 0c · bounced back 6/6 dips · ~20 sold/day · normal · 41% relisted · yours sell in ~4h
+   - History: 72h low 1g 12s 0c | median 1g 98s 0c | high 2g 19s 0c | last 24h (every 3h): 1g 40s 0c, 1g 45s 0c, 1g 40s 0c, 2g 0s 0c, 2g 0s 0c, 1g 99s 0c, 1g 98s 0c, 1g 19s 0c · bounced back 6/6 dips · ~20 sold/day · normal · 40% relisted · yours sell in ~4h
 3. The Ziggler
    1. Buy: up to 2 at 2g 29s 4c or less (cheapest now 1g 50s 0c)
    2. Sell at: 2g 65s 21c
    3. Profit: ~1g 54s 90c
-   - History: 72h low 1g 50s 0c | median 2g 75s 0c | high 4g 30s 0c | last 24h (every 3h): 2g 15s 0c, 2g 84s 0c, 2g 84s 0c, 2g 62s 22c, 2g 70s 0c, 2g 65s 21c, 2g 60s 21c, 1g 50s 0c · bounced back 5/6 dips · ~23 sold/day · normal · 44% relisted · yours sell in ~10h
+   - History: 72h low 1g 50s 0c | median 2g 75s 0c | high 4g 30s 0c | last 24h (every 3h): 2g 15s 0c, 2g 84s 0c, 2g 84s 0c, 2g 62s 22c, 2g 70s 0c, 2g 65s 21c, 2g 60s 21c, 1g 50s 0c · bounced back 5/6 dips · ~23 sold/day · normal · 42% relisted · yours sell in ~10h
 4. Shredder Operating Manual - Page 10
    1. Buy: up to 16 at 1s 43c or less (cheapest now 89c)
    2. Sell at: 1s 66c
    3. Profit: ~9s 34c
-   - History: 72h low 89c | median 1s 66c | high 35s 50c | last 24h (every 3h): 3s 79c, 2s 97c, 2s 96c, 2s 48c, 2s 10c, 1s 44c, 1s 50c, 89c · bounced back 3/3 dips · ~214 sold/day · normal · 39% relisted · yours sell in ~5h
+   - History: 72h low 89c | median 1s 66c | high 35s 50c | last 24h (every 3h): 3s 79c, 2s 97c, 2s 96c, 2s 48c, 2s 10c, 1s 44c, 1s 50c, 89c · bounced back 3/3 dips · ~196 sold/day · normal · 39% relisted · yours sell in ~5h
 5. Rainbow Fin Albacore
    1. Buy: up to 1 at 12c or less (cheapest now 12c)
    2. Sell at: 14c
    3. Profit: ~1c
-   - History: 72h low 8c | median 14c | high 1s 90c | last 24h (every 3h): 74c, 50c, 18c, 20c, 8c, 18c, 15c, 12c · bounced back 3/4 dips · ~2930 sold/day · normal · 21% relisted · yours sell in ~2h
+   - History: 72h low 8c | median 14c | high 1s 90c | last 24h (every 3h): 74c, 50c, 18c, 20c, 8c, 18c, 15c, 12c · bounced back 3/4 dips · ~2906 sold/day · normal · 21% relisted · yours sell in ~2h
 
 Total: 11g 99s 79c spent, ~6g 16s 96c profit.
 
@@ -51,7 +51,7 @@ Total: 11g 99s 79c spent, ~6g 16s 96c profit.
 - Burning Charm: now 8s 0c, buy at 7s 96c or less · 72h low 6s 50c | median 9s 22c | high 1g 10s 0c | last 24h (every 3h): 18s 50c, 17s 30c, 13s 0c, 12s 0c, 11s 85c, 8s 90c, 8s 25c, 8s 0c
 - Fine Leather Tunic: now 5s 20c, buy at 5s 17c or less · 72h low 5s 0c | median 6s 0c | high 7s 72c | last 24h (every 3h): 5s 99c, 5s 99c, 6s 96c, 5s 79c, 6s 0c, 5s 33c, 5s 25c, 5s 20c
 - Libram of Rapidity: now 60s 0c, buy at 59s 65c or less · 72h low 20s 11c | median 69s 7c | high 18g 68s 42c | last 24h (every 3h): 50s 0c, 69s 7c, 69s 7c, 69s 7c, 1g 35s 6c, 90s 6c, 70s 5c, 60s 0c
-- Prairie Wolf Pup Carrier: now 1g 0s 75c, buy at 1g 0s 8c or less · 72h low 90s 0c | median 1g 15s 89c | high 1g 75s 0c | last 24h (every 3h): 1g 15s 90c, 1g 15s 89c, 1g 0s 0c, 1g 15s 89c, 1g 5s 0c, 1g 15s 89c, 1g 0s 0c, 1g 0s 75c
+- Prairie Wolf Pup Carrier: now 1g 0s 75c, buy at 1g 0s 7c or less · 72h low 90s 0c | median 1g 15s 89c | high 1g 75s 0c | last 24h (every 3h): 1g 15s 90c, 1g 15s 89c, 1g 0s 0c, 1g 15s 89c, 1g 5s 0c, 1g 15s 89c, 1g 0s 0c, 1g 0s 75c
 
 ## High now (sell if you hold)
 
