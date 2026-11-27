@@ -10,33 +10,38 @@ Houses: Horde 114, Blackwater 117
    2. Sell at: 6g 45s 0c
    3. Profit: ~2g 12s 75c
    - History: 72h low 3g 98s 0c | median 6g 45s 0c | high 10g 0s 0c | last 24h (every 3h): 6g 55s 0c, 6g 50s 0c, 6g 50s 0c, 6g 50s 0c, 6g 45s 0c, 6g 45s 0c, 6g 0s 0c, 4g 0s 0c · bounced back 5/6 dips · ~13 sold/day · fast · 44% relisted · yours sell in ~7h
-2. Grave Moss
-   1. Buy: up to 142 at 3s 45c or less (cheapest now 2s 99c)
-   2. Sell at: 4s 0c
-   3. Profit: ~96s 82c
-   - History: 72h low 2s 90c | median 4s 0c | high 5s 88c | last 24h (every 3h): 4s 14c, 4s 66c, 4s 94c, 4s 70c, 4s 37c, 4s 37c, 3s 72c, 2s 99c · bounced back 6/6 dips · ~4105 sold/day · normal · 25% relisted · yours sell in ~7h
+2. Plated Fist of Hakoo
+   1. Buy: up to 1 at 5g 86s 40c or less (cheapest now 4g 35s 0c)
+   2. Sell at: 6g 79s 0c
+   3. Profit: ~2g 10s 5c
+   - History: 72h low 4g 35s 0c | median 6g 79s 0c | high 50g 0s 0c | last 24h (every 3h): 24g 0s 0c, 9g 99s 99c, 8g 80s 0c, 5g 95s 0c, 8g 88s 0c, 7g 50s 0c, 6g 79s 0c, 4g 35s 0c · bounced back 4/4 dips · ~14 sold/day · normal · 50% relisted · yours sell in ~7h
 3. Waylaid Crate: Expert Fabrics
    1. Buy: up to 5 at 58s 66c or less (cheapest now 49s 99c)
    2. Sell at: 67s 93c
    3. Profit: ~72s 72c
-   - History: 72h low 49s 50c | median 67s 93c | high 1g 50s 0c | last 24h (every 3h): 75s 0c, 69s 50c, 59s 0c, 69s 87c, 72s 26c, 69s 0c, 70s 49c, 49s 99c · bounced back 12/12 dips · ~498 sold/day · fast · 42% relisted · yours sell in ~2h
+   - History: 72h low 49s 50c | median 67s 93c | high 1g 50s 0c | last 24h (every 3h): 75s 0c, 69s 50c, 59s 0c, 69s 87c, 72s 26c, 69s 0c, 70s 49c, 49s 99c · bounced back 12/12 dips · ~450 sold/day · fast · 41% relisted · yours sell in ~2h
 4. item 284323
    1. Buy: up to 3 at 37s 13c or less (cheapest now 19s 0c)
    2. Sell at: 43s 0c
    3. Profit: ~63s 55c
    - History: 72h low 7s 0c | median 49s 99c | high 75s 0c | last 24h (every 3h): 49s 99c, 50s 0c, 30s 0c, 44s 0c, 18s 0c, 20s 0c, 19s 0c · bounced back 4/5 dips · ~16 sold/day · fast · 32% relisted · yours sell in ~5h
-5. Warrior's Tunic
-   1. Buy: up to 6 at 8s 62c or less (cheapest now 7s 20c)
-   2. Sell at: 9s 99c
-   3. Profit: ~12s 84c
-   - History: 72h low 5s 0c | median 11s 44c | high 28s 90c | last 24h (every 3h): 19s 80c, 15s 0c, 10s 0c, 18s 0c, 11s 0c, 12s 0c, 11s 50c, 7s 20c · bounced back 5/6 dips · ~24 sold/day · normal · 46% relisted · yours sell in ~12h
+5. item 285282
+   1. Buy: up to 1 at 64s 77c or less (cheapest now 50s 90c)
+   2. Sell at: 75s 0c
+   3. Profit: ~20s 35c
+   - History: 72h low 20s 0c | median 75s 0c | high 1g 74s 98c | last 24h (every 3h): 95s 98c, 20s 0c, 95s 0c, 95s 0c, 75s 0c, 75s 0c, 60s 0c, 50s 90c · bounced back 7/7 dips · ~20 sold/day · normal · 49% relisted · yours sell in ~2h
 6. Peace Tea
    1. Buy: up to 4 at 3s 0c or less (cheapest now 1s 0c)
    2. Sell at: 3s 48c
    3. Profit: ~9s 22c
-   - History: 72h low 99c | median 3s 55c | high 7s 0c | last 24h (every 3h): 99c, 3s 49c, 3s 49c, 3s 48c, 3s 40c, 3s 48c, 3s 48c, 1s 0c · bounced back 5/6 dips · ~242 sold/day · fast · 7% relisted · yours sell in ~0h
+   - History: 72h low 99c | median 3s 55c | high 7s 0c | last 24h (every 3h): 99c, 3s 49c, 3s 49c, 3s 48c, 3s 40c, 3s 48c, 3s 48c, 1s 0c · bounced back 5/6 dips · ~239 sold/day · fast · 7% relisted · yours sell in ~0h
+7. Longjaw Mud Snapper
+   1. Buy: up to 12 at 6c or less (cheapest now 6c)
+   2. Sell at: 7c
+   3. Profit: ~8c
+   - History: 72h low 3c | median 7c | high 45c | last 24h (every 3h): 7c, 6c, 8c, 7c, 8c, 10c, 9c, 6c · bounced back 16/17 dips · ~5640 sold/day · normal · 13% relisted · yours sell in ~0h
 
-Total: 11g 99s 83c spent, ~4g 67s 90c profit.
+Total: 11g 99s 57c spent, ~5g 88s 72c profit.
 
 ## Your holdings
 
@@ -51,7 +56,7 @@ Total: 11g 99s 83c spent, ~4g 67s 90c profit.
 
 - Unbridled Leggings: now 5g 0s 0c, buy at 5g 32s 85c or less · 72h low 3g 50s 69c | median 6g 69s 0c | high 33g 20s 0c | last 24h (every 3h): 6g 49s 99c, 6g 49s 99c, 5g 40s 99c, 6g 40s 99c, 6g 40s 99c, 6g 17s 0c, 6g 17s 0c, 5g 0s 0c
 - Axe of the Deep Woods: now 50g 0s 0c, buy at 51g 81s 81c or less · 72h low 45g 99s 0c | median 60g 0s 0c | high 100g 99s 99c | last 24h (every 3h): 54g 0s 0c, 49g 99s 99c, 59g 0s 0c, 89g 99s 99c, 89g 99s 99c, 89g 99s 94c, 79g 99s 90c, 50g 0s 0c
-- Harnessing Shadows: now 78g 22s 0c, buy at 78g 32s 91c or less · 72h low 62g 0s 0c | median 90g 69s 69c | high 200g 1s 0c | last 24h (every 3h): 85g 99s 0c, 100g 1s 0c, 95g 0s 0c, 94g 69s 69c, 94g 0s 0c, 90g 69s 69c, 90g 44s 69c, 78g 22s 0c
+- Harnessing Shadows: now 78g 22s 0c, buy at 78g 32s 90c or less · 72h low 62g 0s 0c | median 90g 69s 69c | high 200g 1s 0c | last 24h (every 3h): 85g 99s 0c, 100g 1s 0c, 95g 0s 0c, 94g 69s 69c, 94g 0s 0c, 90g 69s 69c, 90g 44s 69c, 78g 22s 0c
 - Ironhide Gauntlets: now 1g 65s 0c, buy at 1g 64s 8c or less · 72h low 1g 20s 0c | median 1g 89s 99c | high 3g 89s 0c | last 24h (every 3h): 3g 12s 0c, 3g 12s 0c, 3g 12s 0c, 2g 89s 0c, 2g 89s 0c, 1g 75s 0c, 1g 65s 0c, 1g 65s 0c
 - Handstitched Leather Belt: now 1s 30c, buy at 1s 29c or less · 72h low 1s 10c | median 1s 50c | high 7s 99c | last 24h (every 3h): 2s 34c, 1s 50c, 1s 42c, 1s 41c, 1s 42c, 1s 80c, 1s 80c, 1s 30c
 - Greater Magic Essence: now 3s 47c, buy at 3s 44c or less · 72h low 3s 25c | median 4s 8c | high 6s 0c | last 24h (every 3h): 3s 90c, 4s 16c, 3s 58c, 6s 0c, 4s 17c, 3s 98c, 3s 85c, 3s 47c
@@ -78,10 +83,10 @@ Total: 11g 99s 83c spent, ~4g 67s 90c profit.
 ## Risky (profitable on paper, don't buy)
 
 - Brutish Breastplate: now 1g 75s 0c · flags no-recovery
-- Plated Fist of Hakoo: now 4g 35s 0c · flags sticky
 - Deathweed: now 99c · flags falling-24h, no-recovery
 - Three of Elementals: now 1g 90s 0c · flags falling-24h, glut, sticky
-- Pattern: Blue Dragonscale Breastplate: now 98s 0c · flags falling-24h, no-recovery, sticky
 - EZ-Thro Wrap: now 8s 0c · flags falling-24h, no-recovery
+- Craftsman's Writ: Field Repair Bot 74A: now 75c · flags falling-24h, glut, no-recovery, sticky
+- Glorious Headdress: now 2g 0s 0c · flags no-recovery
 
 _Sales per day are estimated from listings that disappear between hourly snapshots, so cancels count as sales. Confirm prices in game._
