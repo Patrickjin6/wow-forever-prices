@@ -9,17 +9,17 @@ Houses: Horde 114, Blackwater 117
    1. Buy: up to 15359 at 4c or less (cheapest now 3c)
    2. Sell at: 5c
    3. Profit: ~2g 49s 55c
-   - History: 72h low 3c | median 5c | high 6c | last 24h (every 3h): 6c, 5c, 5c, 5c, 5c, 5c, 3c, 3c · bounced back 8/8 dips · ~121841 sold/day · fast · 1% relisted · yours sell in ~5h
+   - History: 72h low 3c | median 5c | high 6c | last 24h (every 3h): 6c, 5c, 5c, 5c, 5c, 5c, 3c, 3c · bounced back 8/8 dips · ~108544 sold/day · fast · 1% relisted · yours sell in ~6h
 2. Dense Grinding Stone
    1. Buy: up to 41 at 13s 44c or less (cheapest now 11s 55c)
    2. Sell at: 15s 56c
    3. Profit: ~1g 32s 71c
-   - History: 72h low 11s 55c | median 15s 56c | high 36s 93c | last 24h (every 3h): 19s 0c, 18s 98c, 18s 98c, 18s 96c, 17s 99c, 14s 0c, 15s 0c, 11s 55c · bounced back 3/4 dips · ~2006 sold/day · fast · 22% relisted · yours sell in ~8h
+   - History: 72h low 11s 55c | median 15s 56c | high 36s 93c | last 24h (every 3h): 19s 0c, 18s 98c, 18s 98c, 18s 96c, 17s 99c, 14s 0c, 15s 0c, 11s 55c · bounced back 3/4 dips · ~1982 sold/day · fast · 21% relisted · yours sell in ~8h
 3. Claw of the Shadowmancer
    1. Buy: up to 1 at 1g 72s 72c or less (cheapest now 1g 25s 0c)
    2. Sell at: 2g 0s 0c
    3. Profit: ~65s 0c
-   - History: 72h low 1g 20s 99c | median 2g 0s 0c | high 3g 50s 88c | last 24h (every 3h): 2g 90s 0c, 2g 90s 0c, 2g 21s 0c, 2g 20s 0c, 1g 70s 0c, 2g 0s 0c, 1g 60s 0c, 1g 25s 0c · bounced back 6/6 dips · ~32 sold/day · fast · 42% relisted · yours sell in ~4h
+   - History: 72h low 1g 20s 99c | median 2g 0s 0c | high 3g 50s 88c | last 24h (every 3h): 2g 90s 0c, 2g 90s 0c, 2g 21s 0c, 2g 20s 0c, 1g 70s 0c, 2g 0s 0c, 1g 60s 0c, 1g 25s 0c · bounced back 6/6 dips · ~32 sold/day · fast · 41% relisted · yours sell in ~4h
 4. Glimmering Mail Coif
    1. Buy: up to 1 at 77s 72c or less (cheapest now 40s 0c)
    2. Sell at: 90s 0c
@@ -29,12 +29,12 @@ Houses: Horde 114, Blackwater 117
    1. Buy: up to 4 at 17s 5c or less (cheapest now 10s 0c)
    2. Sell at: 19s 75c
    3. Profit: ~35s 5c
-   - History: 72h low 2s 0c | median 19s 75c | high 36s 55c | last 24h (every 3h): 24s 99c, 19s 75c, 19s 90c, 19s 89c, 19s 90c, 15s 90c, 19s 90c, 10s 0c · bounced back 3/4 dips · ~16 sold/day · normal · 31% relisted · yours sell in ~10h
+   - History: 72h low 2s 0c | median 19s 75c | high 36s 55c | last 24h (every 3h): 24s 99c, 19s 75c, 19s 90c, 19s 89c, 19s 90c, 15s 90c, 19s 90c, 10s 0c · bounced back 3/4 dips · ~16 sold/day · normal · 30% relisted · yours sell in ~10h
 6. Upper Map Fragment
    1. Buy: up to 2 at 24s 18c or less (cheapest now 18s 75c)
    2. Sell at: 28s 0c
    3. Profit: ~15s 70c
-   - History: 72h low 10s 0c | median 28s 0c | high 59s 0c | last 24h (every 3h): 28s 0c, 23s 0c, 28s 0c, 28s 0c, 33s 99c, 39s 80c, 39s 80c, 18s 75c · bounced back 7/7 dips · ~326 sold/day · fast · 40% relisted · yours sell in ~0h
+   - History: 72h low 10s 0c | median 28s 0c | high 59s 0c | last 24h (every 3h): 28s 0c, 23s 0c, 28s 0c, 28s 0c, 33s 99c, 39s 80c, 39s 80c, 18s 75c · bounced back 7/7 dips · ~310 sold/day · fast · 40% relisted · yours sell in ~0h
 7. Waylaid Crate: Expert Parts
    1. Buy: up to 1 at 8s 37c or less (cheapest now 2s 32c)
    2. Sell at: 9s 70c
@@ -44,7 +44,7 @@ Houses: Horde 114, Blackwater 117
    1. Buy: up to 4 at 58c or less (cheapest now 40c)
    2. Sell at: 68c
    3. Profit: ~98c
-   - History: 72h low 25c | median 70c | high 86c | last 24h (every 3h): 68c, 50c, 49c, 79c, 79c, 79c, 25c, 40c · bounced back 3/3 dips · ~16 sold/day · normal · 50% relisted · yours sell in ~12h
+   - History: 72h low 25c | median 70c | high 86c | last 24h (every 3h): 68c, 50c, 49c, 79c, 79c, 79c, 25c, 40c · bounced back 3/3 dips · ~16 sold/day · normal · 47% relisted · yours sell in ~12h
 
 Total: 11g 99s 97c spent, ~5g 51s 39c profit.
 
@@ -75,11 +75,11 @@ Total: 11g 99s 97c spent, ~5g 51s 39c profit.
 - Craftsman's Writ: Heavy Scorpid Helm: 80s 0c vs usual ~90c
 - Craftsman's Writ: Ghostweave Vest: 60s 0c vs usual ~80c
 - Craftsman's Writ: Gnomish Alarm-O-Bot: 60s 0c vs usual ~99c
-- Worn Dagger: 4g 0s 0c vs usual ~7s 90c
 - Craftsman's Writ: Crimson Silk Robe: 40s 0c vs usual ~83c
 - item 282712: 35g 0s 0c vs usual ~99s 99c
 - Craftsman's Writ: Radiant Belt: 29s 0c vs usual ~99c
 - Battered Buckler: 80s 0c vs usual ~2s 74c
+- Craftsman's Writ: Moonsteel Broadsword: 46s 10c vs usual ~1s 70c
 
 ## Blackwater (buy on Horde, sell at a neutral AH, 15% cut)
 
@@ -88,10 +88,10 @@ Total: 11g 99s 97c spent, ~5g 51s 39c profit.
 ## Risky (profitable on paper, don't buy)
 
 - Commander's Armor: now 2g 92s 0c · flags falling-24h
-- Pattern: Charged Scorpid Boots: now 2g 0s 0c · flags falling-24h, sticky
 - EZ-Thro Tru-Trigger: now 45s 92c · flags falling-24h, no-recovery, sticky
-- Bloodspiller: now 1g 99s 99c · flags falling-24h, no-recovery, sticky
 - Blueprint: Trapper's Workbench: now 2g 10s 0c · flags falling-24h, sticky
 - Frostmaul E'ko: now 2g 25s 0c · flags falling-24h, no-recovery
+- Prehistoric Pulled Raptor: now 23s 69c · flags falling-24h
+- Craftsman's Writ: Craftsman's Monocle: now 4s 98c · flags sticky
 
 _Sales per day are estimated from listings that disappear between hourly snapshots, so cancels count as sales. Confirm prices in game._
