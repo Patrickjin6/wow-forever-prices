@@ -1,75 +1,70 @@
 # WoW Forever flip report (US Horde)
 
-Snapshot: **Fri 27 Nov 21:26 UK** · history: 99 hourly snapshots · budget 12g 0s 0c
+Snapshot: **Fri 27 Nov 22:26 UK** · history: 100 hourly snapshots · budget 12g 0s 0c
 Houses: Horde 114, Blackwater 117
 
 ## Buy now
 
-1. Plated Fist of Hakoo
-   1. Buy: up to 1 at 5g 86s 40c or less (cheapest now 4g 0s 0c)
-   2. Sell at: 6g 79s 0c
-   3. Profit: ~2g 45s 5c
-   - History: 72h low 4g 0s 0c | median 6g 79s 0c | high 50g 0s 0c | last 24h (every 3h): 24g 0s 0c, 14g 0s 0c, 9g 0s 0c, 8g 88s 0c, 7g 50s 0c, 6g 50s 0c, 7g 47s 0c, 4g 0s 0c · bounced back 4/4 dips · ~17 sold/day · normal · 49% relisted · yours sell in ~10h
-2. Craftsman's Writ: Red Woolen Boots
-   1. Buy: up to 4 at 1g 26s 9c or less (cheapest now 98s 85c)
-   2. Sell at: 1g 46s 0c
-   3. Profit: ~1g 33s 26c
-   - History: 72h low 75s 24c | median 1g 46s 0c | high 2g 0s 0c | last 24h (every 3h): 98s 24c, 78s 97c, 78s 98c, 1g 90s 0c, 1g 85s 0c, 1g 59s 0c, 98s 85c · bounced back 5/6 dips · ~22 sold/day · normal · 40% relisted · yours sell in ~9h
-3. Ironhide Belt
-   1. Buy: up to 2 at 1g 38s 95c or less (cheapest now 1g 0s 0c)
-   2. Sell at: 1g 60s 90c
-   3. Profit: ~1g 5s 71c
-   - History: 72h low 1g 0s 0c | median 1g 60s 90c | high 5g 41s 42c | last 24h (every 3h): 1g 59s 90c, 1g 59s 90c, 3g 41s 42c, 3g 41s 42c, 5g 41s 42c, 5g 41s 42c, 1g 50s 0c, 1g 0s 0c · bounced back 4/4 dips · ~10 sold/day · normal · 46% relisted · yours sell in ~5h
-4. Feathered Arrow
-   1. Buy: up to 599 at 25c or less (cheapest now 20c)
-   2. Sell at: 29c
-   3. Profit: ~45s 22c
-   - History: 72h low 9c | median 29c | high 88c | last 24h (every 3h): 28c, 29c, 30c, 48c, 50c, 24c, 39c, 20c · bounced back 13/14 dips · ~52496 sold/day · fast · 33% relisted · yours sell in ~1h
-5. Waylaid Crate: Artisan Textiles
-   1. Buy: up to 74 at 1s 19c or less (cheapest now 49c)
-   2. Sell at: 1s 38c
-   3. Profit: ~39s 70c
-   - History: 72h low 39c | median 1s 38c | high 45s 94c | last 24h (every 3h): 1s 96c, 1s 93c, 1s 70c, 1s 50c, 99c, 1s 39c, 99c, 49c · bounced back 9/9 dips · ~793 sold/day · normal · 30% relisted · yours sell in ~4h
-6. Raw Brilliant Smallfish
-   1. Buy: up to 2 at 55c or less (cheapest now 50c)
-   2. Sell at: 64c
-   3. Profit: ~22c
-   - History: 72h low 30c | median 64c | high 91c | last 24h (every 3h): 67c, 64c, 70c, 68c, 68c, 65c, 67c, 50c · bounced back 15/15 dips · ~8264 sold/day · fast · 7% relisted · yours sell in ~0h
+1. Golden Scale Shoulders
+   1. Buy: up to 10 at 73s 84c or less (cheapest now 47s 0c)
+   2. Sell at: 85s 50c
+   3. Profit: ~3g 42s 25c
+   - History: 72h low 47s 0c | median 85s 50c | high 1g 0s 0c | last 24h (every 3h): 1g 0s 0c, 99s 0c, 1g 0s 0c, 1g 0s 0c, 1g 0s 0c, 95s 0c, 1g 0s 0c, 47s 0c · bounced back 2/2 dips · ~41 sold/day · fast · 28% relisted · yours sell in ~8h
+2. Solid Iron Maul
+   1. Buy: up to 4 at 1g 20s 89c or less (cheapest now 1g 0s 0c)
+   2. Sell at: 1g 39s 98c
+   3. Profit: ~1g 31s 92c
+   - History: 72h low 99s 99c | median 1g 39s 98c | high 1g 45s 0c | last 24h (every 3h): 1g 40s 0c, 1g 40s 0c, 1g 39s 99c, 1g 39s 98c, 1g 39s 98c, 1g 25s 0c, 1g 39s 98c, 1g 0s 0c · bounced back 4/4 dips · ~48 sold/day · normal · 46% relisted · yours sell in ~7h
+3. Coarse Thread
+   1. Buy: up to 2155 at 13c or less (cheapest now 11c)
+   2. Sell at: 16c
+   3. Profit: ~74s 2c
+   - History: 72h low 10c | median 16c | high 8s 0c | last 24h (every 3h): 22c, 17c, 16c, 30c, 29c, 22c, 11c, 11c · bounced back 8/8 dips · ~8622 sold/day · fast · 0% relisted · yours sell in ~8h
+4. Twice-Spiced Raptor Slice
+   1. Buy: up to 166 at 53c or less (cheapest now 44c)
+   2. Sell at: 62c
+   3. Profit: ~22s 81c
+   - History: 72h low 38c | median 64c | high 1s 83c | last 24h (every 3h): 80c, 38c, 55c, 39c, 70c, 74c, 50c, 44c · bounced back 6/6 dips · ~664 sold/day · fast · 28% relisted · yours sell in ~7h
+5. Small Leather Ammo Pouch
+   1. Buy: up to 6 at 43c or less (cheapest now 30c)
+   2. Sell at: 50c
+   3. Profit: ~1s 5c
+   - History: 72h low 29c | median 50c | high 3s 40c | last 24h (every 3h): 80c, 82c, 80c, 80c, 80c, 70c, 75c, 30c · bounced back 4/5 dips · ~128 sold/day · normal · 41% relisted · yours sell in ~3h
 
-Total: 11g 99s 65c spent, ~5g 69s 16c profit.
+Total: 11g 99s 52c spent, ~5g 72s 5c profit.
 
 ## Your holdings
 
-- **Devilsaur Leather** x8 · paid 65s 0c · break-even 68s 42c · now 79s 18c
-  - Above break-even now: undercut at 79s 17c for ~81s 69c profit
-  - History: 72h low 53s 99c | median 64s 1c | high 1g 48s 99c | last 24h (every 3h): 59s 93c, 55s 99c, 58s 50c, 55s 0c, 68s 98c, 89s 97c, 83s 99c, 79s 18c
-- **Mountain Silversage** x20 · paid 12s 0c · break-even 12s 63c · now 12s 79c
-  - Above break-even now: undercut at 12s 78c for ~2s 82c profit
-  - History: 72h low 9s 88c | median 12s 32c | high 24s 93c | last 24h (every 3h): 12s 5c, 12s 14c, 16s 58c, 15s 98c, 11s 94c, 11s 94c, 13s 0c, 12s 79c
+- **Devilsaur Leather** x8 · paid 65s 0c · break-even 68s 42c · now 78s 99c
+  - Above break-even now: undercut at 78s 98c for ~80s 25c profit
+  - History: 72h low 53s 99c | median 64s 1c | high 1g 48s 99c | last 24h (every 3h): 64s 93c, 63s 0c, 57s 99c, 64s 94c, 68s 88c, 86s 66c, 83s 98c, 78s 99c
+- **Mountain Silversage** x20 · paid 12s 0c · break-even 12s 63c · now 12s 59c
+  - Below break-even now; list at 12s 85c (reached about 27% of the last 72h) for ~4s 15c profit
+  - History: 72h low 9s 88c | median 12s 32c | high 24s 93c | last 24h (every 3h): 12s 1c, 11s 20c, 15s 28c, 11s 96c, 11s 90c, 13s 84c, 12s 90c, 12s 59c
 
 ## Watch (close to buy price)
 
-- Executioner's Cleaver: now 11g 0s 0c, buy at 13g 72s 31c or less · 72h low 8g 89s 99c | median 15g 89s 0c | high 21g 80s 0c | last 24h (every 3h): 18g 99s 99c, 17g 0s 99c, 17g 50s 0c, 20g 0s 0c, 20g 0s 0c, 18g 0s 0c, 17g 0s 50c, 11g 0s 0c
-- Feral Shoulder Pads: now 12s 24c, buy at 12s 22c or less · 72h low 10s 0c | median 15s 45c | high 19s 88c | last 24h (every 3h): 14s 0c, 13s 49c, 14s 15c, 14s 20c, 14s 24c, 12s 24c, 12s 0c, 12s 24c
-- Grave Moss: now 3s 43c, buy at 3s 40c or less · 72h low 2s 90c | median 3s 99c | high 5s 88c | last 24h (every 3h): 4s 15c, 5s 73c, 4s 0c, 4s 40c, 4s 15c, 3s 55c, 3s 92c, 3s 43c
-- Thick Leather: now 5s 85c, buy at 5s 76c or less · 72h low 3s 0c | median 6s 89c | high 12s 84c | last 24h (every 3h): 7s 68c, 3s 1c, 5s 98c, 6s 25c, 6s 16c, 6s 89c, 6s 70c, 5s 85c
-- Melon Juice: now 59c, buy at 58c or less · 72h low 28c | median 68c | high 1s 0c | last 24h (every 3h): 40c, 1s 0c, 84c, 80c, 79c, 83c, 40c, 59c
-- Prospector Axe: now 1g 10s 0c, buy at 1g 7s 95c or less · 72h low 90s 0c | median 1g 25s 0c | high 3g 5s 0c | last 24h (every 3h): 1g 0s 0c, 1g 50s 0c, 1g 25s 75c, 1g 60s 0c, 1g 60s 0c, 1g 59s 99c, 1g 30s 0c, 1g 10s 0c
-- Maple Seed: now 2s 11c, buy at 2s 7c or less · 72h low 2s 0c | median 2s 50c | high 3s 0c | last 24h (every 3h): 2s 58c, 2s 58c, 2s 45c, 2s 40c, 2s 40c, 2s 40c, 2s 15c, 2s 11c
-- Small Brown Pouch: now 1s 74c, buy at 1s 70c or less · 72h low 1s 49c | median 1s 98c | high 2s 0c | last 24h (every 3h): 1s 98c, 1s 97c, 1s 75c, 1s 98c, 1s 95c, 1s 98c, 1s 98c, 1s 74c
+- Plated Fist of Hakoo: now 4g 80s 90c, buy at 5g 86s 40c or less · 72h low 4g 0s 0c | median 6g 79s 0c | high 50g 0s 0c | last 24h (every 3h): 9g 99s 99c, 8g 80s 0c, 5g 95s 0c, 8g 88s 0c, 7g 50s 0c, 6g 79s 0c, 4g 35s 0c, 4g 80s 90c
+- Pattern: Tooled Leather Bracers: now 15g 98s 97c, buy at 17g 25s 54c or less · 72h low 15g 0s 0c | median 20g 0s 0c | high 25g 0s 0c | last 24h (every 3h): 19g 99s 0c, 19g 99s 0c, 18g 98s 0c, 19g 98s 0c, 19g 98s 0c, 17g 0s 0c, 17g 49s 99c, 15g 98s 97c
+- Pattern: Robes of Arcana: now 5g 50s 0c, buy at 5g 61s 36c or less · 72h low 3g 99s 99c | median 6g 99s 0c | high 10g 0s 0c | last 24h (every 3h): 4g 99s 0c, 6g 50s 0c, 6g 50s 0c, 6g 50s 0c, 6g 50s 0c, 5g 99s 0c, 6g 50s 0c, 5g 50s 0c
+- Tiny Crimson Whelpling: now 18g 0s 0c, buy at 18g 13s 63c or less · 72h low 15g 0s 0c | median 22g 45s 0c | high 67g 0s 0c | last 24h (every 3h): 22g 45s 0c, 22g 45s 0c, 21g 0s 0c, 21g 0s 0c, 20g 0s 0c, 20g 0s 0c, 20g 0s 0c, 18g 0s 0c
+- Thornstone Sledgehammer: now 4g 75s 0c, buy at 4g 74s 99c or less · 72h low 4g 0s 0c | median 5g 50s 0c | high 10g 0s 0c | last 24h (every 3h): 5g 0s 0c, 6g 50s 0c, 6g 50s 0c, 6g 49s 0c, 6g 0s 0c, 6g 0s 0c, 5g 0s 0c, 4g 75s 0c
+- Ironhide Gauntlets: now 1g 65s 0c, buy at 1g 64s 8c or less · 72h low 1g 20s 0c | median 1g 89s 99c | high 3g 89s 0c | last 24h (every 3h): 3g 12s 0c, 3g 12s 0c, 2g 89s 0c, 2g 89s 0c, 1g 75s 0c, 1g 65s 0c, 1g 65s 0c, 1g 65s 0c
+- Red Linen Vest: now 2s 25c, buy at 2s 23c or less · 72h low 2s 0c | median 2s 62c | high 6s 0c | last 24h (every 3h): 2s 0c, 2s 60c, 2s 45c, 2s 39c, 2s 60c, 2s 32c, 2s 60c, 2s 25c
+- Maple Seed: now 2s 10c, buy at 2s 7c or less · 72h low 2s 0c | median 2s 50c | high 3s 0c | last 24h (every 3h): 2s 58c, 2s 45c, 2s 45c, 2s 40c, 2s 40c, 2s 40c, 2s 15c, 2s 10c
 
 ## High now (sell if you hold)
 
-- Red Ribboned Wrapping Paper: 5g 0s 0c vs usual ~45c
-- Blue Ribboned Wrapping Paper: 5g 0s 78c vs usual ~78c
+- Red Ribboned Wrapping Paper: 4g 0s 0c vs usual ~45c
+- Blue Ribboned Wrapping Paper: 3g 0s 0c vs usual ~78c
 - Oil of Olaf: 24s 0c vs usual ~15c
 - Tale of I'lalai in Zandali: 1s 0c vs usual ~1c
-- Small Throwing Knife: 80s 0c vs usual ~99c
-- Craftsman's Writ: Shadoweave Robe: 89s 99c vs usual ~1s 12c
-- Craftsman's Writ: Cindercloth Robe: 62s 88c vs usual ~89c
-- Craftsman's Writ: Felcloth Boots: 67s 40c vs usual ~98c
+- Craftsman's Writ: Shadoweave Robe: 89s 98c vs usual ~1s 12c
+- Small Throwing Knife: 79s 0c vs usual ~99c
 - Woven Gloves: 54s 0c vs usual ~1s 0c
-- Craftsman's Writ: Runecloth Bag: 1g 95s 0c vs usual ~3s 99c
+- Fresh Gustberry Bread: 47c vs usual ~1c
+- Craftsman's Writ: Cindercloth Robe: 38s 98c vs usual ~89c
+- Shredder Operating Manual - Page 12: 69s 0c vs usual ~1s 61c
 
 ## Blackwater (buy on Horde, sell at a neutral AH, 15% cut)
 
@@ -77,11 +72,11 @@ Total: 11g 99s 65c spent, ~5g 69s 16c profit.
 
 ## Risky (profitable on paper, don't buy)
 
-- Glorious Headdress: now 2g 0s 0c · flags falling-24h, no-recovery
+- Advanced Target Dummy: now 29s 98c · flags no-recovery
+- Brutish Breastplate: now 2g 5s 0c · flags no-recovery
+- Pattern: Ghostweave Boots: now 1g 52s 95c · flags glut, sticky
 - Charged Scorpid Leggings: now 4g 0s 99c · flags no-recovery
-- Cindercloth Robe: now 2g 22s 22c · flags sticky
-- Deathweed: now 99c · flags falling-24h, no-recovery
 - EZ-Thro Wrap: now 8s 0c · flags falling-24h, no-recovery
-- Plans: Runed Mithril Hammer: now 1g 0s 0c · flags no-recovery, sticky
+- Pattern: Black Whelp Cloak: now 45s 0c · flags falling-24h, no-recovery
 
 _Sales per day are estimated from listings that disappear between hourly snapshots, so cancels count as sales. Confirm prices in game._
