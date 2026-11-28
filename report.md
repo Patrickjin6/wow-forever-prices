@@ -9,24 +9,29 @@ Houses: Horde 114, Blackwater 117
    1. Buy: up to 42 at 19s 88c or less (cheapest now 11s 0c)
    2. Sell at: 23s 2c
    3. Profit: ~4g 39s 70c
-   - History: 72h low 11s 0c | median 23s 42c | high 59s 97c | last 24h (every 3h): 18s 0c, 23s 45c, 23s 39c, 29s 0c, 38s 99c, 22s 99c, 22s 0c, 11s 0c · bounced back 11/12 dips · ~588 sold/day · normal · 29% relisted · yours sell in ~9h
-2. item 286979
-   1. Buy: up to 19 at 28s 93c or less (cheapest now 22s 97c)
+   - History: 72h low 11s 0c | median 23s 42c | high 59s 97c | last 24h (every 3h): 18s 0c, 23s 45c, 23s 39c, 29s 0c, 38s 99c, 22s 99c, 22s 0c, 11s 0c · bounced back 11/12 dips · ~587 sold/day · normal · 27% relisted · yours sell in ~9h
+2. Deviate Scale
+   1. Buy: up to 1175 at 38c or less (cheapest now 26c)
+   2. Sell at: 45c
+   3. Profit: ~1g 56s 80c
+   - History: 72h low 20c | median 45c | high 50s 0c | last 24h (every 3h): 28c, 36c, 25c, 95c, 16s 95c, 2s 79c, 1s 14c, 26c · bounced back 9/10 dips · ~4979 sold/day · normal · 30% relisted · yours sell in ~6h
+3. item 286979
+   1. Buy: up to 16 at 28s 93c or less (cheapest now 22s 97c)
    2. Sell at: 33s 50c
-   3. Profit: ~1g 64s 8c
-   - History: 72h low 18s 99c | median 33s 50c | high 75s 94c | last 24h (every 3h): 29s 0c, 44s 0c, 44s 50c, 44s 95c, 45s 50c, 27s 99c, 24s 94c, 22s 97c · bounced back 9/9 dips · ~77 sold/day · normal · 44% relisted · yours sell in ~8h
-3. Bristlebark Blouse
-   1. Buy: up to 8 at 43s 17c or less (cheapest now 33s 0c)
-   2. Sell at: 50s 0c
-   3. Profit: ~1g 5s 97c
-   - History: 72h low 33s 0c | median 50s 60c | high 99s 0c | last 24h (every 3h): 48s 88c, 50s 90c, 50s 90c, 49s 0c, 55s 0c, 55s 0c, 44s 0c, 33s 0c · bounced back 3/4 dips · ~38 sold/day · normal · 46% relisted · yours sell in ~10h
+   3. Profit: ~1g 40s 59c
+   - History: 72h low 18s 99c | median 33s 50c | high 75s 94c | last 24h (every 3h): 29s 0c, 44s 0c, 44s 50c, 44s 95c, 45s 50c, 27s 99c, 24s 94c, 22s 97c · bounced back 9/9 dips · ~64 sold/day · normal · 45% relisted · yours sell in ~10h
 4. Crawler Claw
    1. Buy: up to 25 at 56c or less (cheapest now 25c)
    2. Sell at: 65c
    3. Profit: ~9s 19c
-   - History: 72h low 10c | median 65c | high 2s 62c | last 24h (every 3h): 88c, 82c, 94c, 58c, 80c, 89c, 91c, 25c · bounced back 8/9 dips · ~3072 sold/day · fast · 17% relisted · yours sell in ~0h
+   - History: 72h low 10c | median 65c | high 2s 62c | last 24h (every 3h): 88c, 82c, 94c, 58c, 80c, 89c, 91c, 25c · bounced back 8/9 dips · ~2412 sold/day · fast · 18% relisted · yours sell in ~0h
+5. Primal Boots
+   1. Buy: up to 1 at 57c or less (cheapest now 50c)
+   2. Sell at: 67c
+   3. Profit: ~14c
+   - History: 72h low 40c | median 70c | high 80c | last 24h (every 3h): 67c, 67c, 67c, 59c, 67c, 67c, 67c, 50c · bounced back 4/4 dips · ~19 sold/day · fast · 38% relisted · yours sell in ~1h
 
-Total: 11g 99s 83c spent, ~7g 18s 94c profit.
+Total: 11g 99s 87c spent, ~7g 46s 41c profit.
 
 ## Your holdings
 
@@ -51,7 +56,6 @@ Total: 11g 99s 83c spent, ~7g 18s 94c profit.
 ## High now (sell if you hold)
 
 - Tale of I'lalai in Zandali: 99c vs usual ~1c
-- Torn Note: 77s 0c vs usual ~1s 82c
 - Fresh Gustberry Bread: 39c vs usual ~1c
 - Craftsman's Writ: Felcloth Boots: 34s 96c vs usual ~98c
 - Craftsman's Writ: Ornate Mithril Shoulders: 29s 96c vs usual ~95c
@@ -60,6 +64,7 @@ Total: 11g 99s 83c spent, ~7g 18s 94c profit.
 - Small Pocket Watch: 25s 0c vs usual ~90c
 - Craftsman's Writ: Lifelike Mechanical Toad: 19s 78c vs usual ~74c
 - Craftsman's Writ: Golden Scale Coif: 1g 50s 98c vs usual ~8s 0c
+- Oil of Olaf: 2s 54c vs usual ~15c
 
 ## Blackwater (buy on Horde, sell at a neutral AH, 15% cut)
 
@@ -72,6 +77,6 @@ Total: 11g 99s 83c spent, ~7g 18s 94c profit.
 - Compact Harvest Reaper Kit: now 45s 98c · flags falling-24h, no-recovery, sticky
 - Five of Beasts: now 1g 39s 0c · flags falling-24h, sticky
 - Charged Scorpid Leggings: now 4g 0s 98c · flags no-recovery
-- Plans: Thorium Bracers: now 1g 12s 99c · flags falling-24h, no-recovery, sticky
+- Large Rucksack: now 77s 49c · flags no-recovery
 
 _Sales per day are estimated from listings that disappear between hourly snapshots, so cancels count as sales. Confirm prices in game._
