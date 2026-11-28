@@ -9,7 +9,7 @@ Houses: Horde 114, Blackwater 117
    1. Buy: up to 3 at 2g 34s 47c or less (cheapest now 1g 20s 54c)
    2. Sell at: 2g 71s 50c
    3. Profit: ~4g 12s 14c
-   - History: 72h low 1g 20s 54c | median 2g 84s 0c | high 6g 6s 97c | last 24h (every 3h): 2g 50s 96c, 2g 69s 0c, 3g 38s 95c, 3g 49s 98c, 3g 4s 99c, 1g 99s 0c, 2g 74s 0c, 1g 20s 54c · bounced back 13/14 dips · ~592 sold/day · fast · 35% relisted · yours sell in ~2h
+   - History: 72h low 1g 20s 54c | median 2g 84s 0c | high 6g 6s 97c | last 24h (every 3h): 2g 50s 96c, 2g 69s 0c, 3g 38s 95c, 3g 49s 98c, 3g 4s 99c, 1g 99s 0c, 2g 74s 0c, 1g 20s 54c · bounced back 13/14 dips · ~590 sold/day · fast · 34% relisted · yours sell in ~2h
 2. Spirewind Fetter
    1. Buy: up to 1 at 6g 46s 86c or less (cheapest now 4g 50s 0c)
    2. Sell at: 7g 49s 0c
@@ -19,7 +19,7 @@ Houses: Horde 114, Blackwater 117
    1. Buy: up to 1 at 4g 12s 38c or less (cheapest now 2g 99s 0c)
    2. Sell at: 4g 77s 50c
    3. Profit: ~1g 54s 62c
-   - History: 72h low 2g 15s 49c | median 4g 77s 50c | high 10g 50s 0c | last 24h (every 3h): 7g 99s 99c, 5g 99s 98c, 5g 50s 98c, 5g 99s 0c, 4g 85s 0c, 5g 99s 97c, 5g 99s 97c, 2g 99s 0c · bounced back 3/4 dips · ~24 sold/day · normal · 45% relisted · yours sell in ~4h
+   - History: 72h low 2g 15s 49c | median 4g 77s 50c | high 10g 50s 0c | last 24h (every 3h): 7g 99s 99c, 5g 99s 98c, 5g 50s 98c, 5g 99s 0c, 4g 85s 0c, 5g 99s 97c, 5g 99s 97c, 2g 99s 0c · bounced back 3/4 dips · ~24 sold/day · normal · 46% relisted · yours sell in ~4h
 4. Pattern: Swift Boots
    1. Buy: up to 7 at 11s 65c or less (cheapest now 10s 0c)
    2. Sell at: 13s 50c
@@ -29,7 +29,7 @@ Houses: Horde 114, Blackwater 117
    1. Buy: up to 410 at 5c or less (cheapest now 4c)
    2. Sell at: 6c
    3. Profit: ~6s 97c
-   - History: 72h low 3c | median 7c | high 1s 15c | last 24h (every 3h): 37c, 30c, 9c, 9c, 7c, 5c, 7c, 4c · bounced back 10/10 dips · ~3854 sold/day · normal · 12% relisted · yours sell in ~3h
+   - History: 72h low 3c | median 7c | high 1s 15c | last 24h (every 3h): 37c, 30c, 9c, 9c, 7c, 5c, 7c, 4c · bounced back 10/10 dips · ~3789 sold/day · normal · 12% relisted · yours sell in ~3h
 6. Kodo Horn Fragment
    1. Buy: up to 1 at 2s 54c or less (cheapest now 2s 0c)
    2. Sell at: 2s 95c
@@ -58,10 +58,10 @@ Total: 11g 99s 46c spent, ~8g 56s 26c profit.
 - Scarlet Boots: now 21g 99s 98c, buy at 24g 18s 18c or less · 72h low 15g 0s 0c | median 28g 0s 0c | high 45g 0s 0c | last 24h (every 3h): 23g 99s 0c, 45g 0s 0c, 32g 99s 99c, 30g 0s 0c, 29g 99s 97c, 28g 50s 0c, 25g 4s 20c, 21g 99s 98c
 - Formula: Enchant Bracer - Greater Intellect: now 12g 50s 0c, buy at 13g 34s 73c or less · 72h low 10g 98s 0c | median 20g 0s 0c | high 49g 99s 99c | last 24h (every 3h): 39g 99s 99c, 22g 99s 90c, 22g 99s 50c, 20g 99s 50c, 20g 50s 50c, 15g 50s 50c, 15g 45s 49c, 12g 50s 0c
 - Cord of Elements: now 11g 48s 99c, buy at 12g 24s 91c or less · 72h low 10g 0s 0c | median 14g 18s 32c | high 25g 99s 0c | last 24h (every 3h): 19g 99s 99c, 15g 19s 99c, 16g 70s 99c, 16g 64s 98c, 14g 64s 99c, 12g 20s 99c, 11g 49s 99c, 11g 48s 99c
-- Mugthol's Helm: now 5g 50s 99c, buy at 5g 65s 68c or less · 72h low 3g 90s 98c | median 6g 99s 0c | high 14g 99s 99c | last 24h (every 3h): 5g 88s 88c, 8g 0s 0c, 6g 50s 0c, 7g 0s 0c, 7g 0s 0c, 5g 99s 98c, 5g 50s 99c, 5g 50s 99c
 - Runecloth Shoulders: now 2g 20s 95c, buy at 2g 20s 22c or less · 72h low 2g 18s 0c | median 2g 55s 0c | high 5g 75s 0c | last 24h (every 3h): 2g 47s 75c, 2g 55s 0c, 2g 50s 0c, 2g 68s 99c, 2g 68s 0c, 2g 67s 99c, 2g 74s 99c, 2g 20s 95c
 - Widowmaker: now 4g 99s 0c, buy at 4g 96s 59c or less · 72h low 3g 90s 0c | median 5g 75s 0c | high 25g 0s 0c | last 24h (every 3h): 24g 80s 0c, 12g 0s 22c, 24g 79s 89c, 8g 88s 88c, 6g 77s 76c, 5g 49s 0c, 5g 75s 0c, 4g 99s 0c
-- Slayer's Cuffs: now 16s 50c, buy at 16s 38c or less · 72h low 14s 50c | median 18s 97c | high 30s 0c | last 24h (every 3h): 23s 97c, 23s 97c, 23s 97c, 23s 96c, 20s 0c, 18s 0c, 17s 80c, 16s 50c
+- Jade: now 7s 99c, buy at 7s 89c or less · 72h low 7s 0c | median 9s 14c | high 34s 0c | last 24h (every 3h): 9s 55c, 8s 74c, 10s 18c, 9s 75c, 8s 40c, 8s 15c, 8s 96c, 7s 99c
+- Tin Ore: now 1s 57c, buy at 1s 55c or less · 72h low 1s 22c | median 1s 87c | high 2s 37c | last 24h (every 3h): 1s 83c, 1s 90c, 1s 87c, 1s 99c, 1s 77c, 1s 85c, 1s 69c, 1s 57c
 
 ## High now (sell if you hold)
 
